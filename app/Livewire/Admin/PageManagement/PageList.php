@@ -43,7 +43,7 @@ class PageList extends Component
             Page::findOrFail($this->deleteId)->delete();
             $this->deleteId = null;
             $this->confirmingDelete = false;
-            $this->emit('pageListUpdated');
+            $this->dispatch('pageListUpdated');
             $this->dispatch('sucess', 'Page deleted successfully.');
         }
     }
