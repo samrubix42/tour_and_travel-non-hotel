@@ -52,8 +52,7 @@
                 </div>
             </div>
         </div>
-    </section>
-    <livewire:public.hotel.contact-sticky />
+</div>
 </div>
 </section>
 </div>

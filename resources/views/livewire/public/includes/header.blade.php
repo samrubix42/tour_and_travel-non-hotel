@@ -2,22 +2,12 @@
        <!-- start navigation -->
        <nav class="navbar navbar-expand-lg bg-transparent  border-radius-6px md-border-radius-0px">
            <div class="container-fluid">
-               <div class="col-auto col-lg-2 me-lg-0 me-auto">
+               <div class="col-lg-2 me-lg-0 me-auto ">
                     <a class="navbar-brand" href="{{ route('home') }}" style="width: 100%;">
-                        <img src="{{ asset('asset/image/1000400474-removebg-preview.png') }}"
+                       
+                     <img src="{{ asset('asset/image/1000400474-removebg-preview.png') }}"
                             alt="Logo"
-                            style="height:60px; width:auto; object-fit:contain;">
-                        <style>
-                            @media (max-width: 768px) {
-                                .teerth-title {
-                                    color: black !important;
-                                    font-size: 12px;
-                                }
-                                .navbar-brand img {
-                                    height:42px;
-                                }
-                            }
-                        </style>
+                            style="height:100px%!important; background-color:white; width:auto; object-fit:contain;">
                     </a>
                </div>
                <div class="col-auto col-xxl-6 col-lg-8 menu-order">

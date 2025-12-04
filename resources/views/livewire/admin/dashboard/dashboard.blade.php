@@ -49,15 +49,6 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <div class="d-flex justify-content-between">
-                            <div class="small text-muted">Total Hotels</div>
-                            <div class="fw-bold">{{ $counts['hotels'] ?? 0 }}</div>
-                        </div>
-                        <div class="progress mt-2" style="height:6px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: {{ min(100, ($counts['hotels'] / max(1, array_sum($counts)))*100) }}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between">
                             <div class="small text-muted">Total Tours</div>
                             <div class="fw-bold">{{ $counts['tour_packages'] ?? 0 }}</div>
                         </div>
@@ -80,35 +71,7 @@
     </div>
 
     <div class="row g-3">
-        <div class="col-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">Recent Hotel Contacts</div>
-                <div class="card-body p-0">
-                    <table class="table card-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>When</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($recentHotelContacts as $c)
-                                <tr>
-                                    <td>{{ $c->name }}</td>
-                                    <td>{{ $c->email ?? '-' }}</td>
-                                    <td>{{ $c->phone ?? '-' }}</td>
-                                    <td class="text-muted">{{ $c->created_at->diffForHumans() }}</td>
-                                </tr>
-                            @empty
-                                <tr><td colspan="4" class="text-muted small">No recent hotel contacts</td></tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="col-12 col-lg-6">
             <div class="card">
@@ -172,33 +135,7 @@
     </script>
 
     <div class="row g-3 mt-3">
-        <div class="col-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">Recent Hotels</div>
-                <div class="card-body p-0">
-                    <table class="table card-table">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>When</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($recentHotels as $h)
-                                <tr>
-                                    <td>{{ $h->name ?? ($h->title ?? '-') }}</td>
-                                    <td>{{ $h->category?->name ?? '-' }}</td>
-                                    <td class="text-muted">{{ $h->created_at->diffForHumans() }}</td>
-                                </tr>
-                            @empty
-                                <tr><td colspan="3" class="text-muted small">No recent hotels</td></tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="col-12 col-lg-6">
             <div class="card">

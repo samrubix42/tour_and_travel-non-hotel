@@ -92,32 +92,9 @@ class AdminSidebar
                         'title' => 'Tour Enquiries',
                         'url' => route('admin.enquire.tour.contact.list'),
                     ],
-                    (object)[
-                        'title' => 'Hotel Enquiries',
-                        'url' => route('admin.enquire.hotel.contact.list'),
-                    ],
                 ],
             ],
-            (object)[
-                'title' => 'Hotel',
-                'icon' => 'ti ti-building-hospital',
-                'url' => '#',
-                'hasSubmenu' => true,
-                'submenu' => [
-                    (object)[
-                        'title' => 'Categories',
-                        'url' => route('admin.hotel.category.list'),
-                    ],
-                    (object)[
-                        'title' => 'Hotel List',
-                        'url' => route('admin.hotel.list'),
-                    ],
-                    (object)[
-                        'title' => 'Add Hotel',
-                        'url' => route('admin.hotel.create'),
-                    ],
-                ],
-            ],
+           
             (object)[
                 'title' => 'Settings',
                 'icon' => 'ti ti-settings',

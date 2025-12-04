@@ -155,7 +155,7 @@
                             </div>
                         </div>
                     </div>
-                    <livewire:public.hotel.contact-sticky/>
+                    
 
                     <!-- CONTACT INFO -->
                     <div class="row mb-40px">

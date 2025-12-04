@@ -39,15 +39,15 @@ Route::get('/blog', Blog::class)->name('blog');
 Route::get('/blog/{slug}', BlogView::class)->name('blog.view');
 Route::get('destination', Destination::class)->name('destination');
 Route::get('experience', Experience::class)->name('experience');
-Route::get('hotels', \App\Livewire\Public\Hotel\Hotel::class)->name('hotels');
-Route::get('hotel/{slug}', \App\Livewire\Public\Hotel\HotelView::class)->name('hotel.view');
+// Route::get('hotels', \App\Livewire\Public\Hotel\Hotel::class)->name('hotels');
+// Route::get('hotel/{slug}', \App\Livewire\Public\Hotel\HotelView::class)->name('hotel.view');
 
 
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/', Dashboard::class)->name('dashboard');
     Route::prefix('enquire')->name('enquire.')->group(function () {
         Route::get('tour', EnquiresTour::class)->name('tour.contact.list');
-        Route::get('hotel', EnquiresHotel::class)->name('hotel.contact.list');
+        // Route::get('hotel', EnquiresHotel::class)->name('hotel.contact.list');
     });
     Route::prefix('tour')->name('tour.')->group(function () {
 
