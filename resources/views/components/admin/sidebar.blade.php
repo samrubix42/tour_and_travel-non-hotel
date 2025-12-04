@@ -11,13 +11,10 @@
             <a href="{{ route('admin.dashboard') }}"
                 class="d-flex align-items-center justify-content-center gap-2 text-decoration-none">
 
-                <img src="{{ asset('assets/img/logo/admin_logo.png') }}"
-                    alt="sadfsadf"
-                    height="50"
+                <div class="d-flex justify-items-center align-items-center mt-4">
+                    <p class="text-white" style="font-size:22px;font-weight:bold;">Heliyatra</p>
 
-                    class="align-middle mt-4"
-                    style="margin-top: 4px;">
-
+                </div>
                 <span class="fw-bold fs-4 text-dark">
                     Admin Panel
                 </span>
