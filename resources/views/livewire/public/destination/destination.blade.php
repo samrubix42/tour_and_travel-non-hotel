@@ -34,8 +34,8 @@
                             <div class="position-absolute top-0px left-0px w-100 h-100 bg-gradient-gray-light-dark-transparent opacity-1"></div>
                             <figcaption class="w-100 h-100 d-flex flex-column justify-content-end align-items-center p-30px">
                                 <div class="position-relative z-index-1">
-                                    <a href="{{ url('/destination?slug=' . ($destination->slug ?? $destination->id)) }}" class="d-flex justify-content-center align-items-center mx-auto icon-box w-70px h-70px rounded-circle bg-white mb-50px box-shadow-quadruple-large"><i class="bi bi-arrow-right-short text-dark-gray icon-medium lh-0px"></i></a>
-                                    <a href="{{ url('/destination?slug=' . ($destination->slug ?? $destination->id)) }}" class="alt-font fs-22 fw-500 lette text-white d-inline-block text-uppercase">{{ $destination->name }}</a>
+                                    <a href="{{ url('/tour?slug=' . ($destination->slug ?? $destination->id)) }}" class="d-flex justify-content-center align-items-center mx-auto icon-box w-70px h-70px rounded-circle bg-white mb-50px box-shadow-quadruple-large"><i class="bi bi-arrow-right-short text-dark-gray icon-medium lh-0px"></i></a>
+                                    <a href="{{ url('/tour?slug=' . ($destination->slug ?? $destination->id)) }}" class="alt-font fs-22 fw-500 lette text-white d-inline-block text-uppercase">{{ $destination->name }}</a>
                                 </div>
                                 <div class="box-overlay bg-dark-gray"></div>
                             </figcaption>                            
