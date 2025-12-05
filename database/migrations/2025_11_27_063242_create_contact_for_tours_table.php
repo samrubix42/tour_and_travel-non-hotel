@@ -14,12 +14,16 @@ return new class extends Migration
         Schema::create('contact_for_tours', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->foreignId('tour_id')->nullable();
             $table->foreignId('destination_id')->nullable();
-            $table->unsignedBigInteger('no_of_persons')->nullable();
-            $table->date('travel_date')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->text('message')->nullable();
+            $table->date('check_in_date')->nullable();
+            $table->date('check_out_date')->nullable();
+            $table->unsignedInteger('no_of_adults')->nullable();
+            $table->string('children')->nullable();
+            $table->boolean('consent')->default(false);
             $table->string('status')->default('pending');
             $table->string('ip')->nullable();
             $table->timestamps();

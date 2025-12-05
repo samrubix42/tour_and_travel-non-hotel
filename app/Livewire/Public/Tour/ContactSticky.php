@@ -11,11 +11,15 @@ class ContactSticky extends Component
     public $show = false;
     public $name;
     public $destination_id;
-    public $no_of_persons;
-    public $travel_date;
     public $email;
     public $phone;
     public $message;
+    public $check_in_date;
+    public $check_out_date;
+    public $no_of_adults;
+    public $children;
+    public $category_of_hotels;
+    public $consent = false;
 
     public $destinations = [];
     public $confirming = false;
@@ -26,11 +30,14 @@ class ContactSticky extends Component
         return [
             'name' => 'required|string|max:255',
             'destination_id' => 'nullable|exists:destinations,id',
-            'no_of_persons' => 'nullable|integer|min:1',
-            'travel_date' => 'nullable|date',
             'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:50',
+            'phone' => 'required|string|max:50',
             'message' => 'nullable|string|max:2000',
+            'check_in_date' => 'nullable|date',
+            'check_out_date' => 'nullable|date',
+            'no_of_adults' => 'required|integer|min:1',
+            'children' => 'nullable|string|max:255',
+            'consent' => 'nullable|boolean',
         ];
     }
 
@@ -53,7 +60,7 @@ class ContactSticky extends Component
 
     protected function resetForm()
     {
-        $this->reset(['name','destination_id','no_of_persons','travel_date','email','phone','message']);
+        $this->reset(['name','destination_id','email','phone','message','check_in_date','check_out_date','no_of_adults','children','category_of_hotels','consent']);
     }
 
     public function promptConfirm()
