@@ -240,11 +240,11 @@
                             @endphp
                             <div class="swiper-slide">
                                 <div class="overflow-hidden border-radius-6px box-shadow-large">
-                                    <div class="image">
-                                        <a href="{{ url('/tour/' . ($p->slug ?? $p->id)) }}">
-                                            <img class="w-100" src="{{ $img }}" alt="{{ $p->title }}">
-                                        </a>
-                                    </div>
+                                            <div class="image" style="height:240px; overflow:hidden;">
+                                                <a href="{{ url('/tour/' . ($p->slug ?? $p->id)) }}">
+                                                    <img src="{{ $img }}" alt="{{ $p->title }}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                                                </a>
+                                            </div>
                                     <div class="bg-white p-35px position-relative">
                                         <div class="bg-base-color ps-15px pe-15px fs-14 text-uppercase fw-500 d-inline-block text-white position-absolute right-0px top-0px">Customizable</div>
                                         <div class="fs-24 fw-700 text-dark-gray"><span class="text-uppercase d-block fs-14 lh-18 fw-500 text-medium-gray">Starting At</span>{{ $p->price ? '₹' . number_format($p->price,2) : '—' }}</div>
