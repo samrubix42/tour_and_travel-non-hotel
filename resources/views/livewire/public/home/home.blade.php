@@ -287,7 +287,7 @@
             </section>
             <!-- end parallax style-1 -->
             <!-- start section -->
-            <section id="explore" class="cover-background overflow-visible" style="background-image: url('https://placehold.co/1920x780');">
+            <section id="explore" class="cover-background overflow-visible" style="background-image: url('{{ asset('asset/image/demo-travel-agency-home-bg-03.jpg') }}');">
                 <div class="container overlap-section">
                     <div class="swiper slider-experiences bg-white border-radius-6px mx-0 ps-8 pe-8 lg-ps-3 lg-pe-3 pt-4 pb-4 sm-pt-8 sm-pb-8 xs-pt-15 xs-pb-40px" data-slider-options='{"spaceBetween":20,"loop":true,"autoplay":{"delay":3000,"disableOnInteraction":false},"pagination":{"el":".slider-experiences-pagination","clickable":true},"navigation":{"nextEl":".slider-experiences-next","prevEl":".slider-experiences-prev"},"breakpoints":{"1400":{"slidesPerView":5},"992":{"slidesPerView":4},"768":{"slidesPerView":3},"576":{"slidesPerView":2},"0":{"slidesPerView":1}}}'>
                         <div class="swiper-wrapper align-items-center justify-content-center">
@@ -332,14 +332,33 @@
                         <div class="col-xl-8 col-lg-9">
                             <div class="swiper position-relative magic-cursor" data-slider-options='{ "autoHeight": true, "loop": true, "allowTouchMove": true, "autoplay": { "delay": 3000, "disableOnInteraction": false }, "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "effect": "slide" }'>
                                 <div class="swiper-wrapper">
-                                    <!-- start text slider item -->
+                                    @forelse($testimonials ?? [] as $t)
                                     <div class="swiper-slide review-style-11">
                                         <div class="row align-items-center">
                                             <div class="col-md-5 text-center text-md-start sm-mb-15px">
-                                                <img src="https://placehold.co/350x335" alt="">
                                             </div>
                                             <div class="col-md-7 position-relative ps-16 sm-ps-15px text-center text-md-start">
-                                                <p class="fs-20 lh-28 text-dark-gray mb-20px">Our Africa travel specialist planned the most <span class="text-decoration-line-bottom fw-600">amazing trip</span> to kenya for us. We had an <span class="text-decoration-line-bottom fw-600">incredible time</span> and were able to capture so many awesome pictures.</p>
+                                                <p class="fs-20 lh-28 text-dark-gray mb-20px">{{ $t->feedback }}</p>
+                                                <div class="text-center bg-base-color text-white fs-15 border-radius-22px d-inline-block ps-20px pe-20px lh-36 ls-minus-1px">
+                                                    @for($i = 0; $i < ($t->rating ?? 0); $i++)
+                                                        <i class="bi bi-star-fill"></i>
+                                                    @endfor
+                                                </div>
+                                                <div class="position-absolute left-0px top-0px h-100 w-90px sm-w-100 border-end border-color-transparent-dark-very-light sm-position-relative sm-mt-10px sm-border-end-0">
+                                                    <div class="vertical-title-center align-items-center justify-content-center sm-vertical-title-inherit">
+                                                        <div class="title fs-20 alt-font text-base-color fw-600 text-uppercase">{{ $t->name }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @empty
+                                    <div class="swiper-slide review-style-11">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-5 text-center text-md-start sm-mb-15px">
+                                            </div>
+                                            <div class="col-md-7 position-relative ps-16 sm-ps-15px text-center text-md-start">
+                                                <p class="fs-20 lh-28 text-dark-gray mb-20px">No testimonials yet, check back soon.</p>
                                                 <div class="text-center bg-base-color text-white fs-15 border-radius-22px d-inline-block ps-20px pe-20px lh-36 ls-minus-1px">
                                                     <i class="bi bi-star-fill"></i>
                                                     <i class="bi bi-star-fill"></i>
@@ -349,61 +368,13 @@
                                                 </div>
                                                 <div class="position-absolute left-0px top-0px h-100 w-90px sm-w-100 border-end border-color-transparent-dark-very-light sm-position-relative sm-mt-10px sm-border-end-0">
                                                     <div class="vertical-title-center align-items-center justify-content-center sm-vertical-title-inherit">
-                                                        <div class="title fs-20 alt-font text-base-color fw-600 text-uppercase">Alexander moore</div>
+                                                        <div class="title fs-20 alt-font text-base-color fw-600 text-uppercase">Admin</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- end text slider item -->
-                                    <!-- start text slider item -->
-                                    <div class="swiper-slide review-style-11">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-5 text-center text-md-start sm-mb-15px">
-                                                <img src="https://placehold.co/350x335" alt="">
-                                            </div>
-                                            <div class="col-md-7 position-relative ps-16 sm-ps-15px text-center text-md-start">
-                                                <p class="fs-20 lh-28 text-dark-gray mb-20px">Excellent travel company. We have already <span class="text-decoration-line-bottom fw-600">recommended</span> it to our family and friends. We are looking forward to our <span class="text-decoration-line-bottom fw-600">next trip.</span> Everything was very well organized.</p>
-                                                <div class="text-center bg-base-color text-white fs-15 border-radius-22px d-inline-block ps-20px pe-20px lh-36 ls-minus-1px">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <div class="position-absolute left-0px top-0px h-100 w-90px sm-w-100 border-end border-color-transparent-dark-very-light sm-position-relative sm-mt-10px sm-border-end-0">
-                                                    <div class="vertical-title-center align-items-center justify-content-center sm-vertical-title-inherit">
-                                                        <div class="title fs-20 alt-font text-base-color fw-600 text-uppercase">Matthew taylor</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end text slider item -->
-                                    <!-- start text slider item -->
-                                    <div class="swiper-slide review-style-11">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-5 text-center text-md-start sm-mb-15px">
-                                                <img src="https://placehold.co/350x335" alt="">
-                                            </div>
-                                            <div class="col-md-7 position-relative ps-16 sm-ps-15px text-center text-md-start">
-                                                <p class="fs-20 lh-28 text-dark-gray mb-20px">This itinerary was a perfect <span class="text-decoration-line-bottom fw-500">combination</span> of city sights, history and culture together with the peace of the <span class="text-decoration-line-bottom fw-500">amazon rainforest</span> and the adventure.</p>
-                                                <div class="text-center bg-base-color text-white fs-15 border-radius-22px d-inline-block ps-20px pe-20px lh-36 ls-minus-1px">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <div class="position-absolute left-0px top-0px h-100 w-90px sm-w-100 border-end border-color-transparent-dark-very-light sm-position-relative sm-mt-10px sm-border-end-0">
-                                                    <div class="vertical-title-center align-items-center justify-content-center sm-vertical-title-inherit">
-                                                        <div class="title fs-20 alt-font text-base-color fw-600 text-uppercase">Herman miller</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end text slider item -->
+                                    @endforelse
                                 </div>
                             </div>
                         </div>

@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\Attributes\Title;
 use App\Models\Page;
 use App\Models\Experience;
+use App\Models\Testimonial;
 
 class Home extends Component
 {
@@ -41,6 +42,10 @@ class Home extends Component
 
         $experiences = Experience::where('status', true)->orderBy('name')->get();
 
+        $testimonials = Testimonial::orderBy('created_at', 'desc')
+            ->take(6)
+            ->get();
+
         return view('livewire.public.home.home', [
             'categories' => $categories,
             'banners' => $banners,
@@ -49,6 +54,7 @@ class Home extends Component
             'latestPosts' => $latestPosts,
             'page' => $page,
             'experiences' => $experiences,
+            'testimonials' => $testimonials,
         ]);
     }
 }

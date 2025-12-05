@@ -32,5 +32,6 @@ class DatabaseSeeder extends Seeder
         $this->call(\Database\Seeders\ExperienceSeeder::class);
         $this->call(\Database\Seeders\TourPackageSeeder::class);
         $this->call(\Database\Seeders\PagesSeeder::class);
+        $this->call(\Database\Seeders\TestimonialSeeder::class);
     }
 }

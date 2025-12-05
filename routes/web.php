@@ -77,6 +77,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::get('/posts/create', \App\Livewire\Admin\Blog\Post\AddPost::class)->name('post.create');
         Route::get('/posts/{id}/edit', \App\Livewire\Admin\Blog\Post\UpdatePost::class)->name('post.edit');
     });
+    Route::get('/testimonials', \App\Livewire\Admin\Testimonial\TestimonialList::class)->name('testimonial.list');
     Route::get('/settings', Setting::class)->name('settings');
     Route::get('contact', ContactList::class)->name('contact.list');
     //hotel routes
