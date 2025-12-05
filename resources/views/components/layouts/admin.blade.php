@@ -10,7 +10,7 @@
     @php $tablerVersion = config('settings.tabler_version'); @endphp 
 
     <!-- Tabler CSS -->
-    <link href="{{ asset('tabler/theme/css/tabler.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('tabler/theme/css/tabler.css') }}" rel="stylesheet" />
     <link href="{{ asset('tabler/theme/css/tabler-flags.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('tabler/theme/css/tabler-payments.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('tabler/theme/css/tabler-vendors.min.css') }}" rel="stylesheet" />
@@ -31,6 +31,45 @@
 
     @livewireStyles
     @stack('styles')
+<style>
+/* Modern Primary Purple */
+:root {
+    --tblr-primary: #8B5CF6 !important;
+    --tblr-primary-rgb: 139, 92, 246 !important;
+}
+
+/* Modern Dark Sidebar */
+.navbar-vertical,
+.layout-navbar-fixed .navbar {
+    background-color: #0F0A1F !important; /* Ultra modern dark purple */
+    color: #D8CEF8 !important;
+}
+
+/* Default Text */
+.navbar-vertical .navbar-nav .nav-link {
+    color: #D8CEF8 !important;
+}
+
+/* Hover (Soft Neutral Purple) */
+.navbar-vertical .navbar-nav .nav-link:hover {
+    background: #1A1333 !important;
+    color: #FFFFFF !important;
+}
+
+/* Active (Modern Purple) */
+.navbar-vertical .navbar-nav .nav-link.active {
+    background: #8B5CF6 !important;
+    color: #FFFFFF !important;
+}
+
+/* Active link title */
+.navbar-vertical .navbar-nav .nav-link.active .nav-link-title {
+    color: #FFFFFF !important;
+}
+</style>
+
+
+
 
     <style>
         /* Tabler-style Toastr */

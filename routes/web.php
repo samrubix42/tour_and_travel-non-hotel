@@ -3,6 +3,7 @@
 use App\Livewire\Admin\Banner\BannerManagement;
 use App\Livewire\Admin\Blog\Category\BlogCategoryList;
 use App\Livewire\Admin\Category\CategoryList;
+use App\Livewire\Admin\Contact\ContactList;
 use App\Livewire\Admin\Destination\DestinationList;
 use App\Livewire\Admin\Hotel\Category\HotelCategoryList;
 use App\Livewire\Admin\Hotel\Hotel\HotelList;
@@ -40,8 +41,7 @@ Route::get('/blog', Blog::class)->name('blog');
 Route::get('/blog/{slug}', BlogView::class)->name('blog.view');
 Route::get('destination', Destination::class)->name('destination');
 Route::get('experience', Experience::class)->name('experience');
-// Route::get('hotels', \App\Livewire\Public\Hotel\Hotel::class)->name('hotels');
-// Route::get('hotel/{slug}', \App\Livewire\Public\Hotel\HotelView::class)->name('hotel.view');
+
 
 Route::get('clear-cache', function () {
     Artisan::call('cache:clear');
@@ -78,6 +78,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::get('/posts/{id}/edit', \App\Livewire\Admin\Blog\Post\UpdatePost::class)->name('post.edit');
     });
     Route::get('/settings', Setting::class)->name('settings');
+    Route::get('contact', ContactList::class)->name('contact.list');
     //hotel routes
     Route::prefix('hotel')->name('hotel.')->group(function () {
         Route::get('/category', HotelCategoryList::class)->name('category.list');

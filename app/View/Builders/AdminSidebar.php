@@ -102,6 +102,13 @@ class AdminSidebar
                 'hasSubmenu' => false,
                 'submenu' => [],
             ],
+            (object)[
+                'title' => 'Contact Messages',
+                'icon' => 'ti ti-mail',
+                'url' => route('admin.contact.list'),
+                'hasSubmenu' => false,
+                'submenu' => [],
+            ],
         ]);
         return $menu;
     }

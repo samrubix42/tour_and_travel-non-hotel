@@ -1,5 +1,7 @@
-<aside class="navbar navbar-vertical navbar-expand-lg navbar-dark" data-bs-theme="dark" x-data="{ openMenu: null, mobileMenu: false }">
+
+<aside class="navbar navbar-vertical navbar-expand-lg navbar-dark" style="background-color: black;" data-bs-theme="dark" x-data="{ openMenu: null, mobileMenu: false }">
     <div class="container-fluid">
+
 
         {{-- Mobile toggle button --}}
         <button class="navbar-toggler" type="button" @click="mobileMenu = !mobileMenu">
@@ -11,13 +13,9 @@
             <a href="{{ route('admin.dashboard') }}"
                 class="d-flex align-items-center justify-content-center gap-2 text-decoration-none">
 
-                <div class="d-flex justify-items-center align-items-center mt-4">
-                    <p class="text-white" style="font-size:22px;font-weight:bold;">Heliyatra</p>
-
-                </div>
-                <span class="fw-bold fs-4 text-dark">
-                    Admin Panel
-                </span>
+      
+                <span class="text-white mt-4" style="font-size:22px;font-weight:bold;">
+                    Heliyatra </span>
             </a>
 
         </a>
