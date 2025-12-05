@@ -22,33 +22,29 @@
         <div class="container">
             <div class="row">
                 <div class="mb-2 md-mb-7 sm-mb-0">
-                    <ul class="blog-modern blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <li class="grid-sizer"></li>
+                    <div class="row g-4" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
                         @forelse($posts as $post)
-                        <li class="grid-item mb-40px sm-mb-20px">
-                            <div class="box-hover text-center">
-                                <figure class="mb-0 position-relative">
-                                    <div class="blog-image position-relative overflow-hidden border-radius-6px">
-                                        <a href="{{ route('blog.view', $post->slug) }}"><img src="{{ $post->thumbnail_image ?? 'https://placehold.co/800x1015' }}" alt="{{ $post->title }}" /></a>
-                                    </div>
-                                    <figcaption class="post-content-wrapper overflow-hidden border-radius-6px">
-                                        <div class="position-relative bg-dark-gray post-content p-30px z-index-2 lh-initial">
-                                            <a href="{{ route('blog.view', $post->slug) }}" class="card-title mb-0 fs-20 lh-28 text-white d-inline-block">{{ $post->title }}</a>
-                                            <div class="box-overlay bg-dark-gray z-index-minus-1"></div>
-                                        </div>
-                                        <div class="fs-15 bg-white p-15px lg-ps-10px lg-pe-10px lh-initial"><a href="#">{{ $post->created_at->format('d M Y') }}</a></div>
-                                    </figcaption>
-                                </figure>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <a href="{{ route('blog.view', $post->slug) }}" style="display:block;overflow:hidden;height:400px;">
+                                    <img src="{{ $post->thumbnail_image ?? 'https://placehold.co/800x1015' }}" class="card-img-top img-fluid rounded-top" style="object-fit: cover; height: 400px;" alt="{{ $post->title }}">
+                                </a>
+                                <div class="card-body p-3 text-center">
+                                    <a href="{{ route('blog.view', $post->slug) }}" class="card-title mb-0 fs-18 lh-26 d-block text-dark">{{ $post->title }}</a>
+                                </div>
+                                <div class="card-footer bg-white border-0 text-center py-2">
+                                    <small class="text-muted">{{ $post->created_at->format('d M Y') }}</small>
+                                </div>
                             </div>
-                        </li>
+                        </div>
                         @empty
-                        <li class="grid-item mb-40px">
+                        <div class="col-12">
                             <div class="box-hover text-center">
                                 <p class="mb-0 p-30px">No posts found.</p>
                             </div>
-                        </li>
+                        </div>
                         @endforelse
-                    </ul>
+                    </div>
                     <div class="row">
                         <div class="col-12 mt-1 mb-3 d-flex justify-content-center">
                             <!-- start pagination -->
@@ -60,4 +56,19 @@
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener('livewire:load', function () {
+            function clearGridLoading() {
+                document.querySelectorAll('.grid-loading').forEach(function (el) {
+                    el.classList.remove('grid-loading');
+                });
+            }
+
+            clearGridLoading();
+
+            Livewire.hook('message.processed', function () {
+                clearGridLoading();
+            });
+        });
+    </script>
 </div>
