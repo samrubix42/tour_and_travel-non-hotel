@@ -8,6 +8,11 @@ use App\Models\TourPackage;
 class TourView extends Component
 {
     public $package;
+    public $name;
+    public $phone;
+    public $email;
+    public $message;
+    public $tour_id;
 
     public function mount($slug)
     {
@@ -19,6 +24,26 @@ class TourView extends Component
         if (! $this->package) {
             abort(404);
         }
+    }
+    public function submit(){
+        $this->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:50',
+            'email' => 'nullable|email|max:255',
+            'message' => 'nullable|string|max:2000',
+        ]);
+        $data = [
+            'name' => $this->name,
+            'phone' => $this->phone,
+            'email' => $this->email,
+            'message' => $this->message,
+            'tour_id' => $this->package->id,
+            'ip' => request()->ip(),
+            'status' => 'pending',
+        ];
+        \App\Models\ContactForTour::create($data);
+        $this->reset(['name','phone','email','message']);
+        session()->flash('message', 'Your enquiry has been submitted.');
     }
     public function render()
     {

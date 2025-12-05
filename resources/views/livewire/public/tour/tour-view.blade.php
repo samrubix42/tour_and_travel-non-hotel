@@ -27,7 +27,7 @@
                             <h2 class="alt-font text-dark-gray fw-600 mb-10px ls-minus-1px">{{ $package->title }}</h2>
                             <ul class="p-0 m-0 list-style-02 d-block d-sm-flex-col">
                                 <li class="text-dark-gray fw-500"><i class="bi bi-geo-alt icon-small me-5px"></i>{{ $package->destinations->pluck('name')->implode(', ') ?: 'No Destination' }}</li>
-                                 <li class="text-dark-gray fw-500"><i class="bi bi-briefcase icon-small me-5px"></i>
+                                <li class="text-dark-gray fw-500"><i class="bi bi-briefcase icon-small me-5px"></i>
                                     {{ $package->experiences->pluck('name')->implode(', ') ?: 'No Destination' }}
                                 </li>
                             </ul>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="row mb-50px xs-mb-40px">
                         <div class="col-12">
-                                <div class="p-0 list-style-02 d-flex flex-wrap border-top border-color-extra-medium-gray pt-20px"></div>
+                            <div class="p-0 list-style-02 d-flex flex-wrap border-top border-color-extra-medium-gray pt-20px"></div>
                             <p>{!! $package->description ?? '' !!}</p>
                             @if(!empty($package->featured_image))
                             <img src="{{ $package->featured_image }}" alt="" />
@@ -171,27 +171,33 @@
                 <aside class="col-xl-3 col-lg-4 offset-xl-1 lg-ps-50px md-ps-15px">
                     <div class="position-sticky top-70px">
                         <div class="bg-very-light-gray contact-form-style-03 position-relative overflow-hidden p-40px lg-p-30px mb-30px">
-                            <h5 class="alt-font text-dark-gray fw-600 mb-10px text-center">Book this tour</h5>
-                            <form action="email-templates/contact-form.php" method="post">
+                            @if (session()->has('message'))
+                            <div class="alert alert-success small mb-3">{{ session('message') }}</div>
+                            @endif
+                            <form wire:submit.prevent="submit">
                                 <div class="position-relative form-group mb-5px">
                                     <span class="form-icon"><i class="bi bi-emoji-smile icon-small"></i></span>
-                                    <input class="ps-0 border-radius-0px border-color-transparent-dark-very-light bg-transparent form-control required" name="name" type="text" placeholder="Your name*" />
+                                    <input wire:model.defer="name" class="ps-0 border-radius-0px border-color-transparent-dark-very-light bg-transparent form-control required @error('name') is-invalid @enderror" type="text" placeholder="Your name*" />
+                                    @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                </div>
+                                <div class="position-relative form-group mb-5px">
+                                    <span class="form-icon"><i class="bi bi-telephone icon-small"></i></span>
+                                    <input wire:model.defer="phone" class="ps-0 border-radius-0px border-color-transparent-dark-very-light bg-transparent form-control required @error('phone') is-invalid @enderror" type="tel" placeholder="Your phone*" />
+                                    @error('phone') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="position-relative form-group mb-5px">
                                     <span class="form-icon"><i class="bi bi-envelope icon-small"></i></span>
-                                    <input class="ps-0 border-radius-0px border-color-transparent-dark-very-light bg-transparent form-control required" type="email" name="email" placeholder="Your email*" />
+                                    <input wire:model.defer="email" class="ps-0 border-radius-0px border-color-transparent-dark-very-light bg-transparent form-control @error('email') is-invalid @enderror" type="email" placeholder="Your email" />
+                                    @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="position-relative form-group form-textarea mb-0">
-                                    <textarea class="ps-0 border-radius-0px border-bottom border-color-transparent-dark-very-light bg-transparent form-control" name="comment" placeholder="Your message" rows="2"></textarea>
+                                    <textarea wire:model.defer="message" class="ps-0 border-radius-0px border-bottom border-color-transparent-dark-very-light bg-transparent form-control" placeholder="Your message" rows="2"></textarea>
                                     <span class="form-icon"><i class="bi bi-chat-square-dots icon-small"></i></span>
-                                    <input type="hidden" name="redirect" value="">
-                                    <button class="btn btn-medium btn-dark-gray btn-round-edge btn-box-shadow mt-25px w-100 submit" type="submit" aria-label="submit">Send message</button>
-                                    <div class="form-results mt-20px d-none"></div>
+                                    <input type="hidden" name="tour_id" wire:model.defer="tour_id" />
+                                    <button class="btn btn-medium btn-dark-gray btn-round-edge btn-box-shadow mt-25px w-100 submit" type="submit" wire:click="submit" aria-label="submit">Send message</button>
                                 </div>
                             </form>
-                            <img src="https://placehold.co/39x66" class="position-absolute top-0px right-0px" alt="" />
                         </div>
-                        <a href="demo-travel-agency-tours.html"><img class="w-100" src="https://placehold.co/275x363" alt="" /></a>
                     </div>
                 </aside>
                 <!-- end sidebar -->
