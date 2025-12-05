@@ -24,7 +24,7 @@
      
         <div class="row align-items-center">
             <div class="col-xl-3 col-sm-6 text-center text-sm-start last-paragraph-no-margin fs-15 text-dark-gray order-3 order-md-1">
-                <p>&COPY; Copyright 2025 <a href="{{route('home')}}" target="_blank" class="text-dark-gray text-dark-gray-hover text-decoration-line-bottom fw-600">Heliyatra</a></p>
+                <p>&COPY; Copyright 2025 <a href="{{route('home')}}" target="_blank" class="text-dark-gray text-dark-gray-hover text-decoration-line-bottom fw-600">Heliyatra Holidays</a></p>
             </div>
             <div class="col-xl-6 text-center lg-mt-10px sm-mt-0 sm-mb-15px order-1 order-xl-2 order-md-3">
                 <ul class="footer-navbar">
