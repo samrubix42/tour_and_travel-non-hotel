@@ -240,11 +240,11 @@
                             @endphp
                             <div class="swiper-slide">
                                 <div class="overflow-hidden border-radius-6px box-shadow-large">
-                                            <div class="image" style="height:240px; overflow:hidden;">
-                                                <a href="{{ url('/tour/' . ($p->slug ?? $p->id)) }}">
-                                                    <img src="{{ $img }}" alt="{{ $p->title }}" style="width:100%; height:100%; object-fit:cover; display:block;">
-                                                </a>
-                                            </div>
+                                    <div class="image" style="height:240px; overflow:hidden;">
+                                        <a href="{{ url('/tour/' . ($p->slug ?? $p->id)) }}">
+                                            <img src="{{ $img }}" alt="{{ $p->title }}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                                        </a>
+                                    </div>
                                     <div class="bg-white p-35px position-relative">
                                         <div class="bg-base-color ps-15px pe-15px fs-14 text-uppercase fw-500 d-inline-block text-white position-absolute right-0px top-0px">Customizable</div>
                                         <div class="fs-24 fw-700 text-dark-gray"><span class="text-uppercase d-block fs-14 lh-18 fw-500 text-medium-gray">Starting At</span>{{ $p->price ? '₹' . number_format($p->price,2) : '—' }}</div>
@@ -271,174 +271,327 @@
                 </div>
             </section>
             @endforeach
-            <!-- end section -->
-            <!-- start parallax style-1 -->
-            <section class="position-relative overlap-height" data-parallax-background-ratio="0.5" style="background-image: url('{{ asset('asset/image/demo-travel-agency-home-parallax.jpg') }}');">
-                <div class="opacity-extra-medium bg-gradient-gulf-blue-sepia-brown"></div>
-                <div class="container overlap-gap-section">
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-xl-8 col-lg-10 position-relative text-center parallax-scrolling-style-1" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                            <span class="fw-500 text-white text-uppercase mb-5px d-inline-block ls-1px">Finding the perfect trips</span>
-                            <h1 class="text-white mx-auto alt-font fw-500 mb-40px ls-minus-2px">Get ready to explore and discover your world.</h1>
-                            <a href="#explore" class="section-link d-flex justify-content-center align-items-center mx-auto icon-box w-70px h-70px rounded-circle bg-base-color"><i class="bi bi-arrow-down-short text-white icon-medium d-flex"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- end parallax style-1 -->
-            <!-- start section -->
-            <section id="explore" class="cover-background overflow-visible" style="background-image: url('{{ asset('asset/image/demo-travel-agency-home-bg-03.jpg') }}');">
-                <div class="container overlap-section">
-                    <div class="swiper slider-experiences bg-white border-radius-6px mx-0 ps-8 pe-8 lg-ps-3 lg-pe-3 pt-4 pb-4 sm-pt-8 sm-pb-8 xs-pt-15 xs-pb-40px" data-slider-options='{"spaceBetween":20,"loop":true,"autoplay":{"delay":3000,"disableOnInteraction":false},"pagination":{"el":".slider-experiences-pagination","clickable":true},"navigation":{"nextEl":".slider-experiences-next","prevEl":".slider-experiences-prev"},"breakpoints":{"1400":{"slidesPerView":5},"992":{"slidesPerView":4},"768":{"slidesPerView":3},"576":{"slidesPerView":2},"0":{"slidesPerView":1}}}'>
-                        <div class="swiper-wrapper align-items-center justify-content-center">
-                            @forelse($experiences ?? [] as $experience)
-                            <div class="swiper-slide text-center">
-                                <a href="{{ route('tour') }}?experience={{ $experience->slug ?? $experience->id }}" class="d-block text-decoration-none">
-                                    <div class="mb-10px d-block mx-auto" style="width:70px;height:70px;overflow:hidden;border-radius:8px;">
-                                        <img src="{{ $experience->image ?? 'https://placehold.co/140x125' }}" alt="{{ $experience->name ?? 'Experience' }}" style="width:100%;height:100%;object-fit:cover;" />
-                                    </div>
-                                    <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px d-block mt-2">{{ $experience->name }}</span>
-                                </a>
-                            </div>
-                            @empty
-                            <div class="swiper-slide text-center">
-                                <div class="mb-10px d-block mx-auto" style="width:70px;height:70px;overflow:hidden;border-radius:8px;">
-                                    <img src="https://placehold.co/140x125" alt="No experiences" style="width:100%;height:100%;object-fit:cover;" />
+            <div
+                x-data="{
+        viewerOpen: false,
+        viewerImage: ''
+    }">
+
+                <!-- SLIDER -->
+                <div
+                    wire:ignore
+                    x-data
+                    x-init="
+            setTimeout(() => {
+                new Swiper($refs.imageSlider, {
+                    loop: true,
+                    loopAdditionalSlides: 6,
+                    speed: 1200,
+                    spaceBetween: 24,
+
+                    autoplay: {
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    },
+
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+
+                    breakpoints: {
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                        }
+                    }
+                });
+            }, 100);
+        "
+                    style="max-width:1200px;margin:60px auto;padding:0 16px;">
+
+                    <div class="swiper" x-ref="imageSlider">
+                        <div class="swiper-wrapper">
+
+                            <!-- CARD 1 -->
+                            <div class="swiper-slide">
+                                <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
+                                    <img
+                                        src="{{asset('asset/slider/111.jpg')}}"
+                                        @click="viewerImage=$event.target.src;viewerOpen=true"
+                                        style="width:100%;height:240px;object-fit:cover;cursor:pointer;">
                                 </div>
-                                <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px d-block mt-2">No experiences</span>
                             </div>
-                            @endforelse
-                        </div>
-                        <div class="mt-2">
-                            <div class="swiper-pagination slider-experiences-pagination"></div>
+
+                            <!-- CARD 2 -->
+                            <div class="swiper-slide">
+                                <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
+                                    <img
+                                        src="{{asset('asset/slider/112.jpg')}}"
+                                        @click="viewerImage=$event.target.src;viewerOpen=true"
+                                        style="width:100%;height:240px;object-fit:cover;cursor:pointer;">
+                                </div>
+                            </div>
+
+                            <!-- CARD 3 -->
+                            <div class="swiper-slide">
+                                <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
+                                    <img
+                                        src="{{asset('asset/slider/113.jpg')}}"
+                                        @click="viewerImage=$event.target.src;viewerOpen=true"
+                                        style="width:100%;height:240px;object-fit:cover;cursor:pointer;">
+                                </div>
+                            </div>
+
+                            <!-- CARD 4 -->
+                            <div class="swiper-slide">
+                                <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
+                                    <img
+                                        src="{{asset('asset/slider/114.jpg')}}"
+                                        @click="viewerImage=$event.target.src;viewerOpen=true"
+                                        style="width:100%;height:240px;object-fit:cover;cursor:pointer;">
+                                </div>
+                            </div>
+
+                            <!-- CARD 5 -->
+                            <div class="swiper-slide">
+                                <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
+                                    <img
+                                        src="{{asset('asset/slider/115.jpg')}}"
+                                        @click="viewerImage=$event.target.src;viewerOpen=true"
+                                        style="width:100%;height:240px;object-fit:cover;cursor:pointer;">
+                                </div>
+                            </div>
 
                         </div>
-                        <div class="swiper-button-prev slider-experiences-prev"><i class="bi bi-arrow-left-short icon-very-medium"></i></div>
-                        <div class="swiper-button-next slider-experiences-next"><i class="bi bi-arrow-right-short icon-very-medium"></i></div>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="row align-items-center justify-content-center" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <div class="col-lg-3 md-mb-20px text-center text-lg-start">
-                            <span class="fw-500 text-base-color text-uppercase">Testimonials</span>
-                            <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px">Our happy traveller.</h2>
-                            <div class="d-flex justify-content-center justify-content-lg-start">
-                                <!-- start slider navigation -->
-                                <div class="slider-one-slide-prev-1 bg-white box-shadow-double-large swiper-button-prev slider-navigation-style-04"><i class="bi bi-arrow-left-short icon-very-medium"></i></div>
-                                <div class="slider-one-slide-next-1 bg-white box-shadow-double-large swiper-button-next slider-navigation-style-04"><i class="bi bi-arrow-right-short icon-very-medium"></i></div>
-                                <!-- end slider navigation -->
+
+                <!-- IMAGE VIEWER / LIGHTBOX -->
+                <div
+                    x-show="viewerOpen"
+                    x-transition.opacity
+                    @click.self="viewerOpen = false"
+                    @keydown.escape.window="viewerOpen = false"
+                    style="
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.9);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        z-index:9999;
+    ">
+                    <!-- CENTER WRAPPER -->
+                    <div
+                        style="
+            position:relative;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            width:100%;
+            height:100%;
+        ">
+                        <!-- CLOSE BUTTON -->
+                        <button
+                            @click="viewerOpen = false"
+                            style="
+                position:absolute;
+                top:24px;
+                right:24px;
+                background:#fff;
+                border:none;
+                font-size:26px;
+                width:44px;
+                height:44px;
+                border-radius:50%;
+                cursor:pointer;
+                z-index:10;
+            ">×</button>
+
+                        <!-- IMAGE -->
+                        <img
+                            :src="viewerImage"
+                            style="
+                max-width:90vw;
+                max-height:90vh;
+                object-fit:contain;
+                border-radius:4px;
+                box-shadow:0 25px 70px rgba(0,0,0,.7);
+                transform:scale(1);
+            ">
+                    </div>
+                </div>
+
+
+                <!-- end section -->
+                <!-- start parallax style-1 -->
+                <section class="position-relative overlap-height" data-parallax-background-ratio="0.5" style="background-image: url('{{ asset('asset/image/demo-travel-agency-home-parallax.jpg') }}');">
+                    <div class="opacity-extra-medium bg-gradient-gulf-blue-sepia-brown"></div>
+                    <div class="container overlap-gap-section">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-xl-8 col-lg-10 position-relative text-center parallax-scrolling-style-1" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                <span class="fw-500 text-white text-uppercase mb-5px d-inline-block ls-1px">Finding the perfect trips</span>
+                                <h1 class="text-white mx-auto alt-font fw-500 mb-40px ls-minus-2px">Get ready to explore and discover your world.</h1>
+                                <a href="#explore" class="section-link d-flex justify-content-center align-items-center mx-auto icon-box w-70px h-70px rounded-circle bg-base-color"><i class="bi bi-arrow-down-short text-white icon-medium d-flex"></i></a>
                             </div>
                         </div>
-                        <div class="col-xl-8 col-lg-9">
-                            <div class="swiper position-relative magic-cursor" data-slider-options='{ "autoHeight": true, "loop": true, "allowTouchMove": true, "autoplay": { "delay": 3000, "disableOnInteraction": false }, "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "effect": "slide" }'>
-                                <div class="swiper-wrapper">
-                                    @forelse($testimonials ?? [] as $t)
-                                    <div class="swiper-slide review-style-11">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-5 text-center text-md-start sm-mb-15px">
+                    </div>
+                </section>
+                <!-- end parallax style-1 -->
+                <!-- start section -->
+                <section id="explore" class="cover-background overflow-visible" style="background-image: url('{{ asset('asset/image/demo-travel-agency-home-bg-03.jpg') }}');">
+                    <div class="container overlap-section">
+                        <div class="swiper slider-experiences bg-white border-radius-6px mx-0 ps-8 pe-8 lg-ps-3 lg-pe-3 pt-4 pb-4 sm-pt-8 sm-pb-8 xs-pt-15 xs-pb-40px" data-slider-options='{"spaceBetween":20,"loop":true,"autoplay":{"delay":3000,"disableOnInteraction":false},"pagination":{"el":".slider-experiences-pagination","clickable":true},"navigation":{"nextEl":".slider-experiences-next","prevEl":".slider-experiences-prev"},"breakpoints":{"1400":{"slidesPerView":5},"992":{"slidesPerView":4},"768":{"slidesPerView":3},"576":{"slidesPerView":2},"0":{"slidesPerView":1}}}'>
+                            <div class="swiper-wrapper align-items-center justify-content-center">
+                                @forelse($experiences ?? [] as $experience)
+                                <div class="swiper-slide text-center">
+                                    <a href="{{ route('tour') }}?experience={{ $experience->slug ?? $experience->id }}" class="d-block text-decoration-none">
+                                        <div class="mb-10px d-block mx-auto" style="width:70px;height:70px;overflow:hidden;border-radius:8px;">
+                                            <img src="{{ $experience->image ?? 'https://placehold.co/140x125' }}" alt="{{ $experience->name ?? 'Experience' }}" style="width:100%;height:100%;object-fit:cover;" />
+                                        </div>
+                                        <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px d-block mt-2">{{ $experience->name }}</span>
+                                    </a>
+                                </div>
+                                @empty
+                                <div class="swiper-slide text-center">
+                                    <div class="mb-10px d-block mx-auto" style="width:70px;height:70px;overflow:hidden;border-radius:8px;">
+                                        <img src="https://placehold.co/140x125" alt="No experiences" style="width:100%;height:100%;object-fit:cover;" />
+                                    </div>
+                                    <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px d-block mt-2">No experiences</span>
+                                </div>
+                                @endforelse
+                            </div>
+                            <div class="mt-2">
+                                <div class="swiper-pagination slider-experiences-pagination"></div>
+
+                            </div>
+                            <div class="swiper-button-prev slider-experiences-prev"><i class="bi bi-arrow-left-short icon-very-medium"></i></div>
+                            <div class="swiper-button-next slider-experiences-next"><i class="bi bi-arrow-right-short icon-very-medium"></i></div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row align-items-center justify-content-center" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                            <div class="col-lg-3 md-mb-20px text-center text-lg-start">
+                                <span class="fw-500 text-base-color text-uppercase">Testimonials</span>
+                                <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px">Our happy traveller.</h2>
+                                <div class="d-flex justify-content-center justify-content-lg-start">
+                                    <!-- start slider navigation -->
+                                    <div class="slider-one-slide-prev-1 bg-white box-shadow-double-large swiper-button-prev slider-navigation-style-04"><i class="bi bi-arrow-left-short icon-very-medium"></i></div>
+                                    <div class="slider-one-slide-next-1 bg-white box-shadow-double-large swiper-button-next slider-navigation-style-04"><i class="bi bi-arrow-right-short icon-very-medium"></i></div>
+                                    <!-- end slider navigation -->
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-9">
+                                <div class="swiper position-relative magic-cursor" data-slider-options='{ "autoHeight": true, "loop": true, "allowTouchMove": true, "autoplay": { "delay": 3000, "disableOnInteraction": false }, "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "effect": "slide" }'>
+                                    <div class="swiper-wrapper">
+                                        @forelse($testimonials ?? [] as $t)
+                                        <div class="swiper-slide review-style-11">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-5 text-center text-md-start sm-mb-15px">
+                                                </div>
+                                                <div class="col-md-7 position-relative ps-16 sm-ps-15px text-center text-md-start">
+                                                    <p class="fs-20 lh-28 text-dark-gray mb-20px">{{ $t->feedback }}</p>
+                                                    <div class="text-center bg-base-color text-white fs-15 border-radius-22px d-inline-block ps-20px pe-20px lh-36 ls-minus-1px">
+                                                        @for($i = 0; $i < ($t->rating ?? 0); $i++)
+                                                            <i class="bi bi-star-fill"></i>
+                                                            @endfor
+                                                    </div>
+                                                    <div class="position-absolute left-0px top-0px h-100 w-90px sm-w-100 border-end border-color-transparent-dark-very-light sm-position-relative sm-mt-10px sm-border-end-0">
+                                                        <div class="vertical-title-center align-items-center justify-content-center sm-vertical-title-inherit">
+                                                            <div class="title fs-20 alt-font text-base-color fw-600 text-uppercase">{{ $t->name }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-7 position-relative ps-16 sm-ps-15px text-center text-md-start">
-                                                <p class="fs-20 lh-28 text-dark-gray mb-20px">{{ $t->feedback }}</p>
-                                                <div class="text-center bg-base-color text-white fs-15 border-radius-22px d-inline-block ps-20px pe-20px lh-36 ls-minus-1px">
-                                                    @for($i = 0; $i < ($t->rating ?? 0); $i++)
+                                        </div>
+                                        @empty
+                                        <div class="swiper-slide review-style-11">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-5 text-center text-md-start sm-mb-15px">
+                                                </div>
+                                                <div class="col-md-7 position-relative ps-16 sm-ps-15px text-center text-md-start">
+                                                    <p class="fs-20 lh-28 text-dark-gray mb-20px">No testimonials yet, check back soon.</p>
+                                                    <div class="text-center bg-base-color text-white fs-15 border-radius-22px d-inline-block ps-20px pe-20px lh-36 ls-minus-1px">
                                                         <i class="bi bi-star-fill"></i>
-                                                    @endfor
-                                                </div>
-                                                <div class="position-absolute left-0px top-0px h-100 w-90px sm-w-100 border-end border-color-transparent-dark-very-light sm-position-relative sm-mt-10px sm-border-end-0">
-                                                    <div class="vertical-title-center align-items-center justify-content-center sm-vertical-title-inherit">
-                                                        <div class="title fs-20 alt-font text-base-color fw-600 text-uppercase">{{ $t->name }}</div>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    </div>
+                                                    <div class="position-absolute left-0px top-0px h-100 w-90px sm-w-100 border-end border-color-transparent-dark-very-light sm-position-relative sm-mt-10px sm-border-end-0">
+                                                        <div class="vertical-title-center align-items-center justify-content-center sm-vertical-title-inherit">
+                                                            <div class="title fs-20 alt-font text-base-color fw-600 text-uppercase">Admin</div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforelse
                                     </div>
-                                    @empty
-                                    <div class="swiper-slide review-style-11">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-5 text-center text-md-start sm-mb-15px">
-                                            </div>
-                                            <div class="col-md-7 position-relative ps-16 sm-ps-15px text-center text-md-start">
-                                                <p class="fs-20 lh-28 text-dark-gray mb-20px">No testimonials yet, check back soon.</p>
-                                                <div class="text-center bg-base-color text-white fs-15 border-radius-22px d-inline-block ps-20px pe-20px lh-36 ls-minus-1px">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <div class="position-absolute left-0px top-0px h-100 w-90px sm-w-100 border-end border-color-transparent-dark-very-light sm-position-relative sm-mt-10px sm-border-end-0">
-                                                    <div class="vertical-title-center align-items-center justify-content-center sm-vertical-title-inherit">
-                                                        <div class="title fs-20 alt-font text-base-color fw-600 text-uppercase">Admin</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforelse
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            <!-- end section -->
-            <!-- end section -->
-            <section class="bg-very-light-gray background-position-center-top background-no-repeat overlap-height" style="background-image:url('{{ asset('asset/images/demo-travel-agency-home-bg-04.png') }}');">
-                <div class="container overlap-gap-section">
-                    <div class="row justify-content-center mb-2">
-                        <div class="col-lg-7 text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                            <span class="fw-500 text-base-color text-uppercase d-inline-block">Inspiring story</span>
-                            <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px">Travel blogs</h2>
+                </section>
+                <!-- end section -->
+                <!-- end section -->
+                <section class="bg-very-light-gray background-position-center-top background-no-repeat overlap-height" style="background-image:url('{{ asset('asset/images/demo-travel-agency-home-bg-04.png') }}');">
+                    <div class="container overlap-gap-section">
+                        <div class="row justify-content-center mb-2">
+                            <div class="col-lg-7 text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                <span class="fw-500 text-base-color text-uppercase d-inline-block">Inspiring story</span>
+                                <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px">Travel blogs</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <ul class="blog-modern blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                    <li class="grid-sizer"></li>
+                                    @forelse($latestPosts ?? [] as $post)
+                                    <li class="grid-item md-mb-20px">
+                                        <div class="box-hover text-center">
+                                            <figure class="mb-0 position-relative">
+                                                <div class="blog-image position-relative overflow-hidden border-radius-6px">
+                                                    @php
+                                                    $img = $post->featured_image ?? 'https://placehold.co/800x1015';
+                                                    @endphp
+                                                    <a href="{{ url('/blog/' . ($post->slug ?? $post->id)) }}"><img src="{{ $img }}" alt="{{ $post->title }}" /></a>
+                                                </div>
+                                                <figcaption class="post-content-wrapper overflow-hidden border-radius-6px">
+                                                    <div class="position-relative bg-dark-gray post-content p-30px z-index-2 lh-initial">
+                                                        <a href="{{ url('/blog/' . ($post->slug ?? $post->id)) }}" class="card-title mb-0 fs-20 lh-28 text-white d-inline-block">{{ $post->title }}</a>
+                                                        <div class="box-overlay bg-dark-gray z-index-minus-1"></div>
+                                                    </div>
+                                                    <div class="fs-15 bg-white p-15px lg-ps-10px lg-pe-10px lh-initial"><span class="d-inline-block">By <a href="#">{{ $post->author ?? 'Admin' }}</a></span><span class="separator d-inline-block">|</span><a href="#">{{ $post->created_at ? $post->created_at->format('d M Y') : '' }}</a></div>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                    </li>
+                                    @empty
+                                    <li class="grid-item md-mb-20px">
+                                        <div class="box-hover text-center">
+                                            <figure class="mb-0 position-relative">
+                                                <div class="blog-image position-relative overflow-hidden border-radius-6px">
+                                                    <a href="#"><img src="https://placehold.co/800x1015" alt="" /></a>
+                                                </div>
+                                                <figcaption class="post-content-wrapper overflow-hidden border-radius-6px">
+                                                    <div class="position-relative bg-dark-gray post-content p-30px z-index-2 lh-initial">
+                                                        <a href="#" class="card-title mb-0 fs-20 lh-28 text-white d-inline-block">No blog posts yet</a>
+                                                        <div class="box-overlay bg-dark-gray z-index-minus-1"></div>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                    </li>
+                                    @endforelse
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <ul class="blog-modern blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                                <li class="grid-sizer"></li>
-                                @forelse($latestPosts ?? [] as $post)
-                                <li class="grid-item md-mb-20px">
-                                    <div class="box-hover text-center">
-                                        <figure class="mb-0 position-relative">
-                                            <div class="blog-image position-relative overflow-hidden border-radius-6px">
-                                                @php
-                                                $img = $post->featured_image ?? 'https://placehold.co/800x1015';
-                                                @endphp
-                                                <a href="{{ url('/blog/' . ($post->slug ?? $post->id)) }}"><img src="{{ $img }}" alt="{{ $post->title }}" /></a>
-                                            </div>
-                                            <figcaption class="post-content-wrapper overflow-hidden border-radius-6px">
-                                                <div class="position-relative bg-dark-gray post-content p-30px z-index-2 lh-initial">
-                                                    <a href="{{ url('/blog/' . ($post->slug ?? $post->id)) }}" class="card-title mb-0 fs-20 lh-28 text-white d-inline-block">{{ $post->title }}</a>
-                                                    <div class="box-overlay bg-dark-gray z-index-minus-1"></div>
-                                                </div>
-                                                <div class="fs-15 bg-white p-15px lg-ps-10px lg-pe-10px lh-initial"><span class="d-inline-block">By <a href="#">{{ $post->author ?? 'Admin' }}</a></span><span class="separator d-inline-block">|</span><a href="#">{{ $post->created_at ? $post->created_at->format('d M Y') : '' }}</a></div>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                </li>
-                                @empty
-                                <li class="grid-item md-mb-20px">
-                                    <div class="box-hover text-center">
-                                        <figure class="mb-0 position-relative">
-                                            <div class="blog-image position-relative overflow-hidden border-radius-6px">
-                                                <a href="#"><img src="https://placehold.co/800x1015" alt="" /></a>
-                                            </div>
-                                            <figcaption class="post-content-wrapper overflow-hidden border-radius-6px">
-                                                <div class="position-relative bg-dark-gray post-content p-30px z-index-2 lh-initial">
-                                                    <a href="#" class="card-title mb-0 fs-20 lh-28 text-white d-inline-block">No blog posts yet</a>
-                                                    <div class="box-overlay bg-dark-gray z-index-minus-1"></div>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                </li>
-                                @endforelse
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- start section -->
-            <!-- start footer -->
+                </section>
+                <!-- start section -->
+                <!-- start footer -->
 
 
 
