@@ -368,7 +368,9 @@
                 </div>
 
                 <!-- IMAGE VIEWER / LIGHTBOX -->
+                <!-- IMAGE VIEWER / LIGHTBOX -->
                 <div
+                    x-cloak
                     x-show="viewerOpen"
                     x-transition.opacity
                     @click.self="viewerOpen = false"
@@ -382,6 +384,7 @@
         justify-content:center;
         z-index:9999;
     ">
+
                     <!-- CENTER WRAPPER -->
                     <div
                         style="
