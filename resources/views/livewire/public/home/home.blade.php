@@ -282,32 +282,32 @@
                     wire:ignore
                     x-data
                     x-init="
-            setTimeout(() => {
-                new Swiper($refs.imageSlider, {
-                    loop: true,
-                    loopAdditionalSlides: 6,
-                    speed: 1200,
-                    spaceBetween: 24,
+                            new Swiper($refs.imageSlider, {
+                        loop: false,                
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                        spaceBetween: 24,
 
-                    autoplay: {
-                        delay: 2500,
-                        disableOnInteraction: false,
-                    },
-
-                    slidesPerView: 1,
-                    slidesPerGroup: 1,
-
-                    breakpoints: {
-                        768: {
-                            slidesPerView: 2,
+                        speed: 800,
+                        autoplay: {
+                            delay: 2500,
+                            disableOnInteraction: false,
                         },
-                        1024: {
-                            slidesPerView: 3,
+
+                        breakpoints: {
+                            768:  { slidesPerView: 2 },
+                            1024: { slidesPerView: 3 },
+                        },
+
+                        on: {
+                            reachEnd(swiper) {
+                                setTimeout(() => {
+                                    swiper.slideTo(0, 0);   
+                                    swiper.autoplay.start();
+                                }, 300);
+                            }
                         }
-                    }
-                });
-            }, 100);
-        "
+                    });"
                     style="max-width:1200px;margin:60px auto;padding:0 16px;">
 
                     <div class="swiper" x-ref="imageSlider">
