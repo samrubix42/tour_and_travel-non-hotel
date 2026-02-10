@@ -8,6 +8,7 @@ use App\Models\TourPackage;
 use App\Models\Category;
 use App\Models\Destination;
 use App\Models\TourPackageGallery;
+use App\Models\PackageSliderImage;
 use App\Models\Experience;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -37,6 +38,8 @@ class AddTourPackage extends Component
 
     /** @var \Livewire\TemporaryUploadedFile[] */
     public $images = [];
+    /** @var \Livewire\TemporaryUploadedFile[] */
+    public $sliderImages = [];
 
     public $itineraryDays = [];
     public $includes = [];
@@ -59,6 +62,8 @@ class AddTourPackage extends Component
         'experience_ids.*' => 'exists:experiences,id',
         'images' => 'nullable|array',
         'images.*' => 'image|max:5120', // 5MB each
+        'sliderImages' => 'nullable|array',
+        'sliderImages.*' => 'image|max:5120', // 5MB each
         'featuredImage' => 'nullable|image|max:5120',
         'bannerImage' => 'nullable|image|max:5120',
         'includes' => 'nullable|array',
@@ -145,6 +150,15 @@ class AddTourPackage extends Component
     {
         if (!isset($this->images[$index])) return;
         array_splice($this->images, $index, 1);
+    }
+
+    /**
+     * Remove selected slider image before submission
+     */
+    public function removeSliderImage($index)
+    {
+        if (!isset($this->sliderImages[$index])) return;
+        array_splice($this->sliderImages, $index, 1);
     }
 
     public function store()
@@ -294,6 +308,44 @@ class AddTourPackage extends Component
                         $hasFeatured = true;
                     }
                 }
+            }
+        }
+
+        // Handle slider images
+        if ($package && !empty($this->sliderImages) && is_array($this->sliderImages)) {
+            $useImageKit = env('IMAGEKIT_PRIVATE_KEY') && env('IMAGEKIT_URL_ENDPOINT');
+            foreach ($this->sliderImages as $index => $img) {
+                try {
+                    if ($useImageKit) {
+                        $ik = new ImageKitService();
+                        $upload = $ik->uploadToFolder($img->getRealPath(), $img->getClientOriginalName(), '/tour_packages/sliders');
+                        $data = is_array($upload) ? $upload : json_decode(json_encode($upload), true);
+                        $url = $data['result']['url'] ?? $data['result']['filePath'] ?? null;
+                        $fileId = $data['result']['fileId'] ?? null;
+
+                        PackageSliderImage::create([
+                            'tour_package_id' => $package->id,
+                            'image_url' => $url,
+                            'storage_path' => null,
+                            'imagekit_file_id' => $fileId,
+                            'sort_order' => $index,
+                        ]);
+
+                        continue;
+                    }
+                } catch (\Exception $e) {
+                    // fall back to local storage
+                }
+
+                $path = $img->store('tour_packages/sliders', 'public');
+                $url = Storage::url($path);
+
+                PackageSliderImage::create([
+                    'tour_package_id' => $package->id,
+                    'image_url' => $url,
+                    'storage_path' => $path,
+                    'sort_order' => $index,
+                ]);
             }
         }
 

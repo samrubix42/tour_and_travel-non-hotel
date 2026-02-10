@@ -321,6 +321,74 @@
 
                 <hr>
 
+                <!-- SLIDER IMAGES -->
+                <h3 class="card-title mt-4">Slider Images</h3>
+
+                <h4 class="card-title mt-3">Existing Slider Images</h4>
+                <div class="row">
+                    @forelse($sliderGalleries as $s)
+                        <div class="col-md-3 mb-3">
+                            <div class="card">
+                                <div class="ratio ratio-4x3">
+                                    <img src="{{ $s->image_url }}" class="card-img-top" style="object-fit:cover;">
+                                </div>
+                                <div class="card-footer p-2 d-flex gap-2">
+                                    <button
+                                        wire:click.prevent="deleteSliderImage({{ $s->id }})"
+                                        class="btn btn-danger btn-sm w-100"
+                                        wire:loading.attr="disabled"
+                                        wire:target="deleteSliderImage({{ $s->id }})">
+                                        <span wire:loading wire:target="deleteSliderImage({{ $s->id }})" class="spinner-border spinner-border-sm me-2"></span>
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12">
+                            <div class="text-muted">No slider images yet.</div>
+                        </div>
+                    @endforelse
+                </div>
+
+                <h4 class="card-title mt-4">Upload New Slider Images</h4>
+                <div class="mb-3">
+                    <div class="border-dashed border p-4 rounded text-center cursor-pointer bg-light" style="min-height:120px;">
+                        <div class="text-muted mb-2">Drag & drop images here or click to browse</div>
+
+                        <input id="newSliderImagesInput" type="file" wire:model="sliderImages" multiple accept="image/*" hidden>
+                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('newSliderImagesInput').click()">Choose Files</button>
+
+                        <div class="text-center mt-2" wire:loading wire:target="sliderImages">
+                            <span class="spinner-border spinner-border-sm"></span> Uploading...
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        @if(!empty($sliderImages))
+                            @foreach($sliderImages as $i => $img)
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <div class="ratio ratio-4x3">
+                                            @if(method_exists($img,'temporaryUrl'))
+                                                <img src="{{ $img->temporaryUrl() }}" class="card-img-top" style="object-fit:cover;">
+                                            @endif
+                                        </div>
+                                        <div class="card-footer p-2">
+                                            <button class="btn btn-danger w-100 btn-sm" wire:click.prevent="removeNewSliderImage({{ $i }})">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+
+                    @error('sliderImages') <small class="text-danger">{{ $message }}</small> @enderror
+                    @error('sliderImages.*') <small class="text-danger">{{ $message }}</small> @enderror
+                </div>
+
+                <hr>
+
                 <!-- SUBMIT -->
                 <div class="text-end mt-4">
                     <button type="submit" class="btn btn-primary" wire:loading.attr="disabled" wire:target="update">

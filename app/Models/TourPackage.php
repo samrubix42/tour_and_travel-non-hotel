@@ -46,6 +46,11 @@ class TourPackage extends Model
         return $this->hasMany(TourPackageGallery::class);
     }
 
+    public function sliderImages()
+    {
+        return $this->hasMany(PackageSliderImage::class);
+    }
+
     public function experiences()
     {
         return $this->belongsToMany(Experience::class, 'tour_package_experiences');

@@ -266,6 +266,52 @@
 
 
                 <!-- =======================
+                        SLIDER IMAGES
+                ========================-->
+                <h3 class="card-title mt-4">Slider Images</h3>
+                <div class="mb-3">
+                    <div class="border-dashed border p-4 rounded bg-light text-center" style="min-height:120px;">
+                        <div class="text-muted mb-2">Select multiple images for the tour slider</div>
+
+                        <input id="sliderImagesInput" type="file" wire:model="sliderImages" multiple accept="image/*" hidden>
+                        <button type="button" class="btn btn-secondary"
+                                onclick="document.getElementById('sliderImagesInput').click()">
+                            Choose Slider Images
+                        </button>
+
+                        <div class="text-center mt-2" wire:loading wire:target="sliderImages">
+                            <span class="spinner-border spinner-border-sm"></span> Uploading...
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        @if(!empty($sliderImages))
+                            @foreach($sliderImages as $i => $img)
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <div class="ratio ratio-4x3">
+                                            @if(method_exists($img,'temporaryUrl'))
+                                                <img src="{{ $img->temporaryUrl() }}" class="card-img-top" style="object-fit:cover;">
+                                            @endif
+                                        </div>
+                                        <div class="card-footer p-2">
+                                            <button class="btn btn-danger w-100 btn-sm"
+                                                    wire:click.prevent="removeSliderImage({{ $i }})">
+                                                Remove
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+
+                    @error('sliderImages') <small class="text-danger">{{ $message }}</small> @enderror
+                    @error('sliderImages.*') <small class="text-danger">{{ $message }}</small> @enderror
+                </div>
+
+
+                <!-- =======================
                      MULTIPLE IMAGES (TABLER)
                 ========================-->
                 <h3 class="card-title mt-4">Gallery Images</h3>
