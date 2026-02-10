@@ -210,6 +210,7 @@ class AddTourPackage extends Component
             // Handle images
             if (!empty($this->images) && is_array($this->images)) {
                 $useImageKit = env('IMAGEKIT_PRIVATE_KEY') && env('IMAGEKIT_URL_ENDPOINT');
+                $hasFeatured = !empty($package->featured_image);
                 foreach ($this->images as $i => $img) {
                     try {
                         if ($useImageKit) {
@@ -228,13 +229,14 @@ class AddTourPackage extends Component
                                 'imagekit_file_id' => $fileId,
                             ]);
 
-                            // set featured_image from first uploaded image (if not set)
-                            if ($i === 0) {
+                            // set featured_image from first uploaded image only if none is set yet
+                            if ($i === 0 && !$hasFeatured) {
                                 $package->update([
                                     'featured_image' => $url,
                                     'imagekit_file_id' => $fileId,
                                     'storage_path' => null,
                                 ]);
+                                $hasFeatured = true;
                             }
 
                             continue; // next image
@@ -252,11 +254,12 @@ class AddTourPackage extends Component
                         'storage_path' => $path,
                     ]);
 
-                    if ($i === 0) {
+                    if ($i === 0 && !$hasFeatured) {
                         $package->update([
                             'featured_image' => $url,
                             'storage_path' => $path,
                         ]);
+                        $hasFeatured = true;
                     }
                 }
             }
