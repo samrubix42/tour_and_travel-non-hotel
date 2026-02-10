@@ -14,6 +14,7 @@ class Header extends Component
     public $experiences;
     public $religPackages;
     public $internationalPackages;
+    public $yatraDestinations;
 
     #[Computed]
     public function mount()
@@ -29,6 +30,14 @@ class Header extends Component
             $q->where('slug', 'international')
                 ->orWhereRaw('LOWER(name) LIKE ?', ['%international%']);
         })->where('status', true)->take(8)->get();
+
+        $this->yatraDestinations = Destination::where('status', 1)
+            ->whereHas('categories', function ($q) {
+                $q->where('slug', 'yatra')
+                    ->orWhereRaw('LOWER(name) LIKE ?', ['%yatra%']);
+            })
+            ->orderBy('name')
+            ->get();
     }
     public function render()
     {
