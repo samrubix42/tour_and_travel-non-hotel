@@ -15,7 +15,7 @@
             }
 
             .swiper-pagination-bullet-active {
-                background: #d2a057 !important;
+                background: #e45b15 !important;
             }
         </style>
         <section class="p-0 full-screen md-h-600px sm-h-650px">
@@ -56,7 +56,7 @@
         <!-- start section -->
         <section class="extra-big-section background-position-center-bottom background-size-contain background-no-repeat position-relative pt-0" style="background-image:url('{{ asset('asset/images/demo-travel-agency-home-bg-02.png') }}');">
             <div class="position-absolute left-0px bottom-minus-50px d-none d-lg-inline-block" data-bottom-top="transform: translateY(-50px)" data-top-bottom="transform: translateY(50px)">
-                <img src="{{ asset('asset/image/demo-travel-agency-home-bg-01.png') }}" alt="" />
+                <img src="{{ asset('asset/image/antique-brass-bell.png') }}" alt="Decorative brass bell" style="width:100px;max-width:100%;height:auto;" />
             </div>
 
             <div class="container background-position-right background-no-repeat sm-mb-10 xs-mb-15" style="background-image:url('{{ asset('asset/image/demo-travel-agency-home-bg.png') }}');">
@@ -94,7 +94,7 @@
 
                     <!-- RIGHT IMAGE -->
                     <div class="col-lg-4 col-md-8 position-relative offset-lg-1 offset-md-4 ps-0 sm-ps-15px md-mt-50px">
-                        <img src="{{ asset('asset/image/demo-travel-agency-home-01.jpg') }}" class="border-radius-6px md-w-100" alt="">
+                        <img src="{{ asset('asset/image/Kedarnath.webp') }}" class="border-radius-6px md-w-100" alt="">
                         <img class="position-absolute left-minus-120px top-80px sm-top-0px sm-w-160px sm-left-0px" src="{{ asset('asset/images/demo-travel-agency-home-02.png') }}" alt="">
                     </div>
                 </div>
@@ -319,7 +319,7 @@
                                     <img
                                         src="{{asset('asset/slider/111.jpg')}}"
                                         @click="viewerImage=$event.target.src;viewerOpen=true"
-                                        style="width:100%;height:240px;object-fit:cover;cursor:pointer;">
+                                        style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
                                 </div>
                             </div>
 
@@ -329,7 +329,7 @@
                                     <img
                                         src="{{asset('asset/slider/112.jpg')}}"
                                         @click="viewerImage=$event.target.src;viewerOpen=true"
-                                        style="width:100%;height:240px;object-fit:cover;cursor:pointer;">
+                                        style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
                                 </div>
                             </div>
 
@@ -339,7 +339,7 @@
                                     <img
                                         src="{{asset('asset/slider/113.jpg')}}"
                                         @click="viewerImage=$event.target.src;viewerOpen=true"
-                                        style="width:100%;height:240px;object-fit:cover;cursor:pointer;">
+                                        style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
                                 </div>
                             </div>
 
@@ -349,7 +349,7 @@
                                     <img
                                         src="{{asset('asset/slider/114.jpg')}}"
                                         @click="viewerImage=$event.target.src;viewerOpen=true"
-                                        style="width:100%;height:240px;object-fit:cover;cursor:pointer;">
+                                        style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
                                 </div>
                             </div>
 
@@ -359,7 +359,7 @@
                                     <img
                                         src="{{asset('asset/slider/115.jpg')}}"
                                         @click="viewerImage=$event.target.src;viewerOpen=true"
-                                        style="width:100%;height:240px;object-fit:cover;cursor:pointer;">
+                                        style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
                                 </div>
                             </div>
 

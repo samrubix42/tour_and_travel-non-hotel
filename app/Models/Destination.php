@@ -15,9 +15,12 @@ class Destination extends Model
         'slug',
         'description',
         'image',
+        'banner_image',
         'status',
         'storage_path',
+        'banner_storage_path',
         'imagekit_file_id',
+        'banner_imagekit_file_id',
         'is_featured',
         'status',
     ];

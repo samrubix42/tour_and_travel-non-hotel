@@ -183,6 +183,35 @@
                                     @endif
                                 </div>
 
+                                {{-- Banner Image Upload --}}
+                                <div class="mb-3">
+                                    <label class="form-label">Banner Image (optional)</label>
+                                    <input wire:model="bannerFile" type="file"
+                                        class="form-control @error('bannerFile') is-invalid @enderror">
+                                    @error('bannerFile') <div class="invalid-feedback">{{ $message }}</div> @enderror
+
+                                    {{-- Upload Loader --}}
+                                    <div wire:loading wire:target="bannerFile" class="mt-2">
+                                        <span class="spinner-border spinner-border-sm me-1"></span>
+                                        Uploading banner image...
+                                    </div>
+
+                                    {{-- Preview --}}
+                                    @if ($bannerFile)
+                                    <div class="mt-2">
+                                        <img src="{{ $bannerFile->temporaryUrl() }}" style="max-height:150px;" class="rounded">
+                                    </div>
+                                    @elseif ($banner_storage_path)
+                                    <div class="mt-2">
+                                        <img src="{{ asset('storage/' . $banner_storage_path) }}" style="max-height:150px;" class="rounded">
+                                    </div>
+                                    @elseif ($banner_image)
+                                    <div class="mt-2">
+                                        <img src="{{ $banner_image }}" style="max-height:150px;" class="rounded">
+                                    </div>
+                                    @endif
+                                </div>
+
                                 {{-- Status --}}
                                 <div class="form-check mb-3">
                                     <input wire:model.defer="status" type="checkbox" class="form-check-input"

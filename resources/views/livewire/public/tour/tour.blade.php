@@ -4,7 +4,7 @@
     <meta name="description" content="{{ $metaContent->meta_description}}">
     <meta name="keywords" content="{{ $metaContent->meta_keywords}}">
     @endsection
-    <section class="page-title-button-style cover-background position-relative ipad-top-space-margin top-space-padding md-pt-20px" style="background-image: url('{{asset('asset/image/bsr-travel-hero.jpg')}}')">
+    <section class="page-title-button-style cover-background position-relative ipad-top-space-margin top-space-padding md-pt-20px" style="background-image: url('{{ $bannerImage }}')">
         <div class="opacity-light bg-bay-of-many-blue"></div>
         <div class="container">
             <div class="row align-items-center justify-content-center extra-small-screen">
@@ -15,37 +15,7 @@
             </div>
         </div>
     </section>
-    <!-- end page title -->
-    <!-- start section -->
-    <!-- <section class="bg-very-light-gray position-relative">
-        <div class="h-110px position-absolute w-100 h-100 left-0px right-0px top-minus-70px" style="background-image:url('images/demo-travel-agency-home-bg-02.png')"></div>
-        <div class="container">
-            <div class="row row-cols-1 row-cols-xl-5 row-cols-md-5 row-cols-sm-3 justify-content-center align-items-center" data-anime='{ "el": "childs", "translateX": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                <div class="col text-center border-end border-color-transparent-dark-very-light sm-mb-40px xs-border-end-0">
-                    <img src="https://placehold.co/140x125" class="mb-10px w-70px d-block mx-auto" alt="" />
-                    <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px">Adventure</span>
-                </div>
-                <div class="col text-center border-end border-color-transparent-dark-very-light sm-mb-40px xs-border-end-0">
-                    <img src="https://placehold.co/140x125" class="mb-10px w-70px d-block mx-auto" alt="" />
-                    <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px">Friendly</span>
-                </div>
-                <div class="col text-center border-end sm-border-end-0 border-color-transparent-dark-very-light sm-mb-40px">
-                    <img src="https://placehold.co/140x125" class="mb-10px w-70px d-block mx-auto" alt="" />
-                    <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px sm-mb-40px xs-border-end-0">Popular</span>
-                </div>
-                <div class="col text-center border-end border-color-transparent-dark-very-light xs-mb-40px xs-border-end-0">
-                    <img src="https://placehold.co/140x125" class="mb-10px w-70px d-block mx-auto" alt="" />
-                    <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px">Beaches</span>
-                </div>
-                <div class="col text-center">
-                    <img src="https://placehold.co/140x125" class="mb-10px w-70px d-block mx-auto" alt="" />
-                    <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px">Honeymoon</span>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- end section -->
-    <!-- start section -->
+
     <section class="pt-12 bg-very-light-gray overlap-height">
         <div class="container overlap-gap-section">
             <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2 row-cols-md-2 justify-content-center" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>

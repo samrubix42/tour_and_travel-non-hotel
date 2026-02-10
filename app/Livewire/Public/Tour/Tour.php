@@ -21,6 +21,9 @@ class Tour extends Component
         $slug = request()->query('slug');
         $experienceSlug = request()->query('experience');
 
+        // Default banner image
+        $bannerImage = asset('asset/image/bsr-travel-hero.jpg');
+
         $query = TourPackage::query()
             ->select('id', 'title', 'slug', 'description', 'price', 'featured_image')
             ->where('status', 1);
@@ -38,6 +41,13 @@ class Tour extends Component
             $metaContent = $destination;
 
             if ($destination) {
+                // Prefer explicit banner image if set, else fall back to destination image
+                if (!empty($destination->banner_image)) {
+                    $bannerImage = $destination->banner_image;
+                } elseif (!empty($destination->image)) {
+                    $bannerImage = $destination->image;
+                }
+
                 $query->whereHas('destinations', function ($q) use ($slug) {
                     $q->where('slug', $slug);
                 });
@@ -53,6 +63,6 @@ class Tour extends Component
 
         $tourPackages = $query->latest()->paginate($this->perPage);
 
-        return view('livewire.public.tour.tour', compact('tourPackages', 'metaContent'));
+        return view('livewire.public.tour.tour', compact('tourPackages', 'metaContent', 'bannerImage'));
     }
 }

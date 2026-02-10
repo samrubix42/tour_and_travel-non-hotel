@@ -3,7 +3,7 @@
        <nav class="navbar navbar-expand-lg bg-transparent  border-radius-6px md-border-radius-0px">
            <div class="container-fluid">
                <div class="col-lg-2 me-lg-0 me-auto " style="width">
-                   <a class="navbar-brand" href="{{ route('home') }}" style="width: 100%;">
+                   <a class="" href="{{ route('home') }}" style="width: 100%;">
 
                        <img src="{{ asset('asset/image/1000400474-removebg-preview.png') }}"
                            alt="Logo"

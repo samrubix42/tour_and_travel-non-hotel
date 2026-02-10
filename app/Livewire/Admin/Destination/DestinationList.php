@@ -36,6 +36,10 @@ class DestinationList extends Component
     public $storage_path;     // Local storage path
     public $imagekit_file_id; // ImageKit fileId
     public $imageFile;        // Livewire temporary upload
+    public $banner_image;            // Banner ImageKit or local URL
+    public $banner_storage_path;     // Banner local storage path
+    public $banner_imagekit_file_id; // Banner ImageKit fileId
+    public $bannerFile;              // Livewire temporary upload for banner
     public $categoryIds = [];
 
     protected function rules()
@@ -53,6 +57,7 @@ class DestinationList extends Component
             'categoryIds' => 'required|array|min:1',
             'categoryIds.*' => 'integer|exists:categories,id',
             'imageFile' => 'nullable|image|max:1024',
+            'bannerFile' => 'nullable|image|max:2048',
         ];
     }
     public function updatedName()
@@ -104,6 +109,9 @@ class DestinationList extends Component
         $this->image = $d->image;
         $this->storage_path = $d->storage_path;
         $this->imagekit_file_id = $d->imagekit_file_id;
+        $this->banner_image = $d->banner_image;
+        $this->banner_storage_path = $d->banner_storage_path;
+        $this->banner_imagekit_file_id = $d->banner_imagekit_file_id;
         $this->categoryIds = $d->categories()->pluck('categories.id')->toArray();
 
         $this->showModal = true;
@@ -174,6 +182,61 @@ class DestinationList extends Component
                 if ($dest->imagekit_file_id) {
                     try {
                         app(ImageKitService::class)->deleteFile($dest->imagekit_file_id);
+                    } catch (\Throwable $e) {
+                    }
+                }
+            }
+        }
+
+        // Handle banner image upload if present
+        if ($this->bannerFile) {
+            $uploaded = null;
+            $fileId = null;
+
+            try {
+                $ik = app(ImageKitService::class);
+                $res = $ik->uploadToFolder(
+                    $this->bannerFile->getRealPath(),
+                    $this->bannerFile->getClientOriginalName(),
+                    '/destinations/banners'
+                );
+
+                if (is_object($res)) {
+                    $uploaded = $res->result->url ?? null;
+                    $fileId = $res->result->fileId ?? null;
+                } elseif (is_array($res)) {
+                    $uploaded = $res['result']['url'] ?? null;
+                    $fileId = $res['result']['fileId'] ?? null;
+                }
+            } catch (\Throwable $e) {
+                $uploaded = null;
+                $fileId = null;
+            }
+
+            if ($uploaded) {
+                $data['banner_image'] = $uploaded;
+                $data['banner_imagekit_file_id'] = $fileId;
+                $data['banner_storage_path'] = null;
+            } else {
+                $path = $this->bannerFile->store('destinations/banners', 'public');
+                $data['banner_storage_path'] = $path;
+                $data['banner_image'] = asset('storage/' . $path);
+                $data['banner_imagekit_file_id'] = null;
+            }
+
+            if ($this->destinationId) {
+                $dest = Destination::findOrFail($this->destinationId);
+
+                if ($dest->banner_storage_path) {
+                    try {
+                        Storage::disk('public')->delete($dest->banner_storage_path);
+                    } catch (\Throwable $e) {
+                    }
+                }
+
+                if ($dest->banner_imagekit_file_id) {
+                    try {
+                        app(ImageKitService::class)->deleteFile($dest->banner_imagekit_file_id);
                     } catch (\Throwable $e) {
                     }
                 }
@@ -254,6 +317,10 @@ class DestinationList extends Component
         $this->storage_path = null;
         $this->imagekit_file_id = null;
         $this->imageFile = null;
+        $this->banner_image = null;
+        $this->banner_storage_path = null;
+        $this->banner_imagekit_file_id = null;
+        $this->bannerFile = null;
         $this->categoryIds = [];
         $this->resetValidation();
     }
