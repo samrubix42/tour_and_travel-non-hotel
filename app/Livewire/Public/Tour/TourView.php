@@ -4,6 +4,7 @@ namespace App\Livewire\Public\Tour;
 
 use Livewire\Component;
 use App\Models\TourPackage;
+use App\Models\Testimonial;
 
 class TourView extends Component
 {
@@ -16,7 +17,7 @@ class TourView extends Component
 
     public function mount($slug)
     {
-        $this->package = TourPackage::with(['destinations', 'experiences', 'galleries'])
+        $this->package = TourPackage::with(['destinations', 'experiences', 'galleries', 'sliderImages'])
             ->where('slug', $slug)
             ->where('status', 1)
             ->first();
@@ -67,6 +68,10 @@ class TourView extends Component
             }
         }
 
+        $testimonials = Testimonial::orderBy('created_at', 'desc')
+            ->take(6)
+            ->get();
+
         return view('livewire.public.tour.tour-view', [
             'package' => $this->package,
             'title' => $meta_title,
@@ -74,6 +79,7 @@ class TourView extends Component
             'meta_description' => $meta_description,
             'meta_keywords' => $meta_keywords,
             'bannerImage' => $bannerImage,
+            'testimonials' => $testimonials,
         ]);
     }
 }
