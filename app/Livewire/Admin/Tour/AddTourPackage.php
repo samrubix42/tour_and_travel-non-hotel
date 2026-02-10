@@ -29,6 +29,7 @@ class AddTourPackage extends Component
     public $price;
     public $is_featured = false;
     public $featuredImage;
+    public $bannerImage;
 
     public $category_ids = [];
     public $destination_ids = [];
@@ -59,6 +60,7 @@ class AddTourPackage extends Component
         'images' => 'nullable|array',
         'images.*' => 'image|max:5120', // 5MB each
         'featuredImage' => 'nullable|image|max:5120',
+        'bannerImage' => 'nullable|image|max:5120',
         'includes' => 'nullable|array',
         'includes.*' => 'nullable|string|max:255',
         'optional' => 'nullable|array',
@@ -193,6 +195,36 @@ class AddTourPackage extends Component
                     'featured_image' => $url,
                     'storage_path' => $path,
                     'imagekit_file_id' => null,
+                ]);
+            }
+        }
+
+        // Handle banner image (if provided)
+        if ($package && $this->bannerImage) {
+            $useImageKit = env('IMAGEKIT_PRIVATE_KEY') && env('IMAGEKIT_URL_ENDPOINT');
+            try {
+                if ($useImageKit) {
+                    $ik = new ImageKitService();
+                    $upload = $ik->uploadToFolder($this->bannerImage->getRealPath(), $this->bannerImage->getClientOriginalName(), '/tour_packages/banners');
+                    $data = is_array($upload) ? $upload : json_decode(json_encode($upload), true);
+                    $url = $data['result']['url'] ?? $data['result']['filePath'] ?? null;
+                    $fileId = $data['result']['fileId'] ?? null;
+
+                    $package->update([
+                        'banner_image' => $url,
+                        'banner_imagekit_file_id' => $fileId,
+                        'banner_storage_path' => null,
+                    ]);
+                } else {
+                    throw new \Exception('no imagekit');
+                }
+            } catch (\Exception $e) {
+                $path = $this->bannerImage->store('tour_packages/banners', 'public');
+                $url = Storage::url($path);
+                $package->update([
+                    'banner_image' => $url,
+                    'banner_storage_path' => $path,
+                    'banner_imagekit_file_id' => null,
                 ]);
             }
         }

@@ -244,6 +244,28 @@
 
 
                 <!-- =======================
+                        BANNER IMAGE
+                ========================-->
+                <h3 class="card-title mt-4">Banner Image</h3>
+                <div class="mb-3">
+                    <div class="d-flex gap-3 align-items-center">
+                        <div>
+                            <input id="bannerImageInput" type="file" wire:model="bannerImage" accept="image/*" hidden>
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('bannerImageInput').click()">Choose Banner Image</button>
+                        </div>
+                        <div>
+                            @if(!empty($bannerImage) && method_exists($bannerImage,'temporaryUrl'))
+                                <img src="{{ $bannerImage->temporaryUrl() }}" alt="banner preview" style="height:72px;object-fit:cover;border-radius:4px;">
+                            @else
+                                <span class="text-muted">No banner image selected</span>
+                            @endif
+                        </div>
+                    </div>
+                    @error('bannerImage') <small class="text-danger">{{ $message }}</small> @enderror
+                </div>
+
+
+                <!-- =======================
                      MULTIPLE IMAGES (TABLER)
                 ========================-->
                 <h3 class="card-title mt-4">Gallery Images</h3>

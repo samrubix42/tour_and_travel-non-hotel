@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-12 mt-2">
                         <label class="form-label">Meta Title</label>
-                        <input type="text" wire:model.defer="meta_title" class="form-control" placeholder="SEO meta title">
+                        <input type="text" wire:model.live="meta_title" class="form-control" placeholder="SEO meta title">
                         @error('meta_title') <small class="text-danger">{{ $message }}</small> @enderror
                     </div>
 
@@ -194,7 +194,7 @@
 
                 <hr>
 
-                <!-- EXISTING GALLERY -->
+                <!-- FEATURED IMAGE -->
                 <h3 class="card-title mt-4">Featured Image</h3>
                 <div class="mb-3">
                     <div class="card" style="width:220px;">
@@ -214,6 +214,30 @@
                                 </div>
                             @endif
                             @error('featuredImage') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BANNER IMAGE -->
+                <h3 class="card-title mt-4">Banner Image</h3>
+                <div class="mb-3">
+                    <div class="card" style="width:220px;">
+                        <div class="ratio ratio-4x3">
+                            @if(!empty($currentBannerUrl))
+                                <img src="{{ $currentBannerUrl }}" class="card-img-top" style="object-fit:cover;">
+                            @else
+                                <div class="d-flex align-items-center justify-content-center text-muted">No banner image</div>
+                            @endif
+                        </div>
+                        <div class="card-footer p-2">
+                            <input id="bannerImageInputUpdate" type="file" wire:model="bannerImage" accept="image/*" hidden>
+                            <button type="button" class="btn btn-secondary btn-sm w-100" onclick="document.getElementById('bannerImageInputUpdate').click()">Choose New Banner</button>
+                            @if(!empty($bannerImage) && method_exists($bannerImage,'temporaryUrl'))
+                                <div class="mt-2 text-center">
+                                    <img src="{{ $bannerImage->temporaryUrl() }}" alt="banner preview" style="height:72px;object-fit:cover;border-radius:4px;">
+                                </div>
+                            @endif
+                            @error('bannerImage') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     </div>
                 </div>
