@@ -85,10 +85,10 @@ class TestimonialList extends Component
 
         if ($this->testimonialId) {
             Testimonial::find($this->testimonialId)->update($data);
-            session()->flash('message', 'Testimonial updated.');
+            $this->dispatch('success', 'Testimonial updated.');
         } else {
             Testimonial::create($data);
-            session()->flash('message', 'Testimonial created.');
+            $this->dispatch('success', 'Testimonial created.');
         }
 
         $this->showModal = false;
@@ -107,6 +107,7 @@ class TestimonialList extends Component
         if ($this->confirmingDeleteId) {
             Testimonial::destroy($this->confirmingDeleteId);
             session()->flash('message', 'Testimonial deleted.');
+            $this->dispatch('success', 'Testimonial deleted.');
             $this->confirmingDeleteId = null;
         }
     }

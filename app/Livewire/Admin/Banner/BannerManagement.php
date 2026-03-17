@@ -21,14 +21,17 @@ class BannerManagement extends Component
     public $title, $subtitle, $image, $button_text, $button_url, $status = true;
     public $image_url, $storage_path, $imagekit_file_id;
 
-    protected $rules = [
-        'title' => 'required|string|max:255',
-        'subtitle' => 'nullable|string|max:255',
-        'image' => 'required|image|max:2048',
-        'button_text' => 'required|string|max:255',
-        'button_url' => 'nullable|string|max:255',
-        'status' => 'boolean',
-    ];
+    protected function rules()
+    {
+        return [
+            'title' => 'required|string|max:255',
+            'subtitle' => 'nullable|string|max:255',
+            'image' => $this->editId ? 'nullable|image|max:2048' : 'required|image|max:2048',
+            'button_text' => 'required|string|max:255',
+            'button_url' => 'nullable|string|max:255',
+            'status' => 'boolean',
+        ];
+    }
 
     public function mount()
     {
@@ -102,8 +105,10 @@ class BannerManagement extends Component
 
         if ($this->editId) {
             Banner::where('id', $this->editId)->update($data);
+            $this->dispatch('success', 'Banner updated successfully.');
         } else {
             Banner::create($data);
+            $this->dispatch('success', 'Banner created successfully.');
         }
         $this->resetForm();
         $this->loadBanners();
@@ -127,6 +132,7 @@ class BannerManagement extends Component
                 Storage::disk('public')->delete($banner->storage_path);
             }
             $banner->delete();
+            $this->dispatch('success', 'Banner deleted successfully.');
         }
         $this->deleteId = null;
         $this->loadBanners();
