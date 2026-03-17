@@ -358,7 +358,7 @@ class AddTourPackage extends Component
     public function render()
     {
         $allCategories = Category::all();
-        $allDestinations = Destination::all();
+        $allDestinations = Destination::orderBy('name')->get();
 
         $allExperiences = Experience::all();
         return view('livewire.admin.tour.add-tour-package', compact('allCategories', 'allDestinations', 'allExperiences'));

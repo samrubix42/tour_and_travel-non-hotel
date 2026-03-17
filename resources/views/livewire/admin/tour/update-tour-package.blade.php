@@ -66,9 +66,17 @@
 
                 <!-- DESTINATIONS -->
                 <h3 class="card-title mt-4">Destinations</h3>
-                <div class="row">
+                <div class="mb-3">
+                    <input
+                        id="destinationSearchUpdate"
+                        type="text"
+                        class="form-control"
+                        placeholder="Search destinations..."
+                        oninput="filterDestinationOptions('destinationSearchUpdate', 'destinationListUpdate')">
+                </div>
+                <div class="row" id="destinationListUpdate">
                     @foreach($allDestinations as $dest)
-                    <div class="col-md-3 mb-2">
+                    <div class="col-md-3 mb-2 destination-option" data-destination-name="{{ strtolower($dest->name) }}">
                         <label class="form-check">
                             <input class="form-check-input" type="checkbox" wire:model="destination_ids" value="{{ $dest->id }}">
                             <span class="form-check-label">{{ $dest->name }}</span>
@@ -283,7 +291,7 @@
                 <hr>
 
                 <!-- NEW IMAGES UPLOAD -->
-                <h3 class="card-title mt-4">Upload New Images</h3>
+                <h3 class="card-title mt-4">Upload New Gallery Images</h3>
                 <div class="mb-3">
                     <div id="dropzoneUpdate" class="border-dashed border p-4 rounded text-center cursor-pointer bg-light" style="min-height:120px;">
                         <div class="text-muted mb-2">Drag & drop images here or click to browse</div>
@@ -406,6 +414,20 @@
 
 @push('scripts')
 <script>
+    function filterDestinationOptions(inputId, listId) {
+        const input = document.getElementById(inputId);
+        const list = document.getElementById(listId);
+        if (!input || !list) return;
+
+        const keyword = (input.value || '').toLowerCase().trim();
+        const items = list.querySelectorAll('.destination-option');
+
+        items.forEach((item) => {
+            const name = (item.getAttribute('data-destination-name') || '').toLowerCase();
+            item.style.display = name.includes(keyword) ? '' : 'none';
+        });
+    }
+
     function initUpdateDropzone() {
         const drop = document.getElementById('dropzoneUpdate');
         const input = document.getElementById('newImagesInput');

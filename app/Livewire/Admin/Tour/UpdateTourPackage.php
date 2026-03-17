@@ -550,7 +550,7 @@ class UpdateTourPackage extends Component
     {
         return view('livewire.admin.tour.update-tour-package', [
             'allCategories' => Category::all(),
-            'allDestinations' => Destination::all(),
+            'allDestinations' => Destination::orderBy('name')->get(),
             'allExperiences' => Experience::all(),
         ]);
     }
