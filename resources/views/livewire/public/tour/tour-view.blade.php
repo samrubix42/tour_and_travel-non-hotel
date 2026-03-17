@@ -10,7 +10,7 @@
             <div class="row align-items-center justify-content-center extra-small-screen">
                 <div class="col-lg-6 col-md-8 position-relative text-center page-title-extra-large" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <h2 class="text-uppercase mb-10px alt-font text-white fw-500 bg-dark-gray border-radius-4px">Amazing tour</h2>
-                    <h1 class="mb-0 text-white alt-font ls-minus-2px text-uppercase fw-600 text-shadow-double-large">Maldives islands</h1>
+                    <h1 class="mb-0 text-white alt-font ls-minus-2px text-uppercase fw-600 text-shadow-double-large">{{ $package->title }}</h1>
                 </div>
             </div>
         </div>
@@ -303,6 +303,11 @@
                                     <span class="form-icon"><i class="bi bi-envelope icon-small"></i></span>
                                     <input wire:model.defer="email" class="ps-0 border-radius-0px border-color-transparent-dark-very-light bg-transparent form-control @error('email') is-invalid @enderror" type="email" placeholder="Your email" />
                                     @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                </div>
+                                <div class="position-relative form-group mb-5px">
+                                    <span class="form-icon"><i class="bi bi-calendar3 icon-small"></i></span>
+                                    <input wire:model.defer="no_of_days" class="ps-0 border-radius-0px border-color-transparent-dark-very-light bg-transparent form-control @error('no_of_days') is-invalid @enderror" type="number" min="1" max="365" placeholder="No. of days" />
+                                    @error('no_of_days') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="position-relative form-group form-textarea mb-0">
                                     <textarea wire:model.defer="message" class="ps-0 border-radius-0px border-bottom border-color-transparent-dark-very-light bg-transparent form-control" placeholder="Your message" rows="2"></textarea>

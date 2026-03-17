@@ -14,6 +14,7 @@ class TourView extends Component
     public $email;
     public $message;
     public $tour_id;
+    public $no_of_days;
 
     public function mount($slug)
     {
@@ -26,12 +27,14 @@ class TourView extends Component
             abort(404);
         }
     }
-    public function submit(){
+    public function submit()
+    {
         $this->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:50',
             'email' => 'nullable|email|max:255',
             'message' => 'nullable|string|max:2000',
+            'no_of_days' => 'nullable|integer|min:1|max:365',
         ]);
         $data = [
             'name' => $this->name,
@@ -40,10 +43,11 @@ class TourView extends Component
             'message' => $this->message,
             'tour_id' => $this->package->id,
             'ip' => request()->ip(),
+            'no_of_days' => $this->no_of_days,
             'status' => 'pending',
         ];
         \App\Models\ContactForTour::create($data);
-        $this->reset(['name','phone','email','message']);
+        $this->reset(['name', 'phone', 'email', 'message', 'no_of_days']);
         session()->flash('message', 'Your enquiry has been submitted.');
     }
     public function render()

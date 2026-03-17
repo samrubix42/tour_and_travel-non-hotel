@@ -16,6 +16,7 @@ class ContactForTour extends Model
         'check_in_date',
         'check_out_date',
         'no_of_adults',
+        'no_of_days',
         'children',
         'consent',
         'status',

@@ -29,6 +29,7 @@
                         <th>Destination</th>
                         <th>Contact</th>
                         <th>Guests</th>
+                        <th>No. of Days</th>
                         <th>Travel Date</th>
                         <th>When</th>
                         <th>Status</th>
@@ -60,6 +61,7 @@
                                 <div class="small-muted">{{ $c->ip ?? '' }}</div>
                             </td>
                             <td class="small-muted">{{ $c->no_of_persons ?? '-' }}</td>
+                            <td class="small-muted">{{ $c->no_of_days ?? '-' }}</td>
                             <td class="small-muted">{{ $c->travel_date ?? '-' }}</td>
                             <td class="small-muted">{{ $c->created_at->diffForHumans() }}<div class="small-muted">{{ $c->created_at->toDayDateTimeString() }}</div></td>
                             <td>
@@ -93,7 +95,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="text-center text-muted">No enquiries found.</td>
+                            <td colspan="9" class="text-center text-muted">No enquiries found.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -139,6 +141,12 @@
                                 <strong>Guests</strong>
                                 <div class="small-muted">{{ $selectedContact->no_of_persons ?? '-' }}</div>
                             </div>
+                            <div class="col-md-6 mb-3">
+                                <strong>No. of Days</strong>
+                                <div class="small-muted">{{ $selectedContact->no_of_days ?? '-' }}</div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <strong>Travel Date</strong>
                                 <div class="small-muted">{{ $selectedContact->travel_date ?? '-' }}</div>
