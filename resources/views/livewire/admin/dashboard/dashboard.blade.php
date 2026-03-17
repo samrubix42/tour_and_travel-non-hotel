@@ -1,4 +1,11 @@
 <div>
+    <style>
+        .dash-quick-link { transition: all .18s ease; border: 1px solid var(--tblr-border-color); }
+        .dash-quick-link:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(32, 38, 45, .08); }
+        .dash-stat-icon { width: 40px; height: 40px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; }
+        .dash-section-title { font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; color: var(--tblr-muted); font-weight: 700; }
+    </style>
+
     <div class="d-flex align-items-center justify-content-between mb-4">
         <div>
             <h3 class="mb-1">Admin Dashboard</h3>
@@ -9,70 +16,134 @@
             <div class="h5 m-0">Updated: {{ now()->format('M d, Y') }}</div>
         </div>
     </div>
+
     <div class="row g-3 mb-4">
-        @php
-            $badgeClasses = ['bg-primary','bg-success','bg-warning','bg-info','bg-danger','bg-secondary','bg-indigo','bg-pink','bg-teal'];
-        @endphp
-        @foreach($counts as $key => $value)
-            <div class="col-12 col-sm-6 col-lg-2">
-                <div class="card p-3 shadow-sm">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            @php $color = $badgeClasses[$loop->index % count($badgeClasses)]; @endphp
-                            <span class="{{ $color }} text-white rounded p-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v10a2 2 0 0 0 2 2h14"></path><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"></path></svg>
-                            </span>
-                        </div>
-                        <div>
-                            <div class="text-muted small">{{ $labels[$key] ?? ucwords(str_replace('_',' ',$key)) }}</div>
-                            <div class="h4 m-0">{{ $value ?? 0 }}</div>
-                            <div class="small text-muted mt-1">Quick overview</div>
-                        </div>
+        <div class="col-12 col-md-4">
+            <a href="{{ route('admin.blog.post.create') }}" class="card card-link dash-quick-link text-decoration-none">
+                <div class="card-body d-flex align-items-center">
+                    <span class="avatar avatar-sm bg-primary-lt me-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 5h16" />
+                            <path d="M4 12h16" />
+                            <path d="M4 19h10" />
+                            <path d="M18 18v3" />
+                            <path d="M16.5 19.5h3" />
+                        </svg>
+                    </span>
+                    <div class="flex-fill">
+                        <div class="fw-semibold text-dark">Add Blog</div>
+                        <div class="text-muted small">Create a new post</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-4">
+            <a href="{{ route('admin.tour.package.create') }}" class="card card-link dash-quick-link text-decoration-none">
+                <div class="card-body d-flex align-items-center">
+                    <span class="avatar avatar-sm bg-success-lt me-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 3l7 4v5c0 5 -3.5 9 -7 9s-7 -4 -7 -9v-5l7 -4z" />
+                            <path d="M9 12l2 2l4 -4" />
+                        </svg>
+                    </span>
+                    <div class="flex-fill">
+                        <div class="fw-semibold text-dark">Add Tour</div>
+                        <div class="text-muted small">Create tour package</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-4">
+            <a href="{{ route('admin.tour.destination.list') }}" class="card card-link dash-quick-link text-decoration-none">
+                <div class="card-body d-flex align-items-center">
+                    <span class="avatar avatar-sm bg-info-lt me-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 21s-6 -4.35 -6 -10a6 6 0 1 1 12 0c0 5.65 -6 10 -6 10z" />
+                            <circle cx="12" cy="11" r="2" />
+                        </svg>
+                    </span>
+                    <div class="flex-fill">
+                        <div class="fw-semibold text-dark">Add Destination</div>
+                        <div class="text-muted small">Manage destinations</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="dash-section-title mb-2">Snapshot</div>
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body d-flex align-items-center">
+                    <span class="dash-stat-icon bg-success-lt text-success me-3">
+                        <i class="ti ti-route-2"></i>
+                    </span>
+                    <div>
+                        <div class="text-muted small">Tour Packages</div>
+                        <div class="h2 m-0">{{ $counts['tour_packages'] ?? 0 }}</div>
                     </div>
                 </div>
             </div>
-        @endforeach
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body d-flex align-items-center">
+                    <span class="dash-stat-icon bg-primary-lt text-primary me-3">
+                        <i class="ti ti-news"></i>
+                    </span>
+                    <div>
+                        <div class="text-muted small">Posts</div>
+                        <div class="h2 m-0">{{ $counts['posts'] ?? 0 }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body d-flex align-items-center">
+                    <span class="dash-stat-icon bg-info-lt text-info me-3">
+                        <i class="ti ti-map-pin"></i>
+                    </span>
+                    <div>
+                        <div class="text-muted small">Destinations</div>
+                        <div class="h2 m-0">{{ $counts['destinations'] ?? 0 }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body d-flex align-items-center">
+                    <span class="dash-stat-icon bg-warning-lt text-warning me-3">
+                        <i class="ti ti-phone-call"></i>
+                    </span>
+                    <div>
+                        <div class="text-muted small">Tour Enquiries</div>
+                        <div class="h2 m-0">{{ $counts['tour_contacts'] ?? 0 }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="dash-section-title mb-2">Activity</div>
     <div class="row g-3 mb-4">
-        <div class="col-12 col-lg-8">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">Activity (Last 6 months)</div>
                 <div class="card-body">
-                    <canvas id="contentChart" height="120"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-4">
-            <div class="card">
-                <div class="card-header">Top Stats</div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between">
-                            <div class="small text-muted">Total Tours</div>
-                            <div class="fw-bold">{{ $counts['tour_packages'] ?? 0 }}</div>
-                        </div>
-                        <div class="progress mt-2" style="height:6px">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ min(100, ($counts['tour_packages'] / max(1, array_sum($counts)))*100) }}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <div class="small text-muted">Total Posts</div>
-                            <div class="fw-bold">{{ $counts['posts'] ?? 0 }}</div>
-                        </div>
-                        <div class="progress mt-2" style="height:6px">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: {{ min(100, ($counts['posts'] / max(1, array_sum($counts)))*100) }}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+                    <canvas id="contentChart" height="100"></canvas>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="dash-section-title mb-2">Recent Updates</div>
     <div class="row g-3">
-        
-
         <div class="col-12 col-lg-6">
             <div class="card">
                 <div class="card-header">Recent Tour Contacts</div>
@@ -89,13 +160,61 @@
                         <tbody>
                             @forelse($recentTourContacts as $c)
                                 <tr>
-                                    <td>{{ $c->name }}</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="avatar avatar-xs me-2">{{ strtoupper(substr($c->name ?? 'A',0,1)) }}</span>
+                                            <span>{{ $c->name }}</span>
+                                        </div>
+                                    </td>
                                     <td>{{ $c->email ?? '-' }}</td>
                                     <td>{{ $c->phone ?? '-' }}</td>
                                     <td class="text-muted">{{ $c->created_at->diffForHumans() }}</td>
                                 </tr>
                             @empty
                                 <tr><td colspan="4" class="text-muted small">No recent tour contacts</td></tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="card">
+                <div class="card-header">Recent Content</div>
+                <div class="card-body p-0">
+                    <table class="table card-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Title</th>
+                                <th>When</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($recentTours as $t)
+                                <tr>
+                                    <td><span class="badge bg-success-lt">Tour</span></td>
+                                    <td>{{ $t->name ?? ($t->title ?? '-') }}</td>
+                                    <td class="text-muted">{{ $t->created_at->diffForHumans() }}</td>
+                                </tr>
+                            @empty
+                                <tr><td colspan="3" class="text-muted small">No recent tours</td></tr>
+                            @endforelse
+                            @forelse($recentDestinations->take(3) as $d)
+                                <tr>
+                                    <td><span class="badge bg-info-lt">Destination</span></td>
+                                    <td>{{ $d->name ?? ($d->title ?? '-') }}</td>
+                                    <td class="text-muted">{{ $d->created_at->diffForHumans() }}</td>
+                                </tr>
+                            @empty
+                            @endforelse
+                            @forelse($recentPosts->take(3) as $p)
+                                <tr>
+                                    <td><span class="badge bg-primary-lt">Post</span></td>
+                                    <td>{{ $p->title ?? $p->name ?? '-' }}</td>
+                                    <td class="text-muted">{{ $p->created_at->diffForHumans() }}</td>
+                                </tr>
+                            @empty
                             @endforelse
                         </tbody>
                     </table>
@@ -133,95 +252,5 @@
             });
         })();
     </script>
-
-    <div class="row g-3 mt-3">
-        
-
-        <div class="col-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">Recent Tour Packages</div>
-                <div class="card-body p-0">
-                    <table class="table card-table">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Price</th>
-                                <th>When</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($recentTours as $t)
-                                <tr>
-                                    <td>{{ $t->name ?? ($t->title ?? '-') }}</td>
-                                    <td>{{ $t->price ?? '-' }}</td>
-                                    <td class="text-muted">{{ $t->created_at->diffForHumans() }}</td>
-                                </tr>
-                            @empty
-                                <tr><td colspan="3" class="text-muted small">No recent tour packages</td></tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row g-3 mt-3">
-        <div class="col-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">Recent Destinations</div>
-                <div class="card-body p-0">
-                    <table class="table card-table">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Region</th>
-                                <th>When</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($recentDestinations as $d)
-                                <tr>
-                                    <td>{{ $d->name ?? ($d->title ?? '-') }}</td>
-                                    <td>{{ $d->region ?? '-' }}</td>
-                                    <td class="text-muted">{{ $d->created_at->diffForHumans() }}</td>
-                                </tr>
-                            @empty
-                                <tr><td colspan="3" class="text-muted small">No recent destinations</td></tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">Recent Posts</div>
-                <div class="card-body p-0">
-                    <table class="table card-table">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>When</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($recentPosts as $p)
-                                <tr>
-                                    <td>{{ $p->title ?? $p->name ?? '-' }}</td>
-                                    <td>{{ $p->author?->name ?? $p->user?->name ?? '-' }}</td>
-                                    <td class="text-muted">{{ $p->created_at->diffForHumans() }}</td>
-                                </tr>
-                            @empty
-                                <tr><td colspan="3" class="text-muted small">No recent posts</td></tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </div>
