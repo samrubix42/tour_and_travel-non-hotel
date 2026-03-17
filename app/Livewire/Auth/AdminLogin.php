@@ -17,8 +17,8 @@ class AdminLogin extends Component
 
     public function mount(){
 
-        $this->email =  'admin@techonika.com';
-        $this->password =  '123456789';
+        $this->email =  '';
+        $this->password =  '';
     }
     protected function rules()
     {
