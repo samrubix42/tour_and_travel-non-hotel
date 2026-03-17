@@ -73,12 +73,12 @@
 
                         <td>
                             <div class="fw-bold">{{ $p->title }}</div>
-                            <div class="small text-muted">ID: {{ $p->id }} • {{ $p->created_at ? $p->created_at->format('Y-m-d') : '' }}</div>
+                            <div class="small text-muted">ID: {{ $p->id }} &bull; {{ $p->created_at ? $p->created_at->format('Y-m-d') : '' }}</div>
                         </td>
 
                         <td class="small text-muted">{{ $p->slug }}</td>
 
-                        <td class="text-end fw-semibold">{{ $p->price ? '₹' . number_format($p->price,2) : '—' }}</td>
+                        <td class="text-end fw-semibold">{{ $p->price ? 'Rs. ' . number_format($p->price,2) : '--' }}</td>
 
                         <td>
                             <span class="badge bg-{{ $p->status ? 'success-lt' : 'secondary-lt' }}">{{ $p->status ? 'Active' : 'Hidden' }}</span>
@@ -86,7 +86,7 @@
 
                         <td class="text-end">
                             <a href="{{ route('admin.tour.package.edit', $p->id) }}" class="btn btn-sm btn-primary me-2">Edit</a>
-                            <button wire:click="delete({{ $p->id }})" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this package?')">Delete</button>
+                            <button wire:click="confirmDelete({{ $p->id }})" class="btn btn-sm btn-outline-danger">Delete</button>
                         </td>
                     </tr>
                     @empty
@@ -100,4 +100,24 @@
     </div>
 
     <div class="mt-3">{{ $packages->links() }}</div>
+
+    @if($showDeleteModal)
+        <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0, 0, 0, 0.5);" role="dialog" aria-modal="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirm Delete</h5>
+                        <button type="button" class="btn-close" aria-label="Close" wire:click="closeDeleteModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this tour package?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" wire:click="closeDeleteModal">Cancel</button>
+                        <button type="button" class="btn btn-danger" wire:click="deleteConfirmed">Yes, Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 </div>

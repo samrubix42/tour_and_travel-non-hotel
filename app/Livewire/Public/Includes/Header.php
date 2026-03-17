@@ -19,7 +19,12 @@ class Header extends Component
     #[Computed]
     public function mount()
     {
-        $this->destinations = Destination::where('status', 1)->orderBy('name')->get();
+        $this->destinations = Destination::where('status', 1)
+            ->whereDoesntHave('categories', function ($q) {
+                $q->where('slug', 'international');
+            })
+            ->orderBy('name')
+            ->get();
         $this->experiences = Experience::where('status', 1)->orderBy('name')->get();
         $this->religPackages = TourPackage::whereHas('categories', function ($q) {
             $q->where('slug', 'religious')

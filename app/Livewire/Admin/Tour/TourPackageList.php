@@ -11,23 +11,44 @@ use App\Models\TourPackage;
 class TourPackageList extends Component
 {
     use WithPagination;
-    
+
     protected $paginationTheme = 'bootstrap';
 
     public $search = '';
     public $perPage = 10;
     public $filter_status = 'all';
     public $filter_featured = 'all';
+    public $showDeleteModal = false;
+    public $deleteId = null;
 
     protected $queryString = [];
 
-    public function delete($id)
+    public function confirmDelete($id)
     {
-        $package = TourPackage::find($id);
+        $this->deleteId = $id;
+        $this->showDeleteModal = true;
+    }
+
+    public function closeDeleteModal()
+    {
+        $this->showDeleteModal = false;
+        $this->deleteId = null;
+    }
+
+    public function deleteConfirmed()
+    {
+        if (!$this->deleteId) {
+            return;
+        }
+
+        $package = TourPackage::find($this->deleteId);
         if ($package) {
             $package->delete();
-           $this->dispatch('success', 'Tour package deleted.');
+            session()->flash('message', 'Tour package deleted.');
+            $this->dispatch('success', 'Tour package deleted.');
         }
+
+        $this->closeDeleteModal();
     }
 
     #[Layout('components.layouts.admin')]
