@@ -17,6 +17,8 @@ class PostList extends Component
 
     public $search = '';
     public $perPage = 10;
+    public $showDeleteModal = false;
+    public $deleteId = null;
 
     #[Layout('components.layouts.admin')]
     #[Title('Posts')]
@@ -32,8 +34,30 @@ class PostList extends Component
         ]);
     }
 
-    public function delete(Post $post)
+    public function confirmDelete($id)
     {
+        $this->deleteId = $id;
+        $this->showDeleteModal = true;
+    }
+
+    public function closeDeleteModal()
+    {
+        $this->showDeleteModal = false;
+        $this->deleteId = null;
+    }
+
+    public function deleteConfirmed()
+    {
+        if (!$this->deleteId) {
+            return;
+        }
+
+        $post = Post::find($this->deleteId);
+        if (!$post) {
+            $this->closeDeleteModal();
+            return;
+        }
+
         // delete imagekit files if present
         $useImageKit = env('IMAGEKIT_PUBLIC_KEY') && env('IMAGEKIT_PRIVATE_KEY') && env('IMAGEKIT_URL_ENDPOINT');
         if ($useImageKit) {
@@ -68,7 +92,9 @@ class PostList extends Component
 
         $post->delete();
 
-        $this->dispatch('sucess', 'Post deleted successfully.');
+        session()->flash('message', 'Post deleted successfully.');
+        $this->dispatch('success', 'Post deleted successfully.');
+        $this->closeDeleteModal();
         $this->resetPage();
     }
 }
