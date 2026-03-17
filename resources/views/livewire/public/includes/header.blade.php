@@ -105,7 +105,7 @@
                                                <a href="{{ route('tour') }}?slug={{ $dest->slug }}" class="text-decoration-none text-dark d-block py-2">
                                                    <div class="d-flex align-items-center justify-content-between">
                                                        <div>
-                                                           <strong class="fs-14" style="font-size:14px;">{{ $dest->name }}</strong>
+                                                           <strong class="fs-14" style="font-size:10px;">{{ $dest->name }}</strong>
                                                        </div>
                                                        <i class="fa-solid fa-angle-right text-muted small"></i>
                                                    </div>
@@ -155,7 +155,7 @@
                                                <a href="{{ route('tour.view', ['slug' => $pkg->slug]) }}" class="text-decoration-none text-dark d-block py-2">
                                                    <div class="d-flex align-items-center justify-content-between">
                                                        <div>
-                                                           <strong class="fs-14" style="font-size:14px;">{{ $pkg->title }}</strong>
+                                                           <strong class="fs-14" style="font-size:10px;">{{ $pkg->title }}</strong>
                                                        </div>
                                                        <i class="fa-solid fa-angle-right text-muted small"></i>
                                                    </div>
