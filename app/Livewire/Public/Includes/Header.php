@@ -34,10 +34,13 @@ class Header extends Component
                 ->orWhere('slug', 'religous')
                 ->orWhereRaw('LOWER(name) LIKE ?', ['%relig%']);
         })->where('status', true)->take(8)->get();
-        $this->internationalPackages = TourPackage::whereHas('categories', function ($q) {
-            $q->where('slug', 'international')
-                ->orWhereRaw('LOWER(name) LIKE ?', ['%international%']);
-        })->where('status', true)->take(8)->get();
+        $this->internationalPackages = Destination::where('status', 1)
+            ->whereHas('categories', function ($q) {
+                $q->where('slug', 'international')
+                    ->orWhereRaw('LOWER(name) LIKE ?', ['%international%']);
+            })
+            ->orderBy('name')
+            ->get();
 
         $this->yatraDestinations = Destination::where('status', 1)
             ->whereHas('categories', function ($q) {
