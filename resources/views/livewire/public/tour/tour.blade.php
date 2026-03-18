@@ -21,9 +21,8 @@
             <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2 row-cols-md-2 justify-content-center" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
                 @forelse($tourPackages as $package)
                 <div class="col mb-30px">
-                    <div class="overflow-hidden border-radius-6px box-shadow-large">
+                    <a href="{{ route('tour.view', ['slug' => $package->slug]) }}" class="overflow-hidden border-radius-6px box-shadow-large d-block text-decoration-none">
                         <div class="image" width="100%" height="250px" style="height: 250px; overflow: hidden;">
-                            <a href="/tour/{{ $package->slug }}">
 
                                 @php
                                 $img = $package->featured_image;
@@ -51,16 +50,15 @@
                                 <img src="{{ $finalUrl }}"
                                     alt="{{ $package->title }}"
                                     style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-                            </a>
                         </div>
 
                         <div class="bg-white p-40px md-p-30px position-relative">
                             <div class="bg-base-color ps-15px pe-15px fs-14 text-uppercase fw-500 d-inline-block text-white position-absolute right-0px top-0px">Customizable</div>
                             <div class="fs-24 fw-700 text-dark-gray"><span class="text-uppercase d-block fs-14 lh-18 fw-500 text-medium-gray">Starting At</span>₹{{ number_format($package->price ?? 0, 0) }}</div>
-                            <a href="/tour/{{ $package->slug }}" class="mt-10px fs-18 text-dark-gray fw-600 d-block">{{ $package->title }}</a>
+                            <div class="mt-10px fs-18 text-dark-gray fw-600 d-block">{{ $package->title }}</div>
                             <p class="m-0 lh-30">{{ \Illuminate\Support\Str::limit(strip_tags($package->description), 60) }}</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 @empty
                 <div class="col-12 text-center py-5">No tour packages found.</div>

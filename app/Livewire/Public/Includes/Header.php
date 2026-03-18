@@ -36,16 +36,14 @@ class Header extends Component
         })->where('status', true)->take(8)->get();
         $this->internationalPackages = Destination::where('status', 1)
             ->whereHas('categories', function ($q) {
-                $q->where('slug', 'international')
-                    ->orWhereRaw('LOWER(name) LIKE ?', ['%international%']);
+                $q->where('slug', 'international');
             })
             ->orderBy('name')
             ->get();
 
         $this->yatraDestinations = Destination::where('status', 1)
             ->whereHas('categories', function ($q) {
-                $q->where('slug', 'yatra')
-                    ->orWhereRaw('LOWER(name) LIKE ?', ['%yatra%']);
+                $q->where('slug', 'yatra');
             })
             ->orderBy('name')
             ->get();

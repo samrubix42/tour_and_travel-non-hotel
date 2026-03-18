@@ -93,31 +93,31 @@
                                </div>
                            </li>
                            --}}
-                           <li class="nav-item dropdown submenu">
-                               <a href="{{ route('destination') }}" class="nav-link">Yatra</a>
-                               <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                               <div class="dropdown-menu submenu-content" aria-labelledby="navbarDropdownMenuLink1">
-                                   <div class="d-lg-flex mega-menu m-auto flex-column">
-                                       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 mb-40px md-mb-25px xs-mb-15px">
-                                           @foreach(($yatraDestinations ?? collect())->chunk(8) as $chunk)
-                                           @foreach($chunk as $dest)
-                                           <div class="col">
-                                               <a href="{{ route('tour') }}?slug={{ $dest->slug }}" class="text-decoration-none text-dark d-block py-2">
-                                                   <div class="d-flex align-items-center justify-content-between">
-                                                       <div>
-                                                           <strong class="fs-14" style="font-size:14px;">{{ $dest->name }}</strong>
-                                                       </div>
-                                                       <i class="fa-solid fa-angle-right text-muted small"></i>
-                                                   </div>
-                                               </a>
-                                           </div>
-                                           @endforeach
-                                           @endforeach
-                                       </div>
+                            <li class="nav-item dropdown submenu">
+                                <a href="{{ route('destination') }}" class="nav-link">Yatra</a>
+                                <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <div class="dropdown-menu submenu-content" aria-labelledby="navbarDropdownMenuLink1">
+                                    <div class="d-lg-flex mega-menu m-auto flex-column">
+                                        <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 mb-40px md-mb-25px xs-mb-15px">
+                                            @foreach(($yatraDestinations ?? collect())->chunk(8) as $chunk)
+                                            @foreach($chunk as $dest)
+                                            <div class="col">
+                                                <a href="{{ route('tour') }}?slug={{ $dest->slug }}" class="text-decoration-none text-dark d-block py-2">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <strong class="fs-14" style="font-size:14px;">{{ $dest->name }}</strong>
+                                                        </div>
+                                                        <i class="fa-solid fa-angle-right text-muted small"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+                                        </div>
 
-                                   </div>
-                               </div>
-                           </li>
+                                    </div>
+                                </div>
+                            </li>
                            <li class="nav-item dropdown submenu">
                                <a href="{{ route('destination') }}" class="nav-link">Tours In India</a>
                                <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
@@ -143,30 +143,30 @@
                                    </div>
                                </div>
                            </li>
-                           <li class="nav-item dropdown submenu">
-                               <a href="{{ route('tour')}}" class="nav-link">International Tours</a>
-                               <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownIntl" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                               <div class="dropdown-menu submenu-content" aria-labelledby="navbarDropdownIntl">
-                                   <div class="d-lg-flex mega-menu m-auto flex-column">
-                                       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 mb-40px md-mb-25px xs-mb-15px">
-                                           @foreach($internationalPackages->chunk(8) as $chunk)
-                                           @foreach($chunk as $des)
-                                           <div class="col">
-                                               <a href="{{ route('tour', ['slug' => $des->slug]) }}" class="text-decoration-none text-dark d-block py-2">
-                                                   <div class="d-flex align-items-center justify-content-between">
-                                                       <div>
-                                                           <strong class="fs-14" style="font-size:14px;">{{ $des->name }}</strong>
-                                                       </div>
-                                                       <i class="fa-solid fa-angle-right text-muted small"></i>
-                                                   </div>
-                                               </a>
-                                           </div>
-                                           @endforeach
-                                           @endforeach
-                                       </div>
-                                   </div>
-                               </div>
-                           </li>
+                            <li class="nav-item dropdown submenu">
+                                <a href="{{ route('tour')}}" class="nav-link">International Tours</a>
+                                <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownIntl" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <div class="dropdown-menu submenu-content" aria-labelledby="navbarDropdownIntl">
+                                    <div class="d-lg-flex mega-menu m-auto flex-column">
+                                        <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 mb-40px md-mb-25px xs-mb-15px">
+                                            @foreach(($internationalPackages ?? collect())->chunk(8) as $chunk)
+                                            @foreach($chunk as $des)
+                                            <div class="col">
+                                                <a href="{{ route('tour') }}?slug={{ $des->slug }}" class="text-decoration-none text-dark d-block py-2">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <strong class="fs-14" style="font-size:14px;">{{ $des->name }}</strong>
+                                                        </div>
+                                                        <i class="fa-solid fa-angle-right text-muted small"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
 
 
                            <li class="nav-item">
