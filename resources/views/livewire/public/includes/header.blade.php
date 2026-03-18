@@ -1,6 +1,30 @@
    <header style="width: 100%;">
+        <style>
+            /* Header text color: gray/black */
+            .navbar .nav-link {
+                color: #35393c !important;
+            }
+            .navbar .nav-link:hover,
+            .navbar .nav-link:focus {
+                color: #2c3034 !important;
+            }
+            .navbar .header-icon i,
+            .navbar .header-icon a {
+                color: #373c41 !important;
+            }
+            /* Hamburger menu lines */
+            .navbar-toggler-line {
+                background-color: #35393c !important;
+            }
+            /* Icons, dropdown arrows, and feather icons */
+            .navbar .dropdown-toggle, 
+            .navbar .fa-angle-down, 
+            .navbar i[class*="feather-"] {
+                color: #35393c !important;
+            }
+        </style>
        <!-- start navigation -->
-       <nav class="navbar navbar-expand-lg bg-transparent  border-radius-6px md-border-radius-0px">
+       <nav class="navbar navbar-expand-lg" style="background-color:white;">
            <div class="container-fluid">
                <div class="col-lg-2 me-lg-0 me-auto " style="width">
                    <a class="" href="{{ route('home') }}" style="width: 100%;">

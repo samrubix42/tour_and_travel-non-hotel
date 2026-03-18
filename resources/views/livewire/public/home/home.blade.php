@@ -50,13 +50,12 @@
         <!-- end section -->
         <!-- start section -->
         <section class="position-relative pb-0 xs-pt-30px">
-            <div class="w-100 h-70px position-absolute top-minus-70px md-top-minus-50px left-0px" style="background-image:url('{{ asset("asset/images/demo-travel-agency-slider-07.png") }}');"></div>
+            <div class="w-100 h-70px position-absolute top-minus-70px md-top-minus-50px left-0px" style="background-image:url('{{ asset("asset/image/demo-travel-agency-slider-07.png") }}');"></div>
         </section>
         <!-- end section -->
         <!-- start section -->
         <section class="extra-big-section background-position-center-bottom background-size-contain background-no-repeat position-relative pt-0" style="background-image:url('{{ asset('asset/images/demo-travel-agency-home-bg-02.png') }}');">
             <div class="position-absolute left-0px bottom-minus-50px d-none d-lg-inline-block" data-bottom-top="transform: translateY(-50px)" data-top-bottom="transform: translateY(50px)">
-                <img src="{{ asset('asset/image/antique-brass-bell.png') }}" alt="Decorative brass bell" style="width:100px;max-width:100%;height:auto;" />
             </div>
 
             <div class="container background-position-right background-no-repeat sm-mb-10 xs-mb-15" style="background-image:url('{{ asset('asset/image/demo-travel-agency-home-bg.png') }}');">
@@ -148,7 +147,7 @@
 
 
         <!-- end section -->
-        <section class="bg-very-light-gray background-position-center-bottom background-size-contain background-no-repeat pt-2 pb-6" style="background-image:url('{{ asset('asset/images/demo-travel-agency-home-bg-05.png') }}');">
+        <section class="bg-very-light-gray background-position-center-bottom background-size-contain background-no-repeat pt-2 pb-6" style="background-image:url('{{ asset('asset/image/vecteezy_simple-clean-detailed-decorative-mandala-artwork-in-gold_53330311.jpg') }}');">
             <div class="container">
                 <div class="row justify-content-center mb-3">
                     <div class="col-lg-6 text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
@@ -199,7 +198,7 @@
             </div>
         </section>
         <!-- start section -->
-        <section class="pt-0">
+        <section class="pt-4">
             @foreach($categories as $category)
             <section class="pt-0">
                 <div class="container">
@@ -240,17 +239,17 @@
                             @endphp
                             <div class="swiper-slide">
                                 <a href="{{ url('/tour/' . ($p->slug ?? $p->id)) }}" class="d-block text-decoration-none">
-                                <div class="overflow-hidden border-radius-6px box-shadow-large">
-                                    <div class="image" style="height:240px; overflow:hidden;">
-                                        <img src="{{ $img }}" alt="{{ $p->title }}" style="width:100%; height:100%; object-fit:cover; display:block;">
-                                    </div>
-                                    <div class="bg-white p-35px position-relative">
-                                        <div class="bg-base-color ps-15px pe-15px fs-14 text-uppercase fw-500 d-inline-block text-white position-absolute right-0px top-0px">Customizable</div>
-                                        <div class="fs-24 fw-700 text-dark-gray"><span class="text-uppercase d-block fs-14 lh-18 fw-500 text-medium-gray">Starting At</span>{{ $p->price ? '₹' . number_format($p->price,2) : '—' }}</div>
-                                        <div class="mt-10px fs-18 text-dark-gray fw-500 lh-26 d-block">{{ $p->title }}</div>
+                                    <div class="overflow-hidden border-radius-6px box-shadow-large">
+                                        <div class="image" style="height:240px; overflow:hidden;">
+                                            <img src="{{ $img }}" alt="{{ $p->title }}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                                        </div>
+                                        <div class="bg-white p-35px position-relative">
+                                            <div class="bg-base-color ps-15px pe-15px fs-14 text-uppercase fw-500 d-inline-block text-white position-absolute right-0px top-0px">Customizable</div>
+                                            <div class="fs-24 fw-700 text-dark-gray"><span class="text-uppercase d-block fs-14 lh-18 fw-500 text-medium-gray">Starting At</span>{{ $p->price ? '₹' . number_format($p->price,2) : '—' }}</div>
+                                            <div class="mt-10px fs-18 text-dark-gray fw-500 lh-26 d-block">{{ $p->title }}</div>
 
+                                        </div>
                                     </div>
-                                </div>
                                 </a>
                             </div>
                             @endforeach
@@ -429,7 +428,7 @@
 
                 <!-- end section -->
                 <!-- start parallax style-1 -->
-                <section class="position-relative overlap-height" data-parallax-background-ratio="0.5" style="background-image: url('{{ asset('asset/image/pilgrimage-tours-img3.jpg') }}');">
+                <section class="position-relative overlap-height" data-parallax-background-ratio="0.5" style="background-image: url('{{ asset('asset/image/slider15.jpg') }}');">
                     <div class="opacity-extra-medium bg-gradient-gulf-blue-sepia-brown"></div>
                     <div class="container overlap-gap-section">
                         <div class="row justify-content-center align-items-center">
@@ -444,35 +443,7 @@
                 <!-- end parallax style-1 -->
                 <!-- start section -->
                 <section id="explore" class="cover-background overflow-visible" style="background-image: url('{{ asset('asset/image/demo-travel-agency-home-bg-03.jpg') }}');">
-                    <div class="container overlap-section">
-                        <div class="swiper slider-experiences bg-white border-radius-6px mx-0 ps-8 pe-8 lg-ps-3 lg-pe-3 pt-4 pb-4 sm-pt-8 sm-pb-8 xs-pt-15 xs-pb-40px" data-slider-options='{"spaceBetween":20,"loop":true,"autoplay":{"delay":3000,"disableOnInteraction":false},"pagination":{"el":".slider-experiences-pagination","clickable":true},"navigation":{"nextEl":".slider-experiences-next","prevEl":".slider-experiences-prev"},"breakpoints":{"1400":{"slidesPerView":5},"992":{"slidesPerView":4},"768":{"slidesPerView":3},"576":{"slidesPerView":2},"0":{"slidesPerView":1}}}'>
-                            <div class="swiper-wrapper align-items-center justify-content-center">
-                                @forelse($experiences ?? [] as $experience)
-                                <div class="swiper-slide text-center">
-                                    <a href="{{ route('tour') }}?experience={{ $experience->slug ?? $experience->id }}" class="d-block text-decoration-none">
-                                        <div class="mb-10px d-block mx-auto" style="width:70px;height:70px;overflow:hidden;border-radius:8px;">
-                                            <img src="{{ $experience->image ?? 'https://placehold.co/140x125' }}" alt="{{ $experience->name ?? 'Experience' }}" style="width:100%;height:100%;object-fit:cover;" />
-                                        </div>
-                                        <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px d-block mt-2">{{ $experience->name }}</span>
-                                    </a>
-                                </div>
-                                @empty
-                                <div class="swiper-slide text-center">
-                                    <div class="mb-10px d-block mx-auto" style="width:70px;height:70px;overflow:hidden;border-radius:8px;">
-                                        <img src="https://placehold.co/140x125" alt="No experiences" style="width:100%;height:100%;object-fit:cover;" />
-                                    </div>
-                                    <span class="alt-font fs-19 fw-600 text-dark-gray text-uppercase ls-minus-05px d-block mt-2">No experiences</span>
-                                </div>
-                                @endforelse
-                            </div>
-                            <div class="mt-2">
-                                <div class="swiper-pagination slider-experiences-pagination"></div>
 
-                            </div>
-                            <div class="swiper-button-prev slider-experiences-prev"><i class="bi bi-arrow-left-short icon-very-medium"></i></div>
-                            <div class="swiper-button-next slider-experiences-next"><i class="bi bi-arrow-right-short icon-very-medium"></i></div>
-                        </div>
-                    </div>
                     <div class="container">
                         <div class="row align-items-center justify-content-center" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
                             <div class="col-lg-3 md-mb-20px text-center text-lg-start">
@@ -544,7 +515,7 @@
                         <div class="row justify-content-center mb-2">
                             <div class="col-lg-7 text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                                 <span class="fw-500 text-base-color text-uppercase d-inline-block">Inspiring story</span>
-                                <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px">Travel blogs</h2>
+                                <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px">Yatra blogs</h2>
                             </div>
                         </div>
                         <div class="row">
