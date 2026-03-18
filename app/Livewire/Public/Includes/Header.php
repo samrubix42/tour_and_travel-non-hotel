@@ -23,8 +23,8 @@ class Header extends Component
     public function mount()
     {
         $this->destinations = Destination::where('status', 1)
-            ->whereDoesntHave('categories', function ($q) {
-                $q->where('slug', 'international');
+            ->whereHas('categories', function ($q) {
+                $q->where('slug', 'domestic');
             })
             ->orderBy('name')
             ->get();
