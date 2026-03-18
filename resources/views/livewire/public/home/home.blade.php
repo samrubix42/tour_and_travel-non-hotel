@@ -23,7 +23,8 @@
                 <div class="swiper-wrapper">
                     @foreach($banners as $banner)
                     <div class="swiper-slide cover-background" style="background-image:url('{{ $banner->image_url ?? asset($banner->storage_path) }}');">
-                        <div class="container h-100">
+                        <div class="opacity-light bg-black"></div>
+                        <div class="container h-100 position-relative z-index-1">
                             <div class="row align-items-center h-100 xl-ps-10 sm-ps-0">
                                 <div class="col-xxl-7 col-xl-10 text-white" style="margin-top: 80px;">
                                     <h1 class="fw-600">{{ $banner->title }}</h1>
