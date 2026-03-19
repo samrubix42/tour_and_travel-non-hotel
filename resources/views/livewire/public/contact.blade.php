@@ -5,7 +5,7 @@
     <meta name="keywords" content="{{ $page->meta_keywords ?? '' }}">
     @endsection
     <section class="page-title-button-style cover-background position-relative ipad-top-space-margin top-space-padding md-pt-20px"
-        style="background-image: url('{{ asset('asset/image/demo-travel-agency-about-title-bg.jpg') }}')">
+        style="background-image: url('{{ asset('asset/image/heli.webp') }}')">
         <div class="opacity-light bg-bay-of-many-blue"></div>
         <div class="container">
             <div class="row align-items-center justify-content-center extra-small-screen">
@@ -43,9 +43,9 @@
                     <div class="mb-60px text-center text-sm-start">
                         <span class="d-block alt-font fs-22 fw-500 text-dark-gray mb-5px">Keep in touch</span>
                         <p>{!! setting('address', '401 Broadway, 24th Floor,<br>Orchard View, London') !!}</p>
-                        <p  target="_blank" class="btn btn-link-gradient">Location map</p>
+                        <p target="_blank" class="btn btn-link-gradient">Location map</p>
                         <div style="margin-top: 20px;">
-                            
+
                             <iframe
                                 src="{{ setting('map_link', 'https://www.google.com/maps') }}"
                                 width="100%"
