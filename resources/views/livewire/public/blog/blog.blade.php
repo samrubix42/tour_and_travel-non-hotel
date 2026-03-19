@@ -4,7 +4,7 @@
     <meta name="description" content="{{ $page->meta_description ?? '' }}">
     <meta name="keywords" content="{{ $page->meta_keywords ?? '' }}">
     @endsection
-    <section class="page-title-button-style cover-background position-relative ipad-top-space-margin top-space-padding md-pt-20px" style="background-image: url('asset/image/demo-travel-agency-blog-title-bg.jpg')">
+    <section class="page-title-button-style cover-background position-relative ipad-top-space-margin top-space-padding md-pt-20px" style="background-image: url('asset/image/heli.webp')">
         <div class="opacity-light bg-bay-of-many-blue"></div>
         <div class="container">
             <div class="row align-items-center justify-content-center extra-small-screen">
@@ -57,16 +57,16 @@
         </div>
     </section>
     <script>
-        document.addEventListener('livewire:load', function () {
+        document.addEventListener('livewire:load', function() {
             function clearGridLoading() {
-                document.querySelectorAll('.grid-loading').forEach(function (el) {
+                document.querySelectorAll('.grid-loading').forEach(function(el) {
                     el.classList.remove('grid-loading');
                 });
             }
 
             clearGridLoading();
 
-            Livewire.hook('message.processed', function () {
+            Livewire.hook('message.processed', function() {
                 clearGridLoading();
             });
         });

@@ -22,7 +22,7 @@ class Tour extends Component
         $experienceSlug = request()->query('experience');
 
         // Default banner image
-        $bannerImage = asset('asset/image/bsr-travel-hero.jpg');
+        $bannerImage = asset('asset/image/heli.webp');
 
         $query = TourPackage::query()
             ->select('id', 'title', 'slug', 'description', 'price', 'featured_image')

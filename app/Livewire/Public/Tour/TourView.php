@@ -56,7 +56,7 @@ class TourView extends Component
         $meta_description = $this->package->meta_description ?? null;
         $meta_keywords = $this->package->meta_keywords ?? null;
 
-        $bannerImage = asset('asset/image/bsr-travel-hero.jpg');
+        $bannerImage = asset('asset/image/heli.webp');
 
         if (! empty($this->package->banner_image)) {
             $bannerImage = $this->package->banner_image;

@@ -31,7 +31,7 @@
             }
         }
     </style>
-    <section class="page-title-button-style cover-background position-relative ipad-top-space-margin top-space-padding md-pt-20px" style="background-image: url('asset/image/360_F_645812213_3kug4bUjG2JgVKHlAWEzlHtJbx7uT7hT.jpg')">
+    <section class="page-title-button-style cover-background position-relative ipad-top-space-margin top-space-padding md-pt-20px" style="background-image: url('asset/image/heli.webp')">
         <div class="opacity-light bg-bay-of-many-blue"></div>
         <div class="container">
             <div class="row align-items-center justify-content-center extra-small-screen">
