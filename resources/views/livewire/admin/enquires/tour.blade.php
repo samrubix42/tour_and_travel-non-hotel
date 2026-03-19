@@ -28,8 +28,7 @@
                         <th>Name</th>
                         <th>Destination</th>
                         <th>Contact</th>
-                        <th>Guests</th>
-                        <th>No. of Days</th>
+                        <th>No. of Person</th>
                         <th>Travel Date</th>
                         <th>When</th>
                         <th>Status</th>
@@ -60,8 +59,7 @@
                                 <div class="fw-600">{{ $c->phone ?? '-' }}</div>
                                 <div class="small-muted">{{ $c->ip ?? '' }}</div>
                             </td>
-                            <td class="small-muted">{{ $c->no_of_persons ?? '-' }}</td>
-                            <td class="small-muted">{{ $c->no_of_days ?? '-' }}</td>
+                            <td class="small-muted">{{ $c->no_of_person ?? '-' }}</td>
                             <td class="small-muted">{{ $c->travel_date ?? '-' }}</td>
                             <td class="small-muted">{{ $c->created_at->diffForHumans() }}<div class="small-muted">{{ $c->created_at->toDayDateTimeString() }}</div></td>
                             <td>
@@ -138,12 +136,8 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <strong>Guests</strong>
-                                <div class="small-muted">{{ $selectedContact->no_of_persons ?? '-' }}</div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <strong>No. of Days</strong>
-                                <div class="small-muted">{{ $selectedContact->no_of_days ?? '-' }}</div>
+                                <strong>No. of Person</strong>
+                                <div class="small-muted">{{ $selectedContact->no_of_person ?? '-' }}</div>
                             </div>
                         </div>
                         <div class="row">

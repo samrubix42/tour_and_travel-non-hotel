@@ -305,9 +305,9 @@
                                     @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="position-relative form-group mb-5px">
-                                    <span class="form-icon"><i class="bi bi-calendar3 icon-small"></i></span>
-                                    <input wire:model.defer="no_of_days" class="ps-0 border-radius-0px border-color-transparent-dark-very-light bg-transparent form-control @error('no_of_days') is-invalid @enderror" type="number" min="1" max="365" placeholder="No. of days" />
-                                    @error('no_of_days') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                    <span class="form-icon"><i class="bi bi-people icon-small"></i></span>
+                                    <input wire:model.defer="no_of_person" class="ps-0 border-radius-0px border-color-transparent-dark-very-light bg-transparent form-control @error('no_of_person') is-invalid @enderror" type="number" min="1" max="100" placeholder="No. of person" />
+                                    @error('no_of_person') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="position-relative form-group form-textarea mb-0">
                                     <textarea wire:model.defer="message" class="ps-0 border-radius-0px border-bottom border-color-transparent-dark-very-light bg-transparent form-control" placeholder="Your message" rows="2"></textarea>
