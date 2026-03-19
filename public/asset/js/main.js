@@ -2966,7 +2966,7 @@
      Magic cursor
      ====================================== */
 
-    if ($('.magic-cursor').length > 0) {
+    if (false && $('.magic-cursor').length > 0) {
         $('<div class="magic-cursor-wrapper"><div id="ball-cursor"><div id="ball-cursor-loader"></div></div></div>').clone(false).appendTo('body');
 
         if ($('.magic-cursor').hasClass('light')) {

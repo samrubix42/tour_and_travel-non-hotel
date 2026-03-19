@@ -2470,7 +2470,6 @@ input:focus, select:focus, textarea:focus, .form-control:focus {
 }
 /* Magic cursor */
 .magic-cursor {
-  cursor: none;
 }
 #ball-cursor {
   position: fixed;
