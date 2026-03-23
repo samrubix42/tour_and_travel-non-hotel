@@ -29,12 +29,12 @@
                <div class="col-lg-2 me-lg-0 me-auto " style="width">
                    <a class="" href="{{ route('home') }}" style="width: 100%;">
 
-                       <img src="{{ asset('asset/image/1000400474-removebg-preview.png') }}"
+                       <img src="{{ asset(setting('logo', 'asset/image/logo22.png')) }}"
                            alt="Logo"
                            class="home-logo">
                        <style>
                            .home-logo {
-                               height: 90px;
+                               height: 80px;
                                width: auto;
                                object-fit: contain;
                            }

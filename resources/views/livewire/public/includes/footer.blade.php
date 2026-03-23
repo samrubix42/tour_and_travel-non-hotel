@@ -10,7 +10,7 @@
             </div>
             <div class="col-lg-4 text-center mb-4 mb-lg-0">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('asset/image/1000400474-removebg-preview.png') }}" alt="Logo" class="footer-logo">
+                    <img src="{{ asset(setting('logo', 'asset/image/logo22.png')) }}" alt="Logo" class="footer-logo">
                 </a>
             </div>
             <div class="col-lg-4 text-center text-lg-end">

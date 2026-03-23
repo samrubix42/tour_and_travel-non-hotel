@@ -95,7 +95,6 @@
                     <!-- RIGHT IMAGE -->
                     <div class="col-lg-4 col-md-8 position-relative offset-lg-1 offset-md-4 ps-0 sm-ps-15px md-mt-50px">
                         <img src="{{ asset('asset/image/Kedarnath.webp') }}" class="border-radius-6px md-w-100" alt="">
-                        <img class="position-absolute left-minus-120px top-80px sm-top-0px sm-w-160px sm-left-0px" src="{{ asset('asset/images/demo-travel-agency-home-02.png') }}" alt="">
                     </div>
                 </div>
 
