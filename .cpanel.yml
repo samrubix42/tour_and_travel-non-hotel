@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/techldjy/travel.smartadvagency.com/
+    - export DEPLOYPATH=/home3/mobiyuln/heliyatraholidays.com/
     - /bin/cp -R * $DEPLOYPATH  
