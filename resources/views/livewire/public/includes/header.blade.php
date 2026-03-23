@@ -29,7 +29,7 @@
                <div class="col-lg-2 me-lg-0 me-auto " style="width">
                    <a class="" href="{{ route('home') }}" style="width: 100%;">
 
-                       <img src="{{ asset(setting('logo', 'asset/image/logo22.png')) }}"
+                       <img src="{{ asset(setting('logo') ?: 'asset/image/logo22.png') }}"
                            alt="Logo"
                            class="home-logo">
                        <style>
