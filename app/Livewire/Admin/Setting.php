@@ -31,9 +31,11 @@ class Setting extends Component
         'youtube' => '',
         'logo' => '',
         'favicon' => '',
+        'footer_logo' => '',
     ];
     public $logo;
     public $favicon;
+    public $footer_logo;
 
     public function mount(): void
     {
@@ -65,6 +67,14 @@ class Setting extends Component
             $favUrl = 'storage/' . $path;
             SettingModel::updateOrCreate(['key' => 'favicon'], ['value' => $favUrl]);
             $this->common['favicon'] = $favUrl;
+        }
+
+        // handle footer logo upload
+        if ($this->footer_logo) {
+            $path = $this->footer_logo->store('settings', 'public');
+            $fLogoUrl = 'storage/' . $path;
+            SettingModel::updateOrCreate(['key' => 'footer_logo'], ['value' => $fLogoUrl]);
+            $this->common['footer_logo'] = $fLogoUrl;
         }
 
         foreach ($this->common as $k => $v) {

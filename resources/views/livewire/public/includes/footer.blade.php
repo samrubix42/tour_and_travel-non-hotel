@@ -4,7 +4,7 @@
             <!-- Logo & About -->
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <a href="{{ route('home') }}" class="d-inline-block mb-3">
-                    <img src="{{ asset(setting('logo') ?: 'asset/image/logo22.png') }}" alt="{{ setting('site_name', 'Heliyatra Holidays') }}" class="footer-logo">
+                    <img src="{{ asset(setting('footer_logo') ?: (setting('logo') ?: 'asset/image/footer_img.png')) }}" alt="{{ setting('site_name', 'Heliyatra Holidays') }}" class="footer-logo {{ !setting('footer_logo') ? 'invert-logo' : '' }}">
                 </a>
                 <p class="fs-14 opacity-6 lh-24 mb-0 pe-lg-5">
                     {{ setting('footer_about', 'Discover handpicked travel experiences designed for comfort, value, and excitement. We specialize in making your spiritual and leisure journeys memorable.') }}
@@ -110,8 +110,9 @@
         .footer-logo {
             height: 50px;
             width: auto;
-            filter: brightness(0) invert(1);
         }
+
+     
 
         .footer-links li {
             margin-bottom: 10px;

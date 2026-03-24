@@ -211,6 +211,24 @@
                                 </div>
                             @endif
 
+                            <!-- Footer Logo -->
+                            <label class="form-label">Footer Logo</label>
+                            <input type="file" wire:model="footer_logo" accept="image/*" class="form-control mb-2">
+
+                            @if($footer_logo)
+                                <div class="bg-dark p-2 rounded mb-3 d-inline-block">
+                                    <img src="{{ $footer_logo->temporaryUrl() }}" class="img-fluid" style="max-height:50px;">
+                                </div>
+                            @elseif(!empty($settings['footer_logo']))
+                                <div class="bg-dark p-2 rounded mb-3 d-inline-block">
+                                    <img src="{{ asset($settings['footer_logo']) }}" class="img-fluid" style="max-height:50px;">
+                                </div>
+                            @else
+                                <div class="placeholder placeholder-wave rounded p-3 mb-3 bg-dark text-center text-white" style="width:100px;">
+                                    <i class="ti ti-file-image"></i>
+                                </div>
+                            @endif
+
                             <hr>
 
                             <h4 class="subheader">Quick Actions</h4>
