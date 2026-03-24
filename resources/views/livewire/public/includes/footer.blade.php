@@ -35,17 +35,23 @@
             <!-- Contact -->
             <div class="col-lg-4 col-md-12">
                 <h6 class="footer-title">Contact Information</h6>
-                <div class="footer-contact-item d-flex align-items-start mb-2">
-                    <i class="fa-solid fa-location-dot mt-1 me-2 text-orange fs-14" style="width: 16px; text-align: center;"></i>
-                    <span class="fs-14 opacity-7">{{ setting('address', 'South Extension I, New Delhi, 110049') }}</span>
+                
+                <div class="fs-14 opacity-7 lh-base contact-address-wrap mb-3">
+                    {!! setting('address', 'South Extension I, New Delhi, 110049') !!}
                 </div>
-                <div class="footer-contact-item d-flex align-items-center mb-2">
-                    <i class="fa-solid fa-envelope me-2 text-orange fs-14" style="width: 16px; text-align: center;"></i>
-                    <a href="mailto:{{ setting('email', 'info@chardhamheliyatra.in') }}" class="fs-14 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('email', 'info@chardhamheliyatra.in') }}</a>
+                
+                <div class="d-flex flex-column gap-2 mb-3">
+                    <a href="mailto:{{ setting('email', 'info@chardhamheliyatra.in') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('email', 'info@chardhamheliyatra.in') }}</a>
+                    @if(setting('email_hr'))
+                    <a href="mailto:{{ setting('email_hr') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('email_hr') }}</a>
+                    @endif
                 </div>
-                <div class="footer-contact-item d-flex align-items-center mb-3">
-                    <i class="fa-solid fa-phone me-2 text-orange fs-14" style="width: 16px; text-align: center;"></i>
-                    <a href="tel:{{ setting('phone', '+91-9411841092') }}" class="fs-14 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('phone', '+91-9411841092') }}</a>
+
+                <div class="d-flex flex-column gap-2 mb-4">
+                    <a href="tel:{{ setting('phone', '+91-9411841092') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('phone', '+91-9411841092') }}</a>
+                    @if(setting('phone_2'))
+                    <a href="tel:{{ setting('phone_2') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('phone_2') }}</a>
+                    @endif
                 </div>
                 
                 <div class="social-icons-wrapper d-flex gap-2">
@@ -144,6 +150,7 @@
             box-shadow: 0 4px 10px rgba(228, 91, 21, 0.2);
         }
 
+        .contact-address-wrap p { margin-bottom: 0 !important; }
         .text-orange { color: #e45b15; }
         .hover-opacity-10:hover { opacity: 1 !important; }
         .border-white-subtle { border-color: rgba(255, 255, 255, 0.05) !important; }
