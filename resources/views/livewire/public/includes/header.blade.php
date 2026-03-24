@@ -29,7 +29,7 @@
                <div class="col-lg-2 me-lg-0 me-auto " style="width">
                    <a class="" href="{{ route('home') }}" style="width: 100%;">
 
-                       <img src="{{ asset(setting('logo') ?: 'asset/image/logo22.png') }}"
+                       <img src="{{ asset(setting('logo') ? : 'asset/image/logo22.png') }}"
                            alt="Logo"
                            class="home-logo">
                        <style>
@@ -118,7 +118,7 @@
                            </li>
                            --}}
                             <li class="nav-item dropdown submenu">
-                                <a href="{{ route('destination') }}" class="nav-link">Yatra</a>
+                                <a href="{{ route('destination', ['categorySlug' => 'yatra']) }}" class="nav-link">Yatra</a>
                                 <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                                 <div class="dropdown-menu submenu-content" aria-labelledby="navbarDropdownMenuLink1">
                                     <div class="d-lg-flex mega-menu m-auto flex-column">
@@ -143,7 +143,7 @@
                                 </div>
                             </li>
                            <li class="nav-item dropdown submenu">
-                               <a href="{{ route('destination') }}" class="nav-link">Tours In India</a>
+                               <a href="{{ route('destination', ['categorySlug' => 'domestic']) }}" class="nav-link">Tours In India</a>
                                <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                                <div class="dropdown-menu submenu-content" aria-labelledby="navbarDropdownMenuLink1">
                                    <div class="d-lg-flex mega-menu m-auto flex-column">
@@ -168,7 +168,7 @@
                                </div>
                            </li>
                             <li class="nav-item dropdown submenu">
-                                <a href="{{ route('tour')}}" class="nav-link">International Tours</a>
+                                <a href="{{ route('destination', ['categorySlug' => 'international']) }}" class="nav-link">International Tours</a>
                                 <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownIntl" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                                 <div class="dropdown-menu submenu-content" aria-labelledby="navbarDropdownIntl">
                                     <div class="d-lg-flex mega-menu m-auto flex-column">

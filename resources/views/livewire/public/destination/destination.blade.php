@@ -44,8 +44,28 @@
     </section>
     <!-- end page title -->
     <!-- start section -->
-    <section class="position-relative">
+    <section class="position-relative pt-50px pb-0">
         <div class="h-110px position-absolute w-100 h-100 left-0px right-0px top-minus-70px" style="background-image:url('asset/images/demo-travel-agency-about-bg-02.png')"></div>
+        <div class="container">
+            <div class="row mb-5 justify-content-center">
+                <div class="col-12 text-center">
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <button wire:click="setFilter('all')" class="btn btn-medium btn-round-edge {{ $categorySlug === 'all' ? 'btn-dark-gray' : 'btn-transparent-light-gray text-dark-gray' }} transition-all">
+                            All Destinations
+                        </button>
+                        @foreach($categories as $category)
+                        <button wire:click="setFilter('{{ $category->slug }}')" class="btn btn-medium btn-round-edge {{ $categorySlug === $category->slug ? 'btn-dark-gray' : 'btn-transparent-light-gray text-dark-gray' }} transition-all">
+                            {{ $category->name }}
+                        </button>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- start section -->
+    <section class="position-relative p-0">
         <div class="container">
             <div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 justify-content-center mb-7 lg-mb-5 md-mb-10 sm-mb-0" data-anime='{ "el": "childs", "scale":[0.9,1], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 @foreach($destinations ?? collect() as $destination)
