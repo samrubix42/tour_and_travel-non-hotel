@@ -1,150 +1,125 @@
-<footer class="footer-dark mt-auto pb-0">
+<footer class="footer-compact mt-auto">
     <div class="container">
-        <!-- Top Bar -->
-        <div class="row align-items-center footer-top-bar">
-            <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
-                <span class="d-block text-uppercase fs-11 ls-1px text-light-gray-transparent">Send Email</span>
-                <a href="mailto:{{ setting('email', 'info@chardhamheliyatra.in') }}" class="fs-18 fw-600 footer-contact-link">
-                    {{ setting('email', 'info@chardhamheliyatra.in') }}
+        <div class="row py-2">
+            <!-- Logo & About -->
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <a href="{{ route('home') }}" class="d-inline-block mb-3">
+                    <img src="{{ asset(setting('logo') ?: 'asset/image/logo22.png') }}" alt="{{ setting('site_name', 'Heliyatra Holidays') }}" class="footer-logo">
                 </a>
-            </div>
-            <div class="col-lg-4 text-center mb-4 mb-lg-0">
-                <a href="{{ route('home') }}">
-                    <img src="{{ asset(setting('logo') ?: 'asset/image/logo22.png') }}" alt="Logo" class="footer-logo">
-                </a>
-            </div>
-            <div class="col-lg-4 text-center text-lg-end">
-                <span class="d-block text-uppercase fs-11 ls-1px text-light-gray-transparent">Call 24/7</span>
-                <a href="tel:{{ setting('phone', '+91-9411841092') }}" class="fs-18 fw-600 footer-contact-link">
-                    {{ setting('phone', '+91-9411841092') }}
-                </a>
-            </div>
-        </div>
-
-        <!-- Main Footer Links -->
-        <div class="row mt-5">
-            <!-- Explore -->
-            <div class="col-lg-3 col-sm-6 mb-5 mb-lg-0">
-                <h6 class="footer-title">Explore</h6>
-                <ul class="list-unstyled footer-links">
-                    <li><a href="{{ route('about') }}">About us</a></li>
-                    <li><a href="{{ route('tour') }}">Packages</a></li>
-                    <li><a href="{{ route('destination') }}">Gallery</a></li>
-                    <li><a href="{{ route('contact') }}">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Quick Links -->
-            <div class="col-lg-3 col-sm-6 mb-5 mb-lg-0">
-                <h6 class="footer-title">Quick Links</h6>
-                <ul class="list-unstyled footer-links">
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('destination') }}">Yatra</a></li>
-                    <li><a href="{{ route('tour') }}">Tours In India</a></li>
-                    <li><a href="{{ route('tour') }}">International Tours</a></li>
-                    <li><a href="{{ route('blog') }}">Blogs</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact/Address -->
-            <div class="col-lg-3 col-sm-6 mb-5 mb-lg-0">
-                <h6 class="footer-title">Contact</h6>
-                <p class="footer-text">
-                    H-46, 2nd Floor, South<br>
-                    Extension I, New Delhi, Delhi<br>
-                    110049
+                <p class="fs-14 opacity-6 lh-24 mb-0 pe-lg-5">
+                    {{ setting('footer_about', 'Discover handpicked travel experiences designed for comfort, value, and excitement. We specialize in making your spiritual and leisure journeys memorable.') }}
                 </p>
-                <div class="mt-4">
-                    <a href="tel:+918077365185" class="d-block footer-text mb-1">+91-8077365185</a>
-                    <a href="tel:+918602710001" class="d-block footer-text mb-3">+91-8602710001</a>
-                    <a href="mailto:ops@holidaysolution.in" class="d-block footer-text">ops@holidaysolution.in</a>
-                </div>
             </div>
 
-            <!-- Let's Connect -->
-            <div class="col-lg-3 col-sm-6">
-                <h6 class="footer-title">Let's Connect</h6>
-                <div class="social-icons-wrapper d-flex flex-wrap">
-                    <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <div class="w-100"></div>
-                    <a href="#" class="social-icon mt-2"><i class="fa-brands fa-youtube"></i></a>
+            <!-- Links -->
+            <div class="col-lg-2 col-md-3 col-6 mb-4 mb-lg-0">
+                <h6 class="footer-title">Company</h6>
+                <ul class="list-unstyled footer-links mb-0">
+                    <li><a href="{{ route('about') }}">About Us</a></li>
+                    <li><a href="{{ route('experience') }}">Experiences</a></li>
+                    <li><a href="{{ route('blog') }}">Travel Blog</a></li>
+                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="col-lg-2 col-md-3 col-6 mb-4 mb-lg-0">
+                <h6 class="footer-title">Destinations</h6>
+                <ul class="list-unstyled footer-links mb-0">
+                    <li><a href="{{ route('destination', ['categorySlug' => 'domestic']) }}">India Tours</a></li>
+                    <li><a href="{{ route('destination', ['categorySlug' => 'international']) }}">Global Tours</a></li>
+                    <li><a href="{{ route('destination', ['categorySlug' => 'yatra']) }}">Spiritual Yatra</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-lg-4 col-md-12">
+                <h6 class="footer-title">Contact Information</h6>
+                <div class="footer-contact-item d-flex align-items-start mb-2">
+                    <i class="fa-solid fa-location-dot mt-1 me-2 text-orange fs-14" style="width: 16px; text-align: center;"></i>
+                    <span class="fs-14 opacity-7">{{ setting('address', 'South Extension I, New Delhi, 110049') }}</span>
+                </div>
+                <div class="footer-contact-item d-flex align-items-center mb-2">
+                    <i class="fa-solid fa-envelope me-2 text-orange fs-14" style="width: 16px; text-align: center;"></i>
+                    <a href="mailto:{{ setting('email', 'info@chardhamheliyatra.in') }}" class="fs-14 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('email', 'info@chardhamheliyatra.in') }}</a>
+                </div>
+                <div class="footer-contact-item d-flex align-items-center mb-3">
+                    <i class="fa-solid fa-phone me-2 text-orange fs-14" style="width: 16px; text-align: center;"></i>
+                    <a href="tel:{{ setting('phone', '+91-9411841092') }}" class="fs-14 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('phone', '+91-9411841092') }}</a>
+                </div>
+                
+                <div class="social-icons-wrapper d-flex gap-2">
+                    @if(setting('facebook_link'))
+                    <a href="{{ setting('facebook_link') }}" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    @endif
+                    @if(setting('instagram_link'))
+                    <a href="{{ setting('instagram_link') }}" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    @endif
+                    @if(setting('twitter_link'))
+                    <a href="{{ setting('twitter_link') }}" target="_blank" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                    @endif
+                    @if(setting('whatsapp_number'))
+                    <a href="https://wa.me/{{ setting('whatsapp_number') }}" target="_blank" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+                    @endif
+                    @if(setting('linkedin_link'))
+                    <a href="{{ setting('linkedin_link') }}" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    @endif
+                    @if(setting('youtube_link'))
+                    <a href="{{ setting('youtube_link') }}" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                    @endif
                 </div>
             </div>
         </div>
 
         <!-- Copyright -->
-        <div class="row mt-5 pt-4 pb-4 border-top border-color-transparent-white">
-            <div class="col-12 text-center text-light-gray-transparent fs-13">
-                <p class="mb-0">&copy; {{ date('Y') }} Heliyatra Holidays. All rights reserved.</p>
+        <div class="row py-1 border-top border-white-subtle">
+            <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                <p class="mb-0 fs-12 opacity-5">&copy; {{ date('Y') }} {{ setting('site_name', 'Heliyatra Holidays') }}. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <div class="fs-12 opacity-5">
+                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none">Terms & Conditions</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Background Decoration matching the "Orange/Brown" request -->
     <style>
-        .footer-dark {
-            background-color: #352118 !important; /* Rich Dark Brown */
+        .footer-compact {
+            background-color: #1e110a;
             color: #ffffff;
-            padding-top: 60px;
-        }
-
-        .footer-top-bar {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 30px;
-            margin-bottom: 20px;
+            padding-bottom: 0px;
         }
 
         .footer-title {
-            color: #ffffff !important;
-            font-size: 20px;
+            color: #ffffff;
+            font-size: 14px;
             font-weight: 700;
-            margin-bottom: 30px;
-            text-transform: capitalize;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .footer-logo {
-            height: 70px;
+            height: 50px;
             width: auto;
-            filter: brightness(0) invert(1); /* Makes logo white if it was dark */
-        }
-
-        .text-light-gray-transparent {
-            color: rgba(255, 255, 255, 0.5) !important;
-        }
-
-        .footer-contact-link {
-            color: #ffffff !important;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .footer-contact-link:hover {
-            color: #f4b41a !important; /* Golden Orange hover */
-        }
-
-        .footer-links {
-            padding-left: 0;
-            list-style: none;
+            filter: brightness(0) invert(1);
         }
 
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        .footer-links a, .footer-text {
-            color: rgba(255, 255, 255, 0.7) !important;
-            font-size: 16px;
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-size: 14px;
             text-decoration: none;
-            transition: 0.3s;
-            line-height: normal;
+            transition: all 0.2s ease;
         }
 
         .footer-links a:hover {
-            color: #f4b41a !important;
+            color: #e45b15 !important;
             padding-left: 5px;
         }
 
@@ -152,34 +127,37 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 38px;
-            height: 38px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            margin-right: 12px;
+            width: 34px;
+            height: 34px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
             color: #ffffff !important;
+            font-size: 14px;
             text-decoration: none;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .social-icon:hover {
-            background: #f4b41a !important;
-            color: #352118 !important;
+            background: #e45b15;
+            color: #fff !important;
             transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(228, 91, 21, 0.2);
         }
 
-        .border-color-transparent-white {
-            border-color: rgba(255, 255, 255, 0.05) !important;
-        }
+        .text-orange { color: #e45b15; }
+        .hover-opacity-10:hover { opacity: 1 !important; }
+        .border-white-subtle { border-color: rgba(255, 255, 255, 0.05) !important; }
+        
+        .fs-12 { font-size: 12px; }
+        .fs-14 { font-size: 14px; }
+        .opacity-5 { opacity: 0.5; }
+        .opacity-6 { opacity: 0.6; }
+        .opacity-7 { opacity: 0.7; }
 
         @media (max-width: 991px) {
-            .footer-title {
-                margin-bottom: 20px;
-                font-size: 18px;
-            }
-            .footer-top-bar a {
-                font-size: 16px;
-            }
+            .footer-compact { padding-top: 10px; }
+            .footer-title { margin-top: 15px; margin-bottom: 15px; }
+            .footer-logo { height: 45px; }
         }
     </style>
 </footer>

@@ -142,26 +142,45 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Image (optional)</label>
+                                    <label class="form-label">Category Thumbnail (optional)</label>
                                     <input wire:model="imageFile" type="file" class="form-control @error('imageFile') is-invalid @enderror">
                                     @error('imageFile') <div class="invalid-feedback">{{ $message }}</div> @enderror
 
                                     <div wire:loading wire:target="imageFile" class="mt-2 small text-muted">
                                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                        Uploading image...
+                                        Uploading...
                                     </div>
 
                                     @if ($imageFile)
                                     <div class="mt-2">
-                                        <img src="{{ $imageFile->temporaryUrl() }}" alt="Preview" class="img-thumbnail" style="max-height:150px;">
+                                        <img src="{{ $imageFile->temporaryUrl() }}" alt="Preview" class="img-thumbnail" style="max-height:100px;">
                                     </div>
                                     @elseif ($category_image)
+                                    <div class="mt-2 text-center bg-light p-2 rounded">
+                                        <p class="small text-muted mb-1">Current Thumbnail</p>
+                                        <img src="{{ $category_image }}" alt="Current" class="img-thumbnail" style="max-height:100px;">
+                                    </div>
+                                    @endif
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Banner Image (High Res - Top Profile)</label>
+                                    <input wire:model="bannerFile" type="file" class="form-control @error('bannerFile') is-invalid @enderror">
+                                    @error('bannerFile') <div class="invalid-feedback">{{ $message }}</div> @enderror
+
+                                    <div wire:loading wire:target="bannerFile" class="mt-2 small text-muted">
+                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                        Uploading Banner...
+                                    </div>
+
+                                    @if ($bannerFile)
                                     <div class="mt-2">
-                                        @if(\Illuminate\Support\Str::startsWith($category_image, ['http://','https://']))
-                                        <img src="{{ $category_image }}" alt="Current" class="img-thumbnail" style="max-height:150px;">
-                                        @else
-                                        <img src="{{ asset('storage/' . $category_image) }}" alt="Current" class="img-thumbnail" style="max-height:150px;">
-                                        @endif
+                                        <img src="{{ $bannerFile->temporaryUrl() }}" alt="Banner Preview" class="img-thumbnail w-100" style="max-height:150px; object-fit: cover;">
+                                    </div>
+                                    @elseif ($banner_image)
+                                    <div class="mt-2 text-center bg-light p-2 rounded">
+                                        <p class="small text-muted mb-1">Current Banner</p>
+                                        <img src="{{ $banner_image }}" alt="Current Banner" class="img-thumbnail w-100" style="max-height:150px; object-fit: cover;">
                                     </div>
                                     @endif
                                 </div>

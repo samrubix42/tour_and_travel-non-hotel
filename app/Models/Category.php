@@ -22,7 +22,9 @@ class Category extends Model
         'status',
         'category_image',  
         'storage_path',        
-        'imagekit_file_id',    
+        'imagekit_file_id',
+        'banner_image',
+        'banner_storage_path',
     ];
 
     /**

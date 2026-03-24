@@ -31,13 +31,18 @@
             }
         }
     </style>
-    <section class="page-title-button-style cover-background position-relative ipad-top-space-margin top-space-padding md-pt-20px" style="background-image: url('asset/image/heli.webp')">
+    <section class="page-title-button-style cover-background position-relative ipad-top-space-margin top-space-padding md-pt-20px" 
+             style="background-image: url('{{ ($currentCategory && $currentCategory->banner_image) ? $currentCategory->banner_image : asset('asset/image/heli.webp') }}');">
         <div class="opacity-light bg-bay-of-many-blue"></div>
         <div class="container">
             <div class="row align-items-center justify-content-center extra-small-screen">
-                <div class="col-lg-6 col-md-8 position-relative text-center page-title-extra-large" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <h2 class="text-uppercase mb-10px alt-font text-white fw-500 bg-dark-gray border-radius-4px">Explore the world</h2>
-                    <h1 class="mb-0 text-white alt-font ls-minus-2px text-uppercase fw-600 text-shadow-double-large">Destinations</h1>
+                <div class="col-lg-8 col-md-10 position-relative text-center page-title-extra-large" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <h2 class="text-uppercase mb-10px alt-font text-white fw-500 bg-dark-gray border-radius-4px d-inline-block px-3">
+                        {{ $currentCategory ? 'Explore '.$currentCategory->name : 'Explore the world' }}
+                    </h2>
+                    <h1 class="mb-0 text-white alt-font ls-minus-2px text-uppercase fw-600 text-shadow-double-large">
+                        {{ $currentCategory ? $currentCategory->name : 'All Destinations' }}
+                    </h1>
                 </div>
             </div>
         </div>

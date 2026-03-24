@@ -32,6 +32,10 @@ class CategoryList extends Component
     public $imageFile;
     public $storage_path;
     public $imagekit_file_id;
+    
+    public $banner_image;
+    public $bannerFile;
+    public $banner_storage_path;
 
     protected function rules()
     {
@@ -43,6 +47,7 @@ class CategoryList extends Component
             'slug' => ['required', 'string', 'max:255', $uniqueRule],
             'status' => 'boolean',
             'imageFile' => 'nullable|image|max:1024',
+            'bannerFile' => 'nullable|image|max:2048',
         ];
     }
 
@@ -92,6 +97,8 @@ class CategoryList extends Component
         $this->category_image = $cat->category_image;
         $this->storage_path = $cat->storage_path;
         $this->imagekit_file_id = $cat->imagekit_file_id;
+        $this->banner_image = $cat->banner_image;
+        $this->banner_storage_path = $cat->banner_storage_path;
 
         $this->showModal = true;
     }
@@ -148,13 +155,42 @@ class CategoryList extends Component
             // Delete old image if replacing
             if ($this->categoryId) {
                 $existing = Category::findOrFail($this->categoryId);
-                // Delete old local file
                 if ($existing->storage_path) {
                     try { Storage::disk('public')->delete($existing->storage_path); } catch (\Throwable $e) {}
                 }
-                // Delete old ImageKit file
                 if ($existing->imagekit_file_id && $imageKit) {
                     try { $imageKit->deleteFile($existing->imagekit_file_id); } catch (\Throwable $e) {}
+                }
+            }
+        }
+
+        if ($this->bannerFile) {
+            $uploadedBannerUrl = null;
+            $imageKit = null;
+            $fileName = 'banner-' . (time() . '-' . Str::slug($this->name) . '.' . $this->bannerFile->extension());
+            
+            try {
+                $imageKit = app(ImageKitService::class);
+                $uploadResult = $imageKit->uploadToFolder($this->bannerFile->getRealPath(), $fileName, '/categories/banners');
+                if ($uploadResult) {
+                     if (is_object($uploadResult)) { $uploadedBannerUrl = $uploadResult->result->url ?? null; }
+                     elseif (is_array($uploadResult)) { $uploadedBannerUrl = $uploadResult['result']['url'] ?? null; }
+                }
+            } catch (\Throwable $e) {}
+
+            if ($uploadedBannerUrl) {
+                $data['banner_image'] = $uploadedBannerUrl;
+                $data['banner_storage_path'] = null;
+            } else {
+                $path = $this->bannerFile->store('categories/banners', 'public');
+                $data['banner_storage_path'] = $path;
+                $data['banner_image'] = asset('storage/' . $path);
+            }
+
+            if ($this->categoryId) {
+                $existing = Category::findOrFail($this->categoryId);
+                if ($existing->banner_storage_path) {
+                    try { Storage::disk('public')->delete($existing->banner_storage_path); } catch (\Throwable $e) {}
                 }
             }
         }
@@ -221,6 +257,9 @@ class CategoryList extends Component
         $this->storage_path = null;
         $this->imagekit_file_id = null;
         $this->imageFile = null;
+        $this->banner_image = null;
+        $this->banner_storage_path = null;
+        $this->bannerFile = null;
         $this->resetValidation();
     }
 }

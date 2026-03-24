@@ -43,10 +43,17 @@ class Destination extends Component
         // Get all categories to show in filter
         $categories = \App\Models\Category::where('status', true)->get();
 
+        // Get the current selected category for banner/metadata
+        $currentCategory = null;
+        if ($this->categorySlug && $this->categorySlug !== 'all') {
+            $currentCategory = \App\Models\Category::where('slug', $this->categorySlug)->first();
+        }
+
         return view('livewire.public.destination.destination', [
             'destinations' => $destinations,
             'page' => $page,
             'categories' => $categories,
+            'currentCategory' => $currentCategory,
         ]);
     }
 }
