@@ -193,9 +193,7 @@
                             </li>
 
 
-                           <li class="nav-item">
-                               <a href="{{ route('blog') }}" class="nav-link">Blogs</a>
-                           </li>
+                           
                            <li class="nav-item">
                                <a href="{{ route('about') }}" class="nav-link">About Us</a>
                            </li>
@@ -267,7 +265,7 @@
 
                            <!-- PHONE -->
                            <div class="header-search-icon icon">
-                               <a href="tel:02228899900">
+                               <a href="{{ setting('phone') ? 'tel:'.setting('phone') : '#' }}" class="header-search-form">
                                    <i class="feather icon-feather-phone"></i>
                                </a>
                            </div>

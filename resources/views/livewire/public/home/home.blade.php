@@ -510,6 +510,7 @@
                 </section>
                 <!-- end section -->
                 <!-- end section -->
+               {{--
                 <section class="bg-very-light-gray background-position-center-top background-no-repeat overlap-height" style="background-image:url('{{ asset('asset/images/demo-travel-agency-home-bg-04.png') }}');">
                     <div class="container overlap-gap-section">
                         <div class="row justify-content-center mb-2">
@@ -564,6 +565,7 @@
                         </div>
                     </div>
                 </section>
+               --}}
                 <!-- start section -->
                 <!-- start footer -->
 

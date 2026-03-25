@@ -23,7 +23,6 @@
                 <ul class="list-unstyled footer-links mb-0">
                     <li><a href="{{ route('about') }}">About Us</a></li>
                     <li><a href="{{ route('experience') }}">Experiences</a></li>
-                    <li><a href="{{ route('blog') }}">Travel Blog</a></li>
                     <li><a href="{{ route('contact') }}">Contact Us</a></li>
                     <li><a href="{{ route('contact') }}">Privacy Policy</a></li>
                     <li><a href="{{ route('contact') }}">Terms &amp; Conditions</a></li>

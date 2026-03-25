@@ -7,10 +7,28 @@
     <section class="page-title-button-style cover-background position-relative ipad-top-space-margin top-space-padding md-pt-20px" style="background-image: url('{{asset('asset/image/heli.webp')}}')">
         <div class="opacity-light bg-bay-of-many-blue"></div>
         <div class="container">
+            <style>
+                /* Scoped styles for About page profile social icons */
+                .about-profile .social-icon {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 8px;
+                    background: #f3f4f6;
+                    color: #374151 !important;
+                    font-size: 16px;
+                    text-decoration: none;
+                    transition: all .18s ease-in-out;
+                }
+                .about-profile .social-icon i { color: #374151; }
+                .about-profile .social-icon:hover { background: #e45b15; color: #fff !important; }
+            </style>
             <div class="row align-items-center justify-content-center extra-small-screen">
                 <div class="col-lg-6 col-md-8 position-relative text-center page-title-extra-large" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <h2 class="text-uppercase mb-10px alt-font text-white fw-500 bg-dark-gray border-radius-4px">Our journey</h2>
-                    <h1 class="mb-0 text-white alt-font ls-minus-2px text-uppercase fw-600 text-shadow-double-large">About us</h1>
+                    <h1 class="mb-0 text-white alt-font ls-minus-2px text-uppercase fw-600 text-shadow-double-large">About Heliyatra & Holidays</h1>
                 </div>
             </div>
         </div>
@@ -26,65 +44,31 @@
                         <div class="atropos-scale">
                             <div class="atropos-rotate">
                                 <div class="atropos-inner">
-                                    <img data-atropos-offset="5" src="{{ asset('asset/image/demo-travel-agency-about-01.jpg') }}" alt="">
+                                    <img data-atropos-offset="5" src="{{ asset('asset/image/traveler.jpg') }}" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <img class="position-absolute right-minus-20px md-right-70px bottom-100px xs-w-190px z-index-9" src="{{ asset('asset/images/demo-travel-agency-home-02.png') }}" alt="" data-bottom-top="transform: translateY(50px)" data-top-bottom="transform: translateY(-50px)">
                 </div>
                 <div class="col-xl-5 offset-xl-1 col-lg-6 text-center text-lg-start">
-                    <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px" data-anime='{ "el": "lines", "translateY": [30, 0], "opacity": [0,1], "delay":0, "staggervalue": 100, "easing": "easeOutQuad" }'>Discover the world's leading travel agency.</h1>
-                    <p class="w-85 md-w-100" data-anime='{ "el": "lines", "translateY": [30, 0], "opacity": [0,1], "delay":100, "staggervalue": 100, "easing": "easeOutQuad" }'>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since. Lorem ipsum is simply dummy text.</p>
+                    <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px" data-anime='{ "el": "lines", "translateY": [30, 0], "opacity": [0,1], "delay":0, "staggervalue": 100, "easing": "easeOutQuad" }'>Elevating Your Spiritual Quest for Over 12 Years </h1>
+                    <p class="w-85 md-w-100" data-anime='{ "el": "lines", "translateY": [30, 0], "opacity": [0,1], "delay":100, "staggervalue": 100, "easing": "easeOutQuad" }'> From the heart of New Delhi to the highest peaks of the Himalayas, we bridge the gap between devotion and accessibility. Founded by Naresh Sharma, an alumnus of JNV Bareilly, HeliYatra & Holidays was born from a vision to make India’s most sacred and remote shrines accessible to every pilgrim through specialized helicopter services and expert-led tours.</p>
                     <div class="d-inline-block mt-10px" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 800, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <a href="demo-travel-agency-destinations.html" class="btn btn-large btn-dark-gray btn-round-edge btn-hover-animation btn-box-shadow me-25px xs-me-15px">
+                        <a href="{{ route('destination') }}" class="btn btn-large btn-dark-gray btn-round-edge btn-hover-animation btn-box-shadow me-25px xs-me-15px">
                             <span>
                                 <span class="btn-text">Destinations</span>
                                 <span class="btn-icon"><i class="feather icon-feather-map-pin"></i></span>
                             </span>
                         </a>
-                        <a href="mailto:info@domain.com" class="btn btn-link-gradient expand btn-extra-large text-dark-gray text-dark-gray-hover ls-0px">info@domain.com<span class="bg-dark-gray"></span></a>
+                        <a href="mailto:info@heliyatraholidays.com" class="btn btn-link-gradient expand btn-extra-large text-dark-gray text-dark-gray-hover ls-0px">info@heliyatraholidays.com<span class="bg-dark-gray"></span></a>
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center align-items-center mb-5 sm-mb-40px" data-anime='{ "el": "childs", "translateY": [50, 0],"perspective": [1200,1200], "scale": [0.9,1], "rotateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                <div class="col md-mb-30px">
-                    <div class="border border-color-extra-medium-gray border-radius-6px text-center box-shadow-quadruple-large">
-                        <div class="pt-10 pb-10">
-                            <img src="{{ asset('asset/images/demo-hotel-and-resort-client-01.svg') }}" class="h-60px" alt="" />
-                        </div>
-                        <div class="border-top border-1 border-color-extra-medium-gray p-15px last-paragraph-no-margin">
-                            <p class="text-dark-gray fw-500">2019 - Best of the best</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col md-mb-30px">
-                    <div class="border border-color-extra-medium-gray border-radius-6px text-center box-shadow-quadruple-large">
-                        <div class="pt-10 pb-10">
-                            <img src="{{ asset('asset/images/demo-hotel-and-resort-client-02.svg') }}" class="h-60px" alt="" />
-                        </div>
-                        <div class="border-top border-1 border-color-extra-medium-gray p-15px last-paragraph-no-margin">
-                            <p class="text-dark-gray fw-500">2020 - Travel of excellence</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="border border-color-extra-medium-gray border-radius-6px text-center box-shadow-quadruple-large">
-                        <div class="pt-10 pb-10">
-                            <img src="{{ asset('asset/images/demo-hotel-and-resort-client-03.svg') }}" class="h-60px" alt="" />
-                        </div>
-                        <div class="border-top border-1 border-color-extra-medium-gray p-15px last-paragraph-no-margin">
-                            <p class="text-dark-gray fw-500">2021 - Responsible tourism</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
             <div class="row justify-content-center mb-6 md-mb-8 xs-mb-60px" data-anime='{ "translateX": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
                 <div class="col-auto text-center last-paragraph-no-margin">
-                    <div class="d-inline-block align-middle me-5px">
-                        <img src="https://placehold.co/80x100" class="w-35px" alt="">
-                    </div>
-                    <div class="d-inline-block text-dark-gray alt-font fs-30 align-middle ls-minus-1px">10 Years of experience and achieved some <span class="text-decoration-line-bottom fw-600 text-dark-gray">honorable awards.</span></div>
+                   
+                    <div class="d-inline-block text-dark-gray alt-font fs-30 align-middle ls-minus-1px">12 Years of experience and achieved some <span class="text-decoration-line-bottom fw-600 text-dark-gray">honorable awards.</span></div>
                 </div>
             </div>
         </div>
@@ -105,10 +89,10 @@
                     <div class="position-relative overflow-hidden border-radius-6px last-paragraph-no-margin">
                         <figure class="m-0">
                             <div class="bg-gradient-gray-light-dark-transparent position-absolute top-0px left-0px w-100 h-100 z-index-1"></div>
-                            <img src="https://placehold.co/800x1100" alt="" />
+                            <img src="{{asset('asset/image/point1.jpg')}}" alt="" />
                             <figcaption class="d-flex flex-column w-100 h-100 p-60px lg-p-35px z-index-1">
-                                <span class="mb-auto fs-24 text-white text-white-hover w-90 lg-w-100">Preferred style of accommodation.</span>
-                                <a href="demo-travel-agency-reviews.html" class="align-self-start fs-16 fw-500 ls-1px text-uppercase text-white"><i class="bi bi-bookmark-heart align-middle icon-extra-medium me-10px"></i>Superior service</a>
+                                <span class="mb-auto fs-24 text-white text-white-hover w-90 lg-w-100">Helicopter Yatra Specialists</span>
+                                <a href="demo-travel-agency-reviews.html" class="align-self-start fs-16 fw-500 ls-1px text-uppercase text-white"><i class="bi bi-bookmark-heart align-middle icon-extra-medium me-10px"></i> We are industry leaders in organizing seamless aerial transfers to India's most remote shrines, making difficult pilgrimages accessible and efficient, especially for elderly and time-constrained travelers.</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -119,10 +103,10 @@
                     <div class="position-relative overflow-hidden border-radius-6px last-paragraph-no-margin">
                         <figure class="m-0">
                             <div class="bg-gradient-gray-light-dark-transparent position-absolute top-0px left-0px w-100 h-100 z-index-1"></div>
-                            <img src="https://placehold.co/800x1100" alt="" />
+                            <img src="{{asset('asset/image/point2.jpg')}}" alt="" />
                             <figcaption class="d-flex flex-column w-100 h-100 p-60px lg-p-35px z-index-1">
-                                <span class="mb-auto fs-24 text-white text-white-hover w-90 lg-w-100">Our local guides and tour directors.</span>
-                                <a href="demo-travel-agency-reviews.html" class="align-self-start fs-16 fw-500 ls-1px text-uppercase text-white"><i class="bi bi-award align-middle icon-extra-medium me-10px"></i>Greatest guides</a>
+                                <span class="mb-auto fs-24 text-white text-white-hover w-90 lg-w-100">12+ Years of Trusted Expertise.</span>
+                                <a href="demo-travel-agency-reviews.html" class="align-self-start fs-16 fw-500 ls-1px text-uppercase text-white"><i class="bi bi-award align-middle icon-extra-medium me-10px"></i>With a decade-plus legacy built on the trust of thousands of pilgrims, our seasoned team provides unrivaled reliability, safety, and operational excellence from our base in New Delhi.</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -133,10 +117,10 @@
                     <div class="position-relative overflow-hidden border-radius-6px last-paragraph-no-margin">
                         <figure class="m-0">
                             <div class="bg-gradient-gray-light-dark-transparent position-absolute top-0px left-0px w-100 h-100 z-index-1"></div>
-                            <img src="https://placehold.co/800x1100" alt="" />
+                            <img src="{{asset('asset/image/point3.jpg')}}" alt="" />
                             <figcaption class="d-flex flex-column w-100 h-100 p-60px lg-p-35px z-index-1">
-                                <span class="mb-auto fs-24 text-white text-white-hover w-90 lg-w-100">The best consumer protection plan.</span>
-                                <a href="demo-travel-agency-reviews.html" class="align-self-start fs-16 fw-500 ls-1px text-uppercase text-white"><i class="bi bi-shield-check align-middle icon-extra-medium me-10px"></i>Fully protected</a>
+                                <span class="mb-auto fs-24 text-white text-white-hover w-90 lg-w-100">Comprehensive End-to-End Care.</span>
+                                <a href="demo-travel-agency-reviews.html" class="align-self-start fs-16 fw-500 ls-1px text-uppercase text-white"><i class="bi bi-shield-check align-middle icon-extra-medium me-10px"></i>We provide a total peace-of-mind guarantee, offering 24/7 on-ground support, expert local guides with deep traditional knowledge, and robust consumer protection plans throughout your sacred journey.</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -160,83 +144,24 @@
                     <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px">Travel expert</h2>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2" data-anime='{ "el": "childs", "perspective": [1000,1200], "scale": [1.05, 1], "rotateY": [-30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                <!-- start team member item -->
-                <div class="col text-center team-style-01 mb-3 md-mb-30px">
-                    <figure class="mb-0 hover-box box-hover position-relative">
-                        <img src="https://placehold.co/600x736" alt="" class="border-radius-6px" />
-                        <figcaption class="w-100 p-35px bg-white">
-                            <div class="position-relative z-index-1 overflow-hidden">
-                                <span class="d-block fw-600 fs-18 text-dark-gray lh-24">Jeremy dupont</span>
-                                <p class="m-0">Executive officer</p>
-                                <div class="social-icon hover-text mt-20px">
-                                    <a href="https://www.facebook.com/" target="_blank" class="fw-600 text-dark-gray">Fb.</a>
-                                    <a href="https://www.instagram.com/" target="_blank" class="fw-600 text-dark-gray">In.</a>
-                                    <a href="https://www.twitter.com/" target="_blank" class="fw-600 text-dark-gray">Tw.</a>
-                                    <a href="https://dribbble.com/" target="_blank" class="fw-600 text-dark-gray">Dr.</a>
-                                </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="bg-white border-radius-8 p-4 p-lg-5 d-flex flex-column flex-lg-row align-items-center about-profile" style="box-shadow:0 10px 30px rgba(16,24,40,0.06);">
+                        <div class="flex-shrink-0 text-center mb-3 mb-lg-0" style="width:220px;">
+                            <img src="{{ asset('asset/image/naresh.png') }}" alt="Naresh Sharma" class="rounded-circle" style="width:160px;height:160px;object-fit:cover;border:6px solid #fff;box-shadow:0 12px 30px rgba(0,0,0,0.12);display:inline-block;">
+                        </div>
+                        <div class="ps-lg-4 flex-grow-1 text-center text-lg-start">
+                            <h3 class="fw-700 mb-1">Naresh Sharma</h3>
+                            <p class="text-muted mb-2">Co-founder &amp; Managing Director</p>
+                            <p class="mb-3">An alumnus of JNV Bareilly, Naresh brings over 12 years of experience in the travel and hospitality sector. His passion for religious tourism and his commitment to streamlining difficult pilgrimages have been the driving force behind HeliYatra’s success.</p>
+                            <div class="d-flex justify-content-center justify-content-lg-start gap-2">
+                                <a href="https://www.facebook.com/nareshsharmajnv" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/naresh_sharma_jnv" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/naresh-sharma-b72a98201" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://www.youtube.com/@nareshsharmajnv" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
                             </div>
-                            <div class="box-overlay bg-white box-shadow-quadruple-large border-radius-6px"></div>
-                        </figcaption>
-                    </figure>
-                </div>
-                <!-- end team member item -->
-                <!-- start team member item -->
-                <div class="col text-center team-style-01 mb-3 md-mb-30px">
-                    <figure class="mb-0 hover-box box-hover position-relative">
-                        <img src="https://placehold.co/600x736" alt="" class="border-radius-6px" />
-                        <figcaption class="w-100 p-35px bg-white">
-                            <div class="position-relative z-index-1 overflow-hidden">
-                                <span class="d-block fw-600 fs-18 text-dark-gray lh-24">Jessica dover</span>
-                                <p class="m-0">Vice president</p>
-                                <div class="social-icon hover-text mt-20px">
-                                    <a href="https://www.facebook.com/" target="_blank" class="fw-600 text-dark-gray">Fb.</a>
-                                    <a href="https://www.instagram.com/" target="_blank" class="fw-600 text-dark-gray">In.</a>
-                                    <a href="https://www.twitter.com/" target="_blank" class="fw-600 text-dark-gray">Tw.</a>
-                                    <a href="https://dribbble.com/" target="_blank" class="fw-600 text-dark-gray">Dr.</a>
-                                </div>
-                            </div>
-                            <div class="box-overlay bg-white box-shadow-quadruple-large border-radius-6px"></div>
-                        </figcaption>
-                    </figure>
-                </div>
-                <!-- end team member item -->
-                <!-- start team member item -->
-                <div class="col text-center team-style-01 mb-3 md-mb-30px">
-                    <figure class="mb-0 hover-box box-hover position-relative">
-                        <img src="https://placehold.co/600x736" alt="" class="border-radius-6px" />
-                        <figcaption class="w-100 p-35px bg-white">
-                            <div class="position-relative z-index-1 overflow-hidden">
-                                <span class="d-block fw-600 fs-18 text-dark-gray lh-24">Matthew taylor</span>
-                                <p class="m-0">Financial officer</p>
-                                <div class="social-icon hover-text mt-20px">
-                                    <a href="https://www.facebook.com/" target="_blank" class="fw-600 text-dark-gray">Fb.</a>
-                                    <a href="https://www.instagram.com/" target="_blank" class="fw-600 text-dark-gray">In.</a>
-                                    <a href="https://www.twitter.com/" target="_blank" class="fw-600 text-dark-gray">Tw.</a>
-                                    <a href="https://dribbble.com/" target="_blank" class="fw-600 text-dark-gray">Dr.</a>
-                                </div>
-                            </div>
-                            <div class="box-overlay bg-white box-shadow-quadruple-large border-radius-6px"></div>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col text-center team-style-01 mb-3 md-mb-30px xs-mb-0">
-                    <figure class="mb-0 hover-box box-hover position-relative">
-                        <img src="https://placehold.co/600x736" alt="" class="border-radius-6px" />
-                        <figcaption class="w-100 p-35px bg-white">
-                            <div class="position-relative z-index-1 overflow-hidden">
-                                <span class="d-block fw-600 fs-18 text-dark-gray lh-24">Daniel james</span>
-                                <p class="m-0">People officer</p>
-                                <div class="social-icon hover-text mt-20px">
-                                    <a href="https://www.facebook.com/" target="_blank" class="fw-600 text-dark-gray">Fb.</a>
-                                    <a href="https://www.instagram.com/" target="_blank" class="fw-600 text-dark-gray">In.</a>
-                                    <a href="https://www.twitter.com/" target="_blank" class="fw-600 text-dark-gray">Tw.</a>
-                                    <a href="https://dribbble.com/" target="_blank" class="fw-600 text-dark-gray">Dr.</a>
-                                </div>
-                            </div>
-                            <div class="box-overlay bg-white box-shadow-quadruple-large border-radius-6px"></div>
-                        </figcaption>
-                    </figure>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
