@@ -6,9 +6,15 @@
                 <a href="{{ route('home') }}" class="d-inline-block mb-3">
                     <img src="{{ asset(setting('footer_logo') ?: (setting('logo') ?: 'asset/image/footer_img.png')) }}" alt="{{ setting('site_name', 'Heliyatra Holidays') }}" class="footer-logo {{ !setting('footer_logo') ? 'invert-logo' : '' }}">
                 </a>
-                <p class="fs-14 opacity-6 lh-24 mb-0 pe-lg-5">
+                <p class="fs-14 opacity-6 lh-24 mb-0 pe-lg-5 footer-about">
                     {{ setting('footer_about', 'Discover handpicked travel experiences designed for comfort, value, and excitement. We specialize in making your spiritual and leisure journeys memorable.') }}
                 </p>
+                <div class="mt-3 d-flex gap-2">
+                    <a href="https://www.youtube.com/@nareshsharmajnv" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/nareshsharmajnv" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/naresh_sharma_jnv" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/naresh-sharma-b72a98201" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
             </div>
 
             <!-- Links -->
@@ -19,6 +25,9 @@
                     <li><a href="{{ route('experience') }}">Experiences</a></li>
                     <li><a href="{{ route('blog') }}">Travel Blog</a></li>
                     <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                    <li><a href="{{ route('contact') }}">Privacy Policy</a></li>
+                    <li><a href="{{ route('contact') }}">Terms &amp; Conditions</a></li>
+                    <li><a href="https://www.chardhamheliyatra.in/" target="_blank" rel="noopener noreferrer">Chardham Heliyatra</a></li>
                 </ul>
             </div>
 
@@ -37,20 +46,23 @@
                 <h6 class="footer-title">Contact Information</h6>
                 
                 <div class="fs-14 opacity-7 lh-base contact-address-wrap mb-3">
-                    {!! setting('address', 'South Extension I, New Delhi, 110049') !!}
+                    <div class="d-flex align-items-start">
+                        <i class="fa-solid fa-location-dot me-2 text-white opacity-7" aria-hidden="true"></i>
+                        <div>{!! setting('address', 'South Extension I, New Delhi, 110049') !!}</div>
+                    </div>
                 </div>
                 
                 <div class="d-flex flex-column gap-2 mb-3">
-                    <a href="mailto:{{ setting('email', 'info@chardhamheliyatra.in') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('email', 'info@chardhamheliyatra.in') }}</a>
+                    <a href="mailto:{{ setting('email', 'info@chardhamheliyatra.in') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10"><i class="fa-solid fa-envelope me-2 text-white opacity-7" aria-hidden="true"></i>{{ setting('email', 'info@chardhamheliyatra.in') }}</a>
                     @if(setting('email_hr'))
-                    <a href="mailto:{{ setting('email_hr') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('email_hr') }}</a>
+                    <a href="mailto:{{ setting('email_hr') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10"><i class="fa-solid fa-envelope me-2 text-white opacity-7" aria-hidden="true"></i>{{ setting('email_hr') }}</a>
                     @endif
                 </div>
 
                 <div class="d-flex flex-column gap-2 mb-4">
-                    <a href="tel:{{ setting('phone', '+91-9411841092') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('phone', '+91-9411841092') }}</a>
+                    <a href="tel:{{ setting('phone', '+91-9411841092') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10"><i class="fa-solid fa-phone me-2 text-white opacity-7" aria-hidden="true"></i>{{ setting('phone', '+91-9411841092') }}</a>
                     @if(setting('phone_2'))
-                    <a href="tel:{{ setting('phone_2') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10">{{ setting('phone_2') }}</a>
+                    <a href="tel:{{ setting('phone_2') }}" class="fs-14 lh-1 text-white text-decoration-none opacity-7 hover-opacity-10"><i class="fa-solid fa-phone me-2 text-white opacity-7" aria-hidden="true"></i>{{ setting('phone_2') }}</a>
                     @endif
                 </div>
                 
@@ -84,8 +96,7 @@
             </div>
             <div class="col-md-6 text-center text-md-end">
                 <div class="fs-12 opacity-5">
-                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
-                    <a href="#" class="text-white text-decoration-none">Terms & Conditions</a>
+                    <a href="https://techonika.com" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-none">Made by Techonika</a>
                 </div>
             </div>
         </div>
@@ -161,6 +172,19 @@
         .opacity-5 { opacity: 0.5; }
         .opacity-6 { opacity: 0.6; }
         .opacity-7 { opacity: 0.7; }
+
+        /* Footer about paragraph justification */
+        .footer-about { text-align: justify; text-align-last: left; text-justify: inter-word; }
+
+        /* Tweak location icon alignment in footer */
+        .contact-address-wrap .fa-location-dot {
+            font-size: 15px;
+            margin-top: 3px;
+            margin-right: 8px;
+            line-height: 1;
+            transform: translateY(1px);
+            opacity: 0.85;
+        }
 
         @media (max-width: 991px) {
             .footer-compact { padding-top: 10px; }

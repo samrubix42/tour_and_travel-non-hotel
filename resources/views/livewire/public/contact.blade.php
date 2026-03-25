@@ -39,12 +39,22 @@
                         <a href="tel:{{ setting('phone', '1-800-222-000') }}">{{ setting('phone', '1-800-222-000') }}</a><br>
                         <a href="tel:{{ setting('phone_2', '1-800-222-002') }}">{{ setting('phone_2', '1-800-222-002') }}</a>
                     </div>
+                            <div class="text-center text-sm-start">
+                        <span class="d-block alt-font fs-22 fw-500 text-dark-gray mb-5px">Need live support</span>
+                        <a href="mailto:{{ setting('email', 'info@yourdomain.com') }}">{{ setting('email', 'info@yourdomain.com') }}</a><br>
+                        <a href="mailto:{{ setting('email_hr', 'hr@yourdomain.com') }}">{{ setting('email_hr', 'hr@yourdomain.com') }}</a>
+                    </div>
 
-                    <div class="mb-60px text-center text-sm-start">
+                    <div class="mb-60px text-center text-sm-start" style="padding-top:10px">
                         <span class="d-block alt-font fs-22 fw-500 text-dark-gray mb-5px">Keep in touch</span>
-                        <p>{!! setting('address', '401 Broadway, 24th Floor,<br>Orchard View, London') !!}</p>
+                        <div class="d-flex align-items-start gap-2 mb-2">
+                            <div>{!! setting('address', '401 Broadway, 24th Floor,<br>Orchard View, London') !!}</div>
+                        </div>
+
                         <p target="_blank" class="btn btn-link-gradient">Location map</p>
                         <div style="margin-top: 20px;">
+
+                        
 
                             <iframe
                                 src="{{ setting('map_link', 'https://www.google.com/maps') }}"
@@ -56,13 +66,19 @@
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
                         </div>
+                        <div class="mt-3">
+                            <h6 class="alt-font fs-16 fw-600 text-dark-gray mb-2">Follow Us</h6>
+                            <div class="d-flex gap-2">
+                                    <a href="https://www.youtube.com/@nareshsharmajnv" target="_blank" rel="noopener noreferrer" class="contact-social"><i class="fa-brands fa-youtube" style="color:#000;"></i></a>
+                                    <a href="https://www.facebook.com/nareshsharmajnv" target="_blank" rel="noopener noreferrer" class="contact-social"><i class="fa-brands fa-facebook-f" style="color:#000;"></i></a>
+                                    <a href="https://www.instagram.com/naresh_sharma_jnv" target="_blank" rel="noopener noreferrer" class="contact-social"><i class="fa-brands fa-instagram" style="color:#000;"></i></a>
+                                    <a href="https://www.linkedin.com/in/naresh-sharma-b72a98201" target="_blank" rel="noopener noreferrer" class="contact-social"><i class="fa-brands fa-linkedin-in" style="color:#000;"></i></a>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="text-center text-sm-start">
-                        <span class="d-block alt-font fs-22 fw-500 text-dark-gray mb-5px">Need live support</span>
-                        <a href="mailto:{{ setting('email', 'info@yourdomain.com') }}">{{ setting('email', 'info@yourdomain.com') }}</a><br>
-                        <a href="mailto:{{ setting('email_hr', 'hr@yourdomain.com') }}">{{ setting('email_hr', 'hr@yourdomain.com') }}</a>
-                    </div>
+
+
                 </div>
 
                 <!-- Right Panel (Livewire Form) -->
@@ -71,7 +87,7 @@
 
                         <!-- Side Image -->
                         <div class="col cover-background sm-h-550px xs-h-450px"
-                            style="background-image: url('{{ asset('asset/image/demo-travel-agency-contact-01.jpg') }}')">
+                            style="background-image: url('{{ asset('asset/image/painting-indian-lord-shiva-with-trident-white-background_802140-12257.jpg') }}')">
                         </div>
 
                         <!-- Form -->
@@ -154,11 +170,10 @@
 
                 <div class="col-12 col-md-auto elements-social social-icon-style-04 text-center text-md-start">
                     <ul class="large-icon dark">
-                        <li><a href="{{ setting('facebook', '#') }}"><i class="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a href="{{ setting('dribbble', '#') }}"><i class="fa-brands fa-dribbble"></i></a></li>
-                        <li><a href="{{ setting('twitter', '#') }}"><i class="fa-brands fa-twitter"></i></a></li>
-                        <li><a href="{{ setting('instagram', '#') }}"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="{{ setting('linkedin', '#') }}"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="https://www.youtube.com/@nareshsharmajnv" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a></li>
+                        <li><a href="https://www.facebook.com/nareshsharmajnv" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/naresh_sharma_jnv" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/naresh-sharma-b72a98201" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>

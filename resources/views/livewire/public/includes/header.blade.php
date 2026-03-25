@@ -304,6 +304,25 @@
                animation: fadeIn 0.3s ease;
            }
 
+           /* Ensure container is truly centered and responsive */
+           .search-container {
+               box-sizing: border-box;
+               margin: 0 auto !important;
+               left: 0;
+               right: 0;
+               position: relative;
+               display: flex;
+               flex-direction: column;
+               align-items: stretch;
+               width: calc(100% - 40px);
+               max-width: 680px;
+               padding: 24px !important;
+           }
+
+           @media (min-width: 700px) {
+               .search-container { width: 100%; max-width: 600px; }
+           }
+
            /* Title */
            .search-title {
                text-align: center;
@@ -352,7 +371,7 @@
                padding: 12px;
                border-radius: 8px;
                text-decoration: none;
-               color: #333;
+               color: #333 !important;
                transition: 0.2s;
            }
 
@@ -360,9 +379,67 @@
                background: #f5f5f5;
            }
 
+           /* Ensure text inside search container is visible even if global header styles apply */
+           .search-container,
+           .search-container * {
+               color: #111 !important;
+           }
+
+           .search-item i,
+           .search-item .feather {
+               color: #666 !important;
+           }
+
+           /* Extra overrides to ensure visibility */
+           .search-container {
+               background: #fff !important;
+               z-index: 10000;
+           }
+
+           .search-results a.search-item,
+           .search-results a.search-item .search-item-title,
+           .search-results a.search-item .search-item-sub {
+               color: #111 !important;
+               opacity: 1 !important;
+               font-size: 14px !important;
+               line-height: 1.2 !important;
+           }
+
+           /* Ensure anchors are block level so text is clickable and visible */
+           .search-results a.search-item { display: flex; }
+
            /* Title */
+           .search-item > div { /* allow flex children to shrink for ellipsis */
+               flex: 1;
+               min-width: 0;
+               margin-right: 10px;
+           }
+
+           /* Default: single-line ellipsis for widest browser support */
            .search-item-title {
                font-weight: 500;
+               color: #111;
+               overflow: hidden;
+               text-overflow: ellipsis;
+               white-space: nowrap;
+               display: block;
+               max-width: 100%;
+           }
+
+           /* Use multi-line clamp when supported */
+           @supports (-webkit-line-clamp: 1) {
+               .search-item-title {
+                   display: -webkit-box;
+                   -webkit-line-clamp: 2;
+                   -webkit-box-orient: vertical;
+                   white-space: normal;
+               }
+           }
+
+           /* Mobile: single-line ellipsis to preserve space */
+           @media (max-width: 480px) {
+               .search-item-title { white-space: nowrap; }
+               .search-container { padding: 20px; }
            }
 
            /* Sub */
