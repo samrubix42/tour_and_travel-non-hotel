@@ -28,6 +28,7 @@ class CategoryList extends Component
     public $description;
     public $slug;
     public $status = true;
+    public $banner_heading;
     public $category_image;
     public $imageFile;
     public $storage_path;
@@ -44,6 +45,7 @@ class CategoryList extends Component
         return [
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'banner_heading' => 'nullable|string|max:255',
             'slug' => ['required', 'string', 'max:255', $uniqueRule],
             'status' => 'boolean',
             'imageFile' => 'nullable|image|max:1024',
@@ -98,6 +100,7 @@ class CategoryList extends Component
         $this->storage_path = $cat->storage_path;
         $this->imagekit_file_id = $cat->imagekit_file_id;
         $this->banner_image = $cat->banner_image;
+        $this->banner_heading = $cat->banner_heading;
         $this->banner_storage_path = $cat->banner_storage_path;
 
         $this->showModal = true;
@@ -195,6 +198,9 @@ class CategoryList extends Component
             }
         }
 
+        // include banner heading
+        $data['banner_heading'] = $this->banner_heading;
+
         if ($this->categoryId) {
             Category::findOrFail($this->categoryId)->update($data);
             $this->dispatch('success', 'Category updated successfully.');
@@ -252,6 +258,7 @@ class CategoryList extends Component
         $this->name = null;
         $this->description = null;
         $this->slug = null;
+        $this->banner_heading = null;
         $this->status = true;
         $this->category_image = null;
         $this->storage_path = null;

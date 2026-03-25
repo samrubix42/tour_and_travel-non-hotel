@@ -41,8 +41,9 @@
                         {{ $currentCategory ? 'Explore '.$currentCategory->name : 'Explore the world' }}
                     </h2>
                     <h1 class="mb-0 text-white alt-font ls-minus-2px text-uppercase fw-600 text-shadow-double-large">
-                        {{ $currentCategory ? $currentCategory->name : 'All Destinations' }}
+                        {{ $currentCategory ? $currentCategory?->banner_heading : 'All Destinations' }}
                     </h1>
+                 
                 </div>
             </div>
         </div>

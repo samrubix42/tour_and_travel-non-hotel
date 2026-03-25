@@ -24,6 +24,7 @@ class Category extends Model
         'storage_path',        
         'imagekit_file_id',
         'banner_image',
+        'banner_heading',
         'banner_storage_path',
     ];
 

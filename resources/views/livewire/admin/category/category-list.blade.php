@@ -185,6 +185,12 @@
                                     @endif
                                 </div>
 
+                                    <div class="mb-3">
+                                        <label class="form-label">Banner Heading (optional)</label>
+                                        <input wire:model.defer="banner_heading" type="text" class="form-control @error('banner_heading') is-invalid @enderror">
+                                        @error('banner_heading') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                    </div>
+
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" wire:click="closeModal">Cancel</button>
