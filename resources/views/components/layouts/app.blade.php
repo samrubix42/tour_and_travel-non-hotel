@@ -158,7 +158,10 @@
 
         @media (max-width: 767px) {
             .sticky-right-contacts {
-                display: none
+                display: none !important;
+            }
+            .sticky-left-contacts {
+                display: none !important;
             }
 
             .social-bottom-bar {
