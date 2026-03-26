@@ -24,6 +24,9 @@
                 }
                 .about-profile .social-icon i { color: #374151; }
                 .about-profile .social-icon:hover { background: #e45b15; color: #fff !important; }
+                /* Dark overlay for banners so text is readable */
+                .bg-dark-overlay { background: rgba(0,0,0,0.55); }
+                .interactive-banner-style-03 figcaption { position: relative; z-index: 3; }
             </style>
             <div class="row align-items-center justify-content-center extra-small-screen">
                 <div class="col-lg-6 col-md-8 position-relative text-center page-title-extra-large" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
@@ -88,7 +91,7 @@
                 <div class="col interactive-banner-style-03 transition-inner-all md-mb-30px">
                     <div class="position-relative overflow-hidden border-radius-6px last-paragraph-no-margin">
                         <figure class="m-0">
-                            <div class="bg-gradient-gray-light-dark-transparent position-absolute top-0px left-0px w-100 h-100 z-index-1"></div>
+                            <div class="bg-dark-overlay position-absolute top-0px left-0px w-100 h-100"></div>
                             <img src="{{asset('asset/image/point1.jpg')}}" alt="" />
                             <figcaption class="d-flex flex-column w-100 h-100 p-60px lg-p-35px z-index-1">
                                 <span class="mb-auto fs-24 text-white text-white-hover w-90 lg-w-100">Helicopter Yatra Specialists</span>
@@ -102,7 +105,7 @@
                 <div class="col interactive-banner-style-03 transition-inner-all md-mb-30px">
                     <div class="position-relative overflow-hidden border-radius-6px last-paragraph-no-margin">
                         <figure class="m-0">
-                            <div class="bg-gradient-gray-light-dark-transparent position-absolute top-0px left-0px w-100 h-100 z-index-1"></div>
+                            <div class="bg-dark-overlay position-absolute top-0px left-0px w-100 h-100"></div>
                             <img src="{{asset('asset/image/point2.jpg')}}" alt="" />
                             <figcaption class="d-flex flex-column w-100 h-100 p-60px lg-p-35px z-index-1">
                                 <span class="mb-auto fs-24 text-white text-white-hover w-90 lg-w-100">12+ Years of Trusted Expertise.</span>
@@ -116,7 +119,7 @@
                 <div class="col interactive-banner-style-03 transition-inner-all">
                     <div class="position-relative overflow-hidden border-radius-6px last-paragraph-no-margin">
                         <figure class="m-0">
-                            <div class="bg-gradient-gray-light-dark-transparent position-absolute top-0px left-0px w-100 h-100 z-index-1"></div>
+                            <div class="bg-dark-overlay position-absolute top-0px left-0px w-100 h-100"></div>
                             <img src="{{asset('asset/image/point3.jpg')}}" alt="" />
                             <figcaption class="d-flex flex-column w-100 h-100 p-60px lg-p-35px z-index-1">
                                 <span class="mb-auto fs-24 text-white text-white-hover w-90 lg-w-100">Comprehensive End-to-End Care.</span>
@@ -129,7 +132,7 @@
             </div>
             <div class="row mb-12 md-pb-13 md-mt-8 xs-pb-20" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 50, "staggervalue": 150, "easing": "easeOutQuad" }'>
                 <div class="col-12 text-center">
-                    <h4 class="alt-font text-dark-gray mb-0 ls-minus-1px fancy-text-style-4">World's hottest destinations for <span class="fw-600" data-fancy-text='{ "effect": "wave", "direction": "up", "speed": 10, "string": ["mountain lovers.", "nature lovers.", "independent tours."], "duration": 2500 }'></span></h4>
+                    <h4 class="alt-font text-dark-gray mb-0 ls-minus-1px fancy-text-style-4">Explore sacred Yatras across India Chardham &amp; beyond for <span class="fw-600" data-fancy-text='{ "effect": "wave", "direction": "up", "speed": 10, "string": ["Chardham pilgrims.", "devotional yatris.", "spiritual seekers."], "duration": 2500 }'></span></h4>
                 </div>
             </div>
         </div>

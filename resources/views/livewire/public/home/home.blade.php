@@ -510,64 +510,64 @@
                 </section>
                 <!-- end section -->
                 <!-- end section -->
-               {{--
+                {{--
                 <section class="bg-very-light-gray background-position-center-top background-no-repeat overlap-height" style="background-image:url('{{ asset('asset/images/demo-travel-agency-home-bg-04.png') }}');">
-                    <div class="container overlap-gap-section">
-                        <div class="row justify-content-center mb-2">
-                            <div class="col-lg-7 text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                                <span class="fw-500 text-base-color text-uppercase d-inline-block">Inspiring story</span>
-                                <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px">Yatra blogs</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <ul class="blog-modern blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                                    <li class="grid-sizer"></li>
-                                    @forelse($latestPosts ?? [] as $post)
-                                    <li class="grid-item md-mb-20px">
-                                        <div class="box-hover text-center">
-                                            <figure class="mb-0 position-relative">
-                                                <div class="blog-image position-relative overflow-hidden border-radius-6px">
-                                                    @php
-                                                    $img = $post->featured_image ?? 'https://placehold.co/800x1015';
-                                                    @endphp
-                                                    <a href="{{ url('/blog/' . ($post->slug ?? $post->id)) }}"><img src="{{ $img }}" alt="{{ $post->title }}" /></a>
-                                                </div>
-                                                <figcaption class="post-content-wrapper overflow-hidden border-radius-6px">
-                                                    <div class="position-relative bg-dark-gray post-content p-30px z-index-2 lh-initial">
-                                                        <a href="{{ url('/blog/' . ($post->slug ?? $post->id)) }}" class="card-title mb-0 fs-20 lh-28 text-white d-inline-block">{{ $post->title }}</a>
-                                                        <div class="box-overlay bg-dark-gray z-index-minus-1"></div>
-                                                    </div>
-                                                    <div class="fs-15 bg-white p-15px lg-ps-10px lg-pe-10px lh-initial"><span class="d-inline-block">By <a href="#">{{ $post->author ?? 'Admin' }}</a></span><span class="separator d-inline-block">|</span><a href="#">{{ $post->created_at ? $post->created_at->format('d M Y') : '' }}</a></div>
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-                                    </li>
-                                    @empty
-                                    <li class="grid-item md-mb-20px">
-                                        <div class="box-hover text-center">
-                                            <figure class="mb-0 position-relative">
-                                                <div class="blog-image position-relative overflow-hidden border-radius-6px">
-                                                    <a href="#"><img src="https://placehold.co/800x1015" alt="" /></a>
-                                                </div>
-                                                <figcaption class="post-content-wrapper overflow-hidden border-radius-6px">
-                                                    <div class="position-relative bg-dark-gray post-content p-30px z-index-2 lh-initial">
-                                                        <a href="#" class="card-title mb-0 fs-20 lh-28 text-white d-inline-block">No blog posts yet</a>
-                                                        <div class="box-overlay bg-dark-gray z-index-minus-1"></div>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-                                    </li>
-                                    @endforelse
-                                </ul>
-                            </div>
+                <div class="container overlap-gap-section">
+                    <div class="row justify-content-center mb-2">
+                        <div class="col-lg-7 text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                            <span class="fw-500 text-base-color text-uppercase d-inline-block">Inspiring story</span>
+                            <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px">Yatra blogs</h2>
                         </div>
                     </div>
-                </section>
-               --}}
-                <!-- start section -->
-                <!-- start footer -->
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="blog-modern blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                <li class="grid-sizer"></li>
+                                @forelse($latestPosts ?? [] as $post)
+                                <li class="grid-item md-mb-20px">
+                                    <div class="box-hover text-center">
+                                        <figure class="mb-0 position-relative">
+                                            <div class="blog-image position-relative overflow-hidden border-radius-6px">
+                                                @php
+                                                $img = $post->featured_image ?? 'https://placehold.co/800x1015';
+                                                @endphp
+                                                <a href="{{ url('/blog/' . ($post->slug ?? $post->id)) }}"><img src="{{ $img }}" alt="{{ $post->title }}" /></a>
+                                            </div>
+                                            <figcaption class="post-content-wrapper overflow-hidden border-radius-6px">
+                                                <div class="position-relative bg-dark-gray post-content p-30px z-index-2 lh-initial">
+                                                    <a href="{{ url('/blog/' . ($post->slug ?? $post->id)) }}" class="card-title mb-0 fs-20 lh-28 text-white d-inline-block">{{ $post->title }}</a>
+                                                    <div class="box-overlay bg-dark-gray z-index-minus-1"></div>
+                                                </div>
+                                                <div class="fs-15 bg-white p-15px lg-ps-10px lg-pe-10px lh-initial"><span class="d-inline-block">By <a href="#">{{ $post->author ?? 'Admin' }}</a></span><span class="separator d-inline-block">|</span><a href="#">{{ $post->created_at ? $post->created_at->format('d M Y') : '' }}</a></div>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                </li>
+                                @empty
+                                <li class="grid-item md-mb-20px">
+                                    <div class="box-hover text-center">
+                                        <figure class="mb-0 position-relative">
+                                            <div class="blog-image position-relative overflow-hidden border-radius-6px">
+                                                <a href="#"><img src="https://placehold.co/800x1015" alt="" /></a>
+                                            </div>
+                                            <figcaption class="post-content-wrapper overflow-hidden border-radius-6px">
+                                                <div class="position-relative bg-dark-gray post-content p-30px z-index-2 lh-initial">
+                                                    <a href="#" class="card-title mb-0 fs-20 lh-28 text-white d-inline-block">No blog posts yet</a>
+                                                    <div class="box-overlay bg-dark-gray z-index-minus-1"></div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                </li>
+                                @endforelse
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        --}}
+        <!-- start section -->
+        <!-- start footer -->
 
 
 

@@ -95,7 +95,7 @@
             </div>
             <div class="col-md-6 text-center text-md-end">
                 <div class="fs-12 opacity-5">
-                    <a href="https://techonika.com" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-none">Made by Techonika</a>
+                    <a href="https://techonika.com" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-none">Website by Techonika</a>
                 </div>
             </div>
         </div>
