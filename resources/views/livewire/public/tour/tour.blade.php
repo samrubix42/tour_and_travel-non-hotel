@@ -64,7 +64,6 @@
                 <div class="col-12 text-center py-5">No tour packages found.</div>
                 @endforelse
             </div>
-            <livewire:public.tour.contact-sticky />
             <div class="row">
                 <div class="col-12 mt-6 d-flex justify-content-center">
                     {!! $tourPackages->links('vendor.pagination.tour') !!}
