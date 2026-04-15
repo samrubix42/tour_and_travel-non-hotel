@@ -83,6 +83,13 @@ class AdminSidebar
                 ],
             ],
             (object)[
+                'title' => 'Home Slider',
+                'icon' => 'ti ti-photo',
+                'url' => route('admin.homeslider.list'),
+                'hasSubmenu' => false,
+                'submenu' => [],
+            ],
+            (object)[
                 'title' => 'Enquiries',
                 'icon' => 'ti ti-mail',
                 'url' => '#',

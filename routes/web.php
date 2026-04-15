@@ -87,6 +87,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::get('/create', AddHotel::class)->name('create');
         Route::get('/{id}/edit', UpdateHotel::class)->name('edit');
     });
+    Route::get('/homeslider', \App\Livewire\Admin\Slider\HomesliderList::class)->name('homeslider.list');
     Route::get('/banners', BannerManagement::class)->name('banners');
 });
 

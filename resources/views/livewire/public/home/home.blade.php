@@ -270,11 +270,12 @@
                 </div>
             </section>
             @endforeach
+            @if(($homeSliders ?? collect())->count())
             <div
-                x-data="{
-        viewerOpen: false,
-        viewerImage: ''
-    }">
+                            x-data="{
+                    viewerOpen: false,
+                    viewerImage: ''
+                }">
 
                 <!-- SLIDER -->
                 <div
@@ -311,56 +312,16 @@
 
                     <div class="swiper" x-ref="imageSlider">
                         <div class="swiper-wrapper">
-
-                            <!-- CARD 1 -->
-                            <div class="swiper-slide">
-                                <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
-                                    <img
-                                        src="{{asset('asset/slider/111.jpg')}}"
-                                        @click="viewerImage=$event.target.src;viewerOpen=true"
-                                        style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
+                            @foreach($homeSliders as $slide)
+                                <div class="swiper-slide">
+                                    <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
+                                        <img
+                                            src="{{ $slide->image_url }}"
+                                            @click="viewerImage=$event.target.src;viewerOpen=true"
+                                            style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
+                                    </div>
                                 </div>
-                            </div>
-
-                            <!-- CARD 2 -->
-                            <div class="swiper-slide">
-                                <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
-                                    <img
-                                        src="{{asset('asset/slider/112.jpg')}}"
-                                        @click="viewerImage=$event.target.src;viewerOpen=true"
-                                        style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
-                                </div>
-                            </div>
-
-                            <!-- CARD 3 -->
-                            <div class="swiper-slide">
-                                <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
-                                    <img
-                                        src="{{asset('asset/slider/113.jpg')}}"
-                                        @click="viewerImage=$event.target.src;viewerOpen=true"
-                                        style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
-                                </div>
-                            </div>
-
-                            <!-- CARD 4 -->
-                            <div class="swiper-slide">
-                                <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
-                                    <img
-                                        src="{{asset('asset/slider/114.jpg')}}"
-                                        @click="viewerImage=$event.target.src;viewerOpen=true"
-                                        style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
-                                </div>
-                            </div>
-
-                            <!-- CARD 5 -->
-                            <div class="swiper-slide">
-                                <div style="border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15);">
-                                    <img
-                                        src="{{asset('asset/slider/115.jpg')}}"
-                                        @click="viewerImage=$event.target.src;viewerOpen=true"
-                                        style="width:100%;height:auto;object-fit:cover;cursor:pointer;">
-                                </div>
-                            </div>
+                            @endforeach
 
                         </div>
                     </div>
@@ -375,55 +336,56 @@
                     @click.self="viewerOpen = false"
                     @keydown.escape.window="viewerOpen = false"
                     style="
-        position:fixed;
-        inset:0;
-        background:rgba(0,0,0,0.9);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        z-index:9999;
-    ">
+                position:fixed;
+                inset:0;
+                background:rgba(0,0,0,0.9);
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                z-index:9999;
+            ">
 
                     <!-- CENTER WRAPPER -->
                     <div
-                        style="
-            position:relative;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            width:100%;
-            height:100%;
-        ">
+                                        style="
+                            position:relative;
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            width:100%;
+                            height:100%;
+                        ">
                         <!-- CLOSE BUTTON -->
                         <button
                             @click="viewerOpen = false"
                             style="
-                position:absolute;
-                top:24px;
-                right:24px;
-                background:#fff;
-                border:none;
-                font-size:26px;
-                width:44px;
-                height:44px;
-                border-radius:50%;
-                cursor:pointer;
-                z-index:10;
-            ">×</button>
+                            position:absolute;
+                            top:24px;
+                            right:24px;
+                            background:#fff;
+                            border:none;
+                            font-size:26px;
+                            width:44px;
+                            height:44px;
+                            border-radius:50%;
+                            cursor:pointer;
+                            z-index:10;
+                        ">×</button>
 
                         <!-- IMAGE -->
                         <img
                             :src="viewerImage"
                             style="
-                max-width:90vw;
-                max-height:90vh;
-                object-fit:contain;
-                border-radius:4px;
-                box-shadow:0 25px 70px rgba(0,0,0,.7);
-                transform:scale(1);
-            ">
-                    </div>
-                </div>
+                        max-width:90vw;
+                        max-height:90vh;
+                        object-fit:contain;
+                        border-radius:4px;
+                        box-shadow:0 25px 70px rgba(0,0,0,.7);
+                        transform:scale(1);
+                    ">
+                            </div>
+                        </div>
+            @endif
 
 
                 <!-- end section -->

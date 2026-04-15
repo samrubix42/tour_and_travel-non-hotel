@@ -7,6 +7,7 @@ use Livewire\Attributes\Title;
 use App\Models\Page;
 use App\Models\Experience;
 use App\Models\Testimonial;
+use App\Models\Homeslider;
 
 class Home extends Component
 {
@@ -46,6 +47,8 @@ class Home extends Component
             ->take(6)
             ->get();
 
+        $homeSliders = Homeslider::latest()->get();
+
         return view('livewire.public.home.home', [
             'categories' => $categories,
             'banners' => $banners,
@@ -55,6 +58,7 @@ class Home extends Component
             'page' => $page,
             'experiences' => $experiences,
             'testimonials' => $testimonials,
+            'homeSliders' => $homeSliders,
         ]);
     }
 }
